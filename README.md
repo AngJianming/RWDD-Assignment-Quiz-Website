@@ -52,31 +52,32 @@
 ### Data dictionary (SQL Tables)
 `
 1. Questions x
-| **Attribute Name**  	| **Data Type** | **Nullable** |
-| ------------------- 	| ------------- | ------------ |
-| `question_id`       	| INT           | No           | [PK] 
-| `quiz_id`           	| INT           | No           | [FK] quiz table 
-| `question_text`     	| VARCHAR(255)  | No           |
-| `question_type`     	| VARCHAR(255)	| No           |
-| `correct_answers`   	| TEXT          | Yes          | A;B
-| `wrong_answers`     	| TEXT          | Yes          | C;D;E
-| `answer_percentage` 	| JSON          | Yes          | `[20, 80]` 
-| `question_created_at` | DATETIME      | No           |
-| `last_updated_at`   	| DATETIME      | No           |
+| **Attribute Name**  	| **Data Type** | **Nullable** |	**Key**		|
+|-----------------------|---------------|--------------|------------------------|
+| `question_id`       	| INT           | No           | [PK] 			|
+| `quiz_id`           	| INT           | No           | [FK] quiz table 	|
+| `question_text`     	| VARCHAR(255)  | No           |			|
+| `question_type`     	| VARCHAR(255)	| No           |			|
+| `correct_answers`   	| TEXT          | Yes          | A;B			|
+| `wrong_answers`     	| TEXT          | Yes          | C;D;E			|
+| `answer_percentage` 	| JSON          | Yes          | `[20, 80]` 		|
+| `question_created_at` | DATETIME      | No           |			|
+| `last_updated_at`   	| DATETIME      | No           |			|
 <br>
+
 
 `
 2. CustomQuiz x
-| **Attribute Name** | **Data Type** | **Nullable** |1
-| ------------------ | ------------- | ------------ |
-| quiz_id            | INT           | No           | [PK] 
-| lecturer_id        | INT           | No           | [FK] lecturer table 
-| quiz_name          | VARCHAR(255)  | No           |
-| description        | VARCHAR(255)  | No           |
-| public_visibility  | BOOLEAN       | No           | set to public or private 
-| last_updated_at    | DATETIME      | No           |
-| average_percentage | INT           | No           | average final score for the quiz 
-| created_at         | DATETIME      | No           |
+| **Attribute Name** | **Data Type** | **Nullable** |	**Key**				|
+| ------------------ | ------------- | ------------ |	-------				|
+| quiz_id            | INT           | No           | [PK] 				|
+| lecturer_id        | INT           | No           | [FK] lecturer table 		|
+| quiz_name          | VARCHAR(255)  | No           |					|
+| description        | VARCHAR(255)  | No           |					|
+| public_visibility  | BOOLEAN       | No           | set to public or private 		|
+| last_updated_at    | DATETIME      | No           |					|
+| average_percentage | INT           | No           | average final score for the quiz 	|
+| created_at         | DATETIME      | No           |					|
 
 <!--| join_code          | VARCHAR(255)  | No           |-->
 **Note**
@@ -85,45 +86,45 @@
 
 `
 3. RankQuizLevels x
-| **Attribute Name**   | **Data Type**   | **Nullable**    |
-| ---------------------|-----------------|-----------------|
-| attempt_id           | INT             | No              | [PK]
-| question_id          | INT             | No              | [FK] Question table
-| student_id           | INT             | No              | [FK] Student table
-| admin_id	       | NVARCHAR(10)	 | No		   | [FK] Admin table
-| attempted_at         | DATETIME        | No              |
-| attempt_duration     | INT             | No              |
-| chosen_answers       | JSON            | No              |
-| score		       | INT             | No              |
-| difficulty_rating    | INT             | No              | feedback on how the attempt was
+| **Attribute Name**   | **Data Type**   | **Nullable**    |		**Key**			|
+| ---------------------|-----------------|-----------------|	------				|
+| attempt_id           | INT             | No              | [PK]				|
+| question_id          | INT             | No              | [FK] Question table		|
+| student_id           | INT             | No              | [FK] Student table			|
+| admin_id	       | NVARCHAR(10)	 | No		   | [FK] Admin table			|
+| attempted_at         | DATETIME        | No              |					|
+| attempt_duration     | INT             | No              |					|
+| chosen_answers       | JSON            | No              |					|
+| score		       | INT             | No              |					|
+| difficulty_rating    | INT             | No              | feedback on how the attempt was	|
 <br>
 
 `
 4. Admin x
-| **Attribute Name** | **Data Type** | **Nullable** |
-| ------------------ | ------------- | ------------ |
-| admin_id           | INT           | No           | [PK]
-| admin_username     | VARCHAR(255)  | No           |
-| admin_password     | VARCHAR(255)  | No           |
-| admin_created_at   | DATETIME      | No           |
+| **Attribute Name** | **Data Type** | **Nullable** |	**Key**		|
+| ------------------ | ------------- | ------------ |			|
+| admin_id           | INT           | No           | [PK]		|
+| admin_username     | VARCHAR(255)  | No           |			|
+| admin_password     | VARCHAR(255)  | No           |			|
+| admin_created_at   | DATETIME      | No           |			|
 <br>
 
 `
 5. Student x
-| **Attribute Name** | **Data Type** | **Nullable** |
-| ------------------ | ------------- | ------------ |
-| student_id         | INT           | No           | [PK]
-| student_username   | VARCHAR(255)  | No           |
-| student_password   | VARCHAR(255)  | No           |
-| student_name       | VARCHAR(255)  | No           |
-| student_birthday   | DATE          | No           |
-| student_email      | VARCHAR(255)  | No           |
-| student_created_at | DATETIME      | No           |
+| **Attribute Name** | **Data Type** | **Nullable** |	**Key**		|
+| ------------------ | ------------- | ------------ |	------		|
+| student_id         | INT           | No           | [PK]		|
+| student_username   | VARCHAR(255)  | No           |			|
+| student_password   | VARCHAR(255)  | No           |			|
+| student_name       | VARCHAR(255)  | No           |			|
+| student_birthday   | DATE          | No           |			|
+| student_email      | VARCHAR(255)  | No           |			|
+| student_created_at | DATETIME      | No           |			|
 <br>
 
 `
 6. Lecturer x
-| **Attribute Name**  | **Data Type**                     | **Nullable** | key                                  |
+| **Attribute Name**  | **Data Type**                     | **Nullable** |		**Key**			|
 | ------------------- | --------------------------------- | ------------ | ------------------------------------ |
 | lecturer_id         | INT                               | No           | [PK]                                 |  
 | admin_id            | INT                               | No           | [FK] admin table                     |  
