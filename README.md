@@ -51,30 +51,30 @@
 	
 ### Data dictionary (SQL Tables)
 1. Questions x
-| **Attribute Name**  | **Data Type** | **Nullable** |
-| ------------------- | ------------- | ------------ |
-| `question_id`       | INT           | No           | [PK] |
-| `quiz_id`           | INT           | No           | [FK] quiz table |
-| `question_text`     | VARCHAR(255)  | No           |
-| `question_type`     | VARCHAR(255)          | No           |
-| `correct_answers`   | TEXT          | Yes          | A;B
-| `wrong_answers`     | TEXT          | Yes          | C;D;E
-| `answer_percentage` | JSON          | Yes          | `[20, 80]` |
-| `question_created_at`        | DATETIME      | No           |
-| `last_updated_at`   | DATETIME      | No           |
+| **Attribute Name**  	| **Data Type** | **Nullable** |
+| ------------------- 	| ------------- | ------------ |
+| `question_id`       	| INT           | No           | [PK] 
+| `quiz_id`           	| INT           | No           | [FK] quiz table 
+| `question_text`     	| VARCHAR(255)  | No           |
+| `question_type`     	| VARCHAR(255)	| No           |
+| `correct_answers`   	| TEXT          | Yes          | A;B
+| `wrong_answers`     	| TEXT          | Yes          | C;D;E
+| `answer_percentage` 	| JSON          | Yes          | `[20, 80]` 
+| `question_created_at` | DATETIME      | No           |
+| `last_updated_at`   	| DATETIME      | No           |
 
 
 2. Quiz x
 | **Attribute Name** | **Data Type** | **Nullable** |1
 | ------------------ | ------------- | ------------ |
-| quiz_id            | INT           | No           | [PK] |
-| lecturer_id        | INT           | No           | [FK] lecturer table |
+| quiz_id            | INT           | No           | [PK] 
+| lecturer_id        | INT           | No           | [FK] lecturer table 
 | quiz_name          | VARCHAR(255)  | No           |
 | description        | VARCHAR(255)  | No           |
-| public_visibility         | boolean          | No           | set to public or private |
+| public_visibility  | boolean       | No           | set to public or private 
 | join_code          | VARCHAR(255)  | No           |
 | last_updated_at    | DATETIME      | No           |
-| average_percentage | INT           | No           | average final score for the quiz |
+| average_percentage | INT           | No           | average final score for the quiz 
 | created_at         | DATETIME      | No           |
 - total attemps are calculated by rows in attempt
 
@@ -87,7 +87,7 @@
 | attempted_at         | DATETIME        | No              |
 | attempt_duration     | INT             | No              |
 | chosen_answers       | JSON            | No              |
-| score 							 | INT             | No              |
+| score		       | INT             | No              |
 | difficulty_rating    | INT             | No              | feedback on how the attempt was
 
 4. Admin x
@@ -96,7 +96,7 @@
 | admin_id           | INT           | No           | [PK]
 | admin_username     | VARCHAR(255)  | No           |
 | admin_password     | VARCHAR(255)  | No           |
-| admin_created_at         | DATETIME      | No           |
+| admin_created_at   | DATETIME      | No           |
 
 
 5. Student x
@@ -113,14 +113,14 @@
 6. Lecturer x
 | **Attribute Name**  | **Data Type**                     | **Nullable** | key                                  |
 | ------------------- | --------------------------------- | ------------ | ------------------------------------ |
-| lecturer_id         | INT                               | No           | [PK]                                 |  |
-| admin_id         | INT                               | No          | [FK] admin table                     |  |
-| lecturer_username   | VARCHAR(255)                      | No           |
-| lecturer_password   | VARCHAR(255)                      | No           |
-| lecturer_name       | VARCHAR(255)                      | No           |
-| lecturer_email      | VARCHAR(255)                      | No           |
-| lecturer_created_at | DATETIME                          | No           |
-| registration_status | 'pending', 'approved', 'rejected' | no           |
+| lecturer_id         | INT                               | No           | [PK]                                 |  
+| admin_id            | INT                               | No           | [FK] admin table                     |  
+| lecturer_username   | VARCHAR(255)                      | No           |					|
+| lecturer_password   | VARCHAR(255)                      | No           |					|
+| lecturer_name       | VARCHAR(255)                      | No           |					|
+| lecturer_email      | VARCHAR(255)                      | No           |					|
+| lecturer_created_at | DATETIME                          | No           |					|
+| registration_status | 'pending', 'approved', 'rejected' | no           |					|
 | approved_at         | DATETIME                          | Yes          | is null if not approved yet by admin |
 - admin id is the person who approved the registration
 
@@ -135,4 +135,5 @@
 | banned_at          | datetime      | yes          |
 | ban_reason         | VARCHAR(255)  | Yes          |
 
--user_type can be either 'student' or 'lecturer'
+**Note**
+Students and Lecturers are not the same they have different interfaces and functionalities
