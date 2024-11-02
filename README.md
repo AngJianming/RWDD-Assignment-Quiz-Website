@@ -5,7 +5,7 @@
 2. Login / Registration Page
 	- /login.php
 	- /register.php
-	- Register as a student or as a lecturer
+	- Register as a student/lecturer/admin
 3. Quizzes Pages
 	- /quiz/explore.php
 	- Accessible by students after login
