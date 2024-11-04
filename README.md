@@ -87,7 +87,7 @@
 `
 3. RankQuizLevels x
 | **Attribute Name**   | **Data Type**   | **Nullable**    |		**Key**			|
-| ---------------------|-----------------|-----------------|	------				|
+| ---------------------|-----------------|-----------------|	-------				|
 | attempt_id           | INT             | No              | [PK]				|
 | question_id          | INT             | No              | [FK] Question table		|
 | student_id           | INT             | No              | [FK] Student table			|
