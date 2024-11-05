@@ -50,21 +50,20 @@
 	- For mcq only, % of chosen answer and the correct answer is highlighted
 	
 ### Data dictionary (SQL Tables)
-`
-1. Questions x
-| **Attribute Name**  	| **Data Type** | **Nullable** |	**Key**		|
-|-----------------------|---------------|--------------|------------------------|
-| `question_id`       	| INT           | No           | [PK] 			|
-| `quiz_id`           	| INT           | No           | [FK] quiz table 	|
-| `question_text`     	| VARCHAR(255)  | No           |			|
-| `question_type`     	| VARCHAR(255)	| No           |			|
-| `correct_answers`   	| TEXT          | Yes          | A;B			|
-| `wrong_answers`     	| TEXT          | Yes          | C;D;E			|
-| `answer_percentage` 	| JSON          | Yes          | `[20, 80]` 		|
-| `question_created_at` | DATETIME      | No           |			|
-| `last_updated_at`   	| DATETIME      | No           |			|
-<br>
 
+1. Questions x
+| **Attribute Name**  	| **Data Type** | **Nullable**  |	**Key**		|
+|	-------		| ---------	| ---------	|	-------		|
+| question_id       	| INT           | No            | [PK] 			|
+| quiz_id           	| INT           | No            | [FK] quiz table 	|
+| question_text     	| VARCHAR(255)  | No            |			|
+| question_type     	| VARCHAR(255)	| No            |			|
+| correct_answers   	| TEXT          | Yes           | 			|	<!--A;B-->
+| wrong_answers     	| TEXT          | Yes           | 			|	<!--C;D;E-->
+| answer_percentage 	| JSON          | Yes           |  			|	<!--`[20, 80]`-->
+| question_created_at   | DATETIME      | No            |			|
+| last_updated_at   	| DATETIME      | No            |			|
+<br>
 
 `
 2. CustomQuiz x
@@ -102,7 +101,7 @@
 `
 4. Admin x
 | **Attribute Name** | **Data Type** | **Nullable** |	**Key**		|
-| ------------------ | ------------- | ------------ |			|
+| ------------------ | ------------- | ------------ |	-----		|
 | admin_id           | INT           | No           | [PK]		|
 | admin_username     | VARCHAR(255)  | No           |			|
 | admin_password     | VARCHAR(255)  | No           |			|
