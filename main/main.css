@@ -1,0 +1,123 @@
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background-color: #f1f1f1;
+    padding: 1rem;
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    flex: 1;
+    flex-wrap: wrap;
+}
+
+.sidebar {
+    background-color: #d3d3d3;
+    padding: 2rem;
+    flex: 1 1 5rem;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    flex: 3 1 500px;
+    padding: 1rem;
+    /* background-color: rgba(0, 0, 0, 0.5); */
+}
+
+.content-section {
+    background-color: #b0b0b0;
+    margin-bottom: 1rem;
+    padding: 2rem;
+    text-align: center;
+    flex: 1;
+    background-color: rgba(176, 176, 176, 0.2);
+}
+
+.content-section:last-child {
+    margin-bottom: 0;
+}
+
+.play-button {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: #fff;
+    border: 1px solid #000;
+    cursor: pointer;
+}
+
+footer {
+    background-color: #f1f1f1;
+    padding: 1rem;
+    text-align: center;
+}
+
+/*
+Gradient colors, might have fix it later but just change colors only so no worries
+*/
+html, body {
+    background: -webkit-linear-gradient(17deg, #9A0A6C 0%, #531276 32%, #342375 90%);
+    background: linear-gradient(17deg, #9A0A6C 10%, #531276 32%, #342375 90%);
+    overflow: hidden;
+    background-size: 200% 100% !important;
+    -webkit-animation: move 10s ease infinite;
+    animation: move 10s ease infinite;
+    }
+
+    /* Gradient Animated movement */
+@-webkit-keyframes move {
+    0% {
+        background-position: 0 0;
+    }
+    50% {
+        background-position: 100% 0;
+    }
+    100% {
+        background-position: 0 0;
+    }
+}
+@-moz-keyframes AnimationName {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+
+@keyframes AnimationName { 
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@-o-keyframes AnimationName {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        flex: 1 1 100%;
+    }
+
+    .content {
+        flex: 1 1 100%;
+    }
+}
