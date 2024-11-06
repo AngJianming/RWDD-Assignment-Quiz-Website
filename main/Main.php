@@ -15,17 +15,19 @@
     <div class="sidebar">
         <div class="logo_content">
             <div class="logo">
-                <i class="ms-Icon ms-Icon--Code"></i>
-                <div class="logo_name">logo</div>
+                <img src="/img/RWDD logo.png" alt="Code Combat logo">
+                <!-- <i class="ms-Icon ms-Icon--Code"></i> -->
+                <div class="logo_name">Code Combat</div>
             </div>
             <i class="ms-Icon ms-Icon--CollapseMenu" id="btn"></i>
         </div>
+        
         <ul class="nav_list">
-            <li>
+            <!-- <li>
                 <i class="ms-Icon ms-Icon--Search"></i>
                 <input type="text" placeholder="Search...">
                 <span class="tooltip">Search</span>
-            </li>
+            </li> -->
             <li>
                 <a href="#">
                     <i class="ms-Icon ms-Icon--WaffleOffice365"></i>
@@ -63,10 +65,10 @@
             </li>
             <li>
                 <a href="#">
-                    <i class="ms-Icon ms-Icon--ShoppingCart"></i>
-                    <span class="links_name">Order</span>
+                    <i class="ms-Icon ms-Icon--Code"></i>
+                    <span class="links_name">Custom Quiz</span>
                 </a>
-                <span class="tooltip">Order</span>
+                <span class="tooltip">Custom Quiz</span>
             </li>
             <li>
                 <a href="#">
@@ -83,10 +85,11 @@
                 <span class="tooltip">Settings</span>
             </li>
         </ul>
+
         <div class="profile_content">
             <div class="profile">
                 <div class="profile_details">
-                    <img src="img/WIN_20240717_15_03_12_Pro.jpg" alt="">
+                    <img src="img/.jpg" alt="">
                     <div class="name_job">
                         <div class="name">Ang Jianming</div>
                         <div class="job">Full Stack Dev</div>
@@ -96,13 +99,37 @@
             </div>
         </div>
     </div>
+    
+    <!-- Main Page content will be here, don't mix with side bar stuff -->
+
     <div class="home_content">
         <!-- Content home principal page -->
-        <div class="text">
-            Code Combat
-        </div>
-    </div>
+        
+        <div class="wrapper">
+            <!-- Header -->
+            <header class="header">
+                <h1>Header</h1>
+            </header>
 
+            <!-- Main content -->
+            <div class="content image-section">
+                <p>Image</p>
+            </div>
+
+            <div class="content play-section">
+                <p>Contents</p>
+                <a href="">
+                    <button class="play-button">Play</button>
+                </a>
+            </div>
+
+            <!-- Footer -->
+            <footer class="footer">
+                <p>Footer</p>
+            </footer>
+        </div>
+
+    </div>
     <script src="/main/Main.js"></script>
 </body>
 

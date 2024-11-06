@@ -1,2 +1,0 @@
---- Put your components here ---
-not in this txt file but in the img file
