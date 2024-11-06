@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url(https://fonts.googleapis.com/css?family=Lato:100);
+
 * {
     margin: 0;
     padding: 0;
@@ -5,7 +8,21 @@
     font-family: "Poppins", sans-serif;
 }
 
+body, html {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    background-color: #531276; /* for browsers that do not support gradients */
+    background-image: linear-gradient(to bottom left, #9A0A6C, #531276, #342375);
+    min-height: 100vh;
+}
+
 body {
+    display: flex;
     position: relative;
     min-height: 100vh;
     width: 100%;
@@ -13,7 +30,24 @@ body {
     background: #444;
 }
 
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.header, .footer {
+    width: 100%;
+    background-color: #3b2461;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
 .sidebar {
+    display: flexbox;
     position: fixed;
     top: 0;
     left: 0;
@@ -128,6 +162,8 @@ body {
 }
 
 .sidebar ul li .ms-Icon--Search {
+    display: flex;
+    justify-content: center;
     position: absolute;
     z-index: 99;
     color: #FFF;
@@ -138,6 +174,12 @@ body {
 .sidebar ul li .ms-Icon--Search:hover {
     background: #FFF;
     color: #11101D;
+}
+
+.nav_list {
+    display: flex;
+    flex-direction: column;
+    
 }
 
 .sidebar ul li a {
@@ -250,6 +292,10 @@ body {
 }
 
 .home_content {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: absolute;
     height: 100%;
     width: calc(100%-78px);
@@ -272,16 +318,112 @@ body {
     left: 240px;
 }
 
-@media screen and (max-width: 768px) {
+.profile-icon {
+    font-size: 24px;
+    color: #e1e1e1;
+}
+
+.content {  
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to bottom, #6a5ca4, #8e3b7b);
+    color: white;
+    margin: 10px;
+    border-radius: 10px;
+}
+
+.home_content .text {
+    font-size: 25px;
+    color: #FFF;
+    margin: 12px;
+}
+
+.content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to bottom, #6a5ca4, #8e3b7b);
+    color: white;
+    margin: 10px;
+    border-radius: 10px;
+}
+
+.image-section, .play-section {
+    flex: 1;
+}
+
+.play-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.play-button {
+    text-transform: uppercase;
+    font-size: 28px;
+    color: white;
+    background: rgba(29, 27, 49, .6);
+    border: 2px solid #8000ff;
+    padding: 15px 30px;
+    margin: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
+    outline: none;
+}
+
+.play-button:hover {
+    box-shadow: 0 0 10px #8000ff, 0 0 20px #8000ff, 0 0 30px #8000ff, 0 0 40px #8000ff;
+    letter-spacing: .25rem;
+}
+
+.play-button::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #11101D;
+    z-index: -1;
+}
+
+.play-button::before {
+    counter: "";
+    position: absolute;
+    left: 100%;
+    top: -6px;
+    transform: translateX(-50%);
+    width: 12px;
+    height: 12px;
+    background: #27282c;
+    border: 2px solid var(--clr);
+    transition: all 0.8s;
+}
+
+/* responsive for side bar */
+@media (max-width: 768px) {
     .sidebar {
+        width: 60px;
+    }
+
+    .sidebar.active {
         width: 200px;
     }
 
-    .sidebar-menu li {
-        text-align: center;
+    .sidebar.active ~ .home_content {
+        left: 200px;
     }
 
-    .content {
-        margin-left: 10px;
+    /* make sure main content is resposive towards sidebar */
+    .home_content {
+        left: 60px;
+    }
+    
+    .header, .footer {
+        padding: 15px;
     }
 }
