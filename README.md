@@ -96,6 +96,7 @@
 | chosen_answers       | JSON            | No              |					|
 | score		       | INT             | No              |					|
 | difficulty_rating    | INT             | No              | feedback on how the attempt was	|
+| admin_created_at     | DATETIME        | No              |					|
 <br>
 
 `
