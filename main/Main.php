@@ -15,7 +15,7 @@
     <div class="sidebar">
         <div class="logo_content">
             <div class="logo">
-                <img src="/img/RWDD logo.png" alt="Code Combat logo">
+                <img src="/img/RWDD logo.png" alt="Code Combat logo" style="height: min-; width: min-content">
                 <!-- <i class="ms-Icon ms-Icon--Code"></i> -->
                 <div class="logo_name">Code Combat</div>
             </div>
@@ -45,9 +45,9 @@
             <li>
                 <a href="#">
                     <i class="ms-Icon ms-Icon--Chat"></i>
-                    <span class="links_name">Chat</span>
+                    <span class="links_name">Play</span>
                 </a>
-                <span class="tooltip">Chat</span>
+                <span class="tooltip">Play</span>
             </li>
             <li>
                 <a href="#">
