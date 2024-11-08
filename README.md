@@ -39,8 +39,8 @@
 
 	- /dashboard/admin.php
 	- remove users
-	- ban users
-	- unban users
+	<!-- - ban users
+	- unban users -->
 	- view user details in detail
 	
 5. Analytics
