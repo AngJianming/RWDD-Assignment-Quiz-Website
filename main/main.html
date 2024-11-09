@@ -1,4 +1,3 @@
-
 <html lang="en" dir="US">
 
 <head>
@@ -6,7 +5,8 @@
     <title>Responsive SideBar Menu</title>
     <link rel="stylesheet" href="/main/Main.css">
     <!-- Fluent UI CDN Link -->
-    <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/11.0.0/css/fabric.min.css">
+    <link rel="stylesheet"
+        href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/11.0.0/css/fabric.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
@@ -21,7 +21,7 @@
             </div>
             <i class="ms-Icon ms-Icon--CollapseMenu" id="btn"></i>
         </div>
-        
+
         <ul class="nav_list">
             <!-- <li>
                 <i class="ms-Icon ms-Icon--Search"></i>
@@ -99,12 +99,12 @@
             </div>
         </div>
     </div>
-    
+
     <!-- Main Page content will be here, don't mix with side bar stuff -->
 
     <div class="home_content">
         <!-- Content home principal page -->
-        
+
         <div class="wrapper">
             <!-- Header -->
             <header class="header">
@@ -127,6 +127,12 @@
             <footer class="footer">
                 <p>Footer</p>
             </footer>
+        </div>
+
+        <div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
         </div>
 
     </div>
