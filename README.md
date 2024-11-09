@@ -87,7 +87,7 @@
 3. RankQuizLevels x
 | **Attribute Name**   | **Data Type**   | **Nullable**    |		**Key**			|
 | ---------------------|-----------------|-----------------|	-------				|
-| attempt_id           | INT             | No              | [PK]				|
+| ranked_quiz_id       | INT             | No              | [PK]				|
 | question_id          | INT             | No              | [FK] Question table		|
 | student_id           | INT             | No              | [FK] Student table			|
 | admin_id	       | NVARCHAR(10)	 | No		   | [FK] Admin table			|
@@ -116,7 +116,6 @@
 | student_id         | INT           | No           | [PK]		|
 | student_username   | VARCHAR(255)  | No           |			|
 | student_password   | VARCHAR(255)  | No           |			|
-| student_name       | VARCHAR(255)  | No           |			|
 | student_birthday   | DATE          | No           |			|
 | student_email      | VARCHAR(255)  | No           |			|
 | student_created_at | DATETIME      | No           |			|
