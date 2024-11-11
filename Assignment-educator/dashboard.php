@@ -1,70 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible="IE=edge">
+    <meta http-equiv="X-UA-Compatible=" IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Code Combat for Educators</title>
     <link rel="stylesheet" href="dashboard.css">
-</head>
-<body>
-
-<html lang="en" dir="US">
-
-<head>
-    <meta charset="UTF-8">
-    <title>Responsive SideBar Menu</title>
-    <link rel="stylesheet" href="/main/Main.css">
-    <!-- Fluent UI CDN Link -->
-    <link rel="stylesheet"
-        href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/11.0.0/css/fabric.min.css">
+    <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/11.0.0/css/fabric.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
-<?php include 'main.php';?>
+<body class="ms-Fabric">
+    <!-- Main Content Container -->
 
-
-    <!-- Main Page content will be here, don't mix with side bar stuff -->
-
+    <div class="sidebar">
+        <div class="logo_content">
+            <div class="logo">
+                <i class="ms-Icon ms-Icon--Code"></i>
+                <div class="logo_name">logo</div>
+            </div>
+            <i class="ms-Icon ms-Icon--CollapseMenu" id="btn"></i>
+        </div>
+        <ul class="nav_list">   
+            <li>
+                <a href="#">
+                    <i class="ms-Icon ms-Icon--WaffleOffice365"></i>
+                    <span class="links_name">Dashboard</span>
+                </a>
+                <span class="tooltip">Dashboard</span>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="ms-Icon ms-Icon--Contact"></i>
+                    <span class="links_name">User</span>
+                </a>
+                <span class="tooltip">User</span>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="ms-Icon ms-Icon--Chat"></i>
+                    <span class="links_name">Chat</span>
+                </a>
+                <span class="tooltip">Chat</span>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="ms-Icon ms-Icon--PieDouble"></i>
+                    <span class="links_name">Analytics</span>
+                </a>
+                <span class="tooltip">Analytics</span>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="ms-Icon ms-Icon--FabricFolder"></i>
+                    <span class="links_name">File Manager</span>
+                </a>
+                <span class="tooltip">File Manager</span>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="ms-Icon ms-Icon--ShoppingCart"></i>
+                    <span class="links_name">Order</span>
+                </a>
+                <span class="tooltip">Order</span>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="ms-Icon ms-Icon--Heart"></i>
+                    <span class="links_name">Saved</span>
+                </a>
+                <span class="tooltip">Saved</span>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="ms-Icon ms-Icon--Settings"></i>
+                    <span class="links_name">Settings</span>
+                </a>
+                <span class="tooltip">Settings</span>
+            </li>
+        </ul>
+        <div class="profile_content">
+            <div class="profile">
+                <div class="profile_details">
+                    <img src="img/WIN_20240717_15_03_12_Pro.jpg" alt="">
+                    <div class="name_job">
+                        <div class="name">Ang Jianming</div>
+                        <div class="job">Full Stack Dev</div>
+                    </div>
+                </div>
+                <i class="ms-Icon ms-Icon--SignOut" id="log_out"></i>
+            </div>
+        </div>
+    </div>
     <div class="home_content">
         <!-- Content home principal page -->
-
-        <div class="wrapper">
-            <!-- Header -->
-            <header class="header">
-                <h1>Header</h1>
-            </header>
-
-            <!-- Main content -->
-            <div class="content image-section">
-                <p>Image</p>
-            </div>
-
-            <div class="content play-section">
-                <p>Contents</p>
-                <a href="">
-                    <button class="play-button">Play</button>
-                </a>
-            </div>
-
-            <!-- Footer -->
-            <footer class="footer">
-                <p>Footer</p>
-            </footer>
-        </div>
-
-        <div>
-            <div class="wave"></div>
-            <div class="wave"></div>
-            <div class="wave"></div>
-        </div>
-
+        <div class="text">Home Content</div>
     </div>
-    <script src="/main/Main.js"></script>
-</body>
 
-</html>
-    <!-- Main Content Container -->
+    <script>
+        let btn = document.querySelector("#btn");
+        let sidebar = document.querySelector(".sidebar");
+        let searchBtn = document.querySelector(".ms-Icon--Search");
+
+        btn.onclick = function() {
+            sidebar.classList.toggle("active");
+        }
+
+        searchBtn.onclick = function() {
+            sidebar.classList.toggle("active");
+        }
+    </script>
+
     <div class="container">
         <!-- Header Section -->
         <div class="header">
@@ -73,7 +120,8 @@
 
         <!-- Description Section -->
         <div class="description">
-            <p>Create engaging and effective quizzes effortlessly! Designed also for educators, our intuitive quiz page helps you craft interactive assessments that captivate students and track their progress. Perfect for enhancing classroom learning or online teaching.</h2></p>
+            <p>Create engaging and effective quizzes effortlessly! Designed also for educators, our intuitive quiz page helps you craft interactive assessments that captivate students and track their progress. Perfect for enhancing classroom learning or online teaching.</h2>
+            </p>
         </div>
 
         <!-- Features Section -->
@@ -100,10 +148,11 @@
             </div>
         </div>
         <p class="starting-text">Ready to have a fun and engaging session with your students?</p>
-    <button class="start-now-button">Start Now</button>
+        <button class="start-now-button">Start Now</button>
     </div>
-   
-    
-    
+
+
+
 </body>
+
 </html>
