@@ -1,27 +1,26 @@
 # Quiz-Website for Asia Pacific Univerisity (APU) Resposive Web Design & Development Assessment
 
 ## Project outline
-1. Landing Page (less important)
-2. Login / Registration Page
-	- /login.php
-	- /register.php
-	- Register as a student/lecturer/admin
-3. Quizzes Pages
-	- /quiz/explore.php
-	- Accessible by students after login
-	- Students can explore public quizzes by lectures or attempt a quiz using a code
-	
-	-/quiz/create.php
-	- Accessible by lecturers only
-	- Create new java quiz 
-	- Design create question panel for all types of questions ('MCQ', 'Short Answer', 'Fill in the Blanks', 'True/False', 'Checkbox')
+1. Landing Page
+	- /landingPage.php
+<br><br>
 
-	- /quiz/attempt.php
-	- Attempt the question from quiz id
-	- Design question layout for different types of questions ('MCQ', 'Short Answer', 'Fill in the Blanks', 'True/False', 'Checkbox')
-	- Rate the difficulty of the entire quiz
-	
-4. Dashboard 
+1. Login / OAuth2.0 / Registration page
+	- /Login/login.php
+	- /Login/oauth.php (Will automatically have a design that allows users to use Open Authentication 2.0)
+	- /Login/register.php
+	- Register as a student/lecturer/admin
+
+1. Student Page
+	- Student/main/main.php
+	- Student/game-src/app.php
+	- Student/play/play.php
+	- Student/profile/profile.php
+	- Student/logout.php
+	- Accessible by students after login
+	- This is a dashboard for Students where they can explore, attempt a quiz using a code made by educator or join a ranked game.
+
+1. Educator
 	- /dashboard/student.php
 	- Accessible by students only
 	- Display past quiz attempts, results 
@@ -37,117 +36,112 @@
 	- change password
 	- additional information (name, joined date etc)
 
-	- /dashboard/admin.php
-	- remove users
-	<!-- - ban users
-	- unban users -->
-	- view user details in detail
-	
-5. Analytics
+1. Admin Page
 	- /analytics.php
+	- Only accessable when admin login is successful
 	- Average score for question
 	- Average score for quiz
 	- For mcq only, % of chosen answer and the correct answer is highlighted
-	
-### Data dictionary (SQL Tables)
 
-1. Questions x
-| **Attribute Name**  	| **Data Type** | **Nullable**  |	**Key**		|
-|	-------		| ---------	| ---------	|	-------		|
-| question_id       	| INT           | No            | [PK] 			|
-| quiz_id           	| INT           | No            | [FK] quiz table 	|
-| question_text     	| VARCHAR(255)  | No            |			|
-| question_type     	| VARCHAR(255)	| No            |			|
-| correct_answers   	| TEXT          | Yes           | 			|	<!--A;B-->
-| wrong_answers     	| TEXT          | Yes           | 			|	<!--C;D;E-->
-| answer_percentage 	| JSON          | Yes           |  			|	<!--`[20, 80]`-->
-| question_created_at   | DATETIME      | No            |			|
-| last_updated_at   	| DATETIME      | No            |			|
+### Data dictionary (MySQL Database)
+
+1. questions
+
+| **Attribute Name**  	| **Data Type** | **Nullable**  |	**Key**				|
+|	-------------		| ------------	| ------------	|	------------		|
+| question_id       	| INT(11)       | No            | [PK] 					|
+| question_text     	| TEXT		    | No            |						|
+| question_no    	 	| INT(11)		| No            |						|
+| correct_answers   	| BOOLEAN	    | No            | 						|
+| quiz_id           	| INT(11)       | No            | [FK] custom_quiz		|
+| rank_quiz_id			| INT(11)		| No 			| [FK] rank_quiz_levels	|
 <br>
 
-`
-2. CustomQuiz x
-| **Attribute Name** | **Data Type** | **Nullable** |	**Key**				|
-| ------------------ | ------------- | ------------ |	-------				|
-| quiz_id            | INT           | No           | [PK] 				|
-| lecturer_id        | INT           | No           | [FK] lecturer table 		|
-| quiz_name          | VARCHAR(255)  | No           |					|
-| description        | VARCHAR(255)  | No           |					|
-| public_visibility  | BOOLEAN       | No           | set to public or private 		|
-| last_updated_at    | DATETIME      | No           |					|
-| average_percentage | INT           | No           | average final score for the quiz 	|
-| created_at         | DATETIME      | No           |					|
+2. custom_quiz
 
-<!--| join_code          | VARCHAR(255)  | No           |-->
+| **Attribute Name** 		   | **Data Type** | **Nullable** |	**Key**				|
+| ------------------ 		   | ------------- | ------------ |	-------				|
+| quiz_id            		   | INT(11)       | No           | [PK] 				|
+| quiz_name                    | VARCHAR(100)  | No           |						|
+| description        		   | VARCHAR(255)  | Yes          |						|
+| public_visibility        	   | BOOLEAN	   | Yes          |						|
+| custom_quiz_time_of_creation | DATETIME      | No           |						|
+| custom_quiz_last_updated_at  | DATETIME      | No           |						|
+| lecturer_id        		   | INT(11)       | No           | [FK] educator table |
 **Note**
-- total attemps are calculated by rows in attempt
+	- Total attemps are calculated by rows in attempt
+<br><br>
+
+
+3. rank_quiz_levels
+
+| **Attribute Name**   		| **Data Type**   | **Nullable**    |		**Key**			|
+| ---------------------		|-----------------|-----------------|	-------				|
+| ranked_quiz_id       		| INT(11)         | No              | [PK]					|
+| ranked_quiz_name     		| VARCHAR(50)     | No              | 						|
+| attempt_duration     		| INT             | No              |						|
+| ranked_score		   		| INT             | No              |						|
+| difficulty_rating    		| INT             | No              | 						|
+| admin_time_of_creation	| DATETIME        | No              |						|
+| admin_id	       	   		| INT(11)    	  | No		   	    | [FK] admin table		|
 <br>
 
-`
-3. RankQuizLevels x
-| **Attribute Name**   | **Data Type**   | **Nullable**    |		**Key**			|
-| ---------------------|-----------------|-----------------|	-------				|
-| ranked_quiz_id       | INT             | No              | [PK]				|
-| question_id          | INT             | No              | [FK] Question table		|
-| student_id           | INT             | No              | [FK] Student table			|
-| admin_id	       | NVARCHAR(10)	 | No		   | [FK] Admin table			|
-| attempted_at         | DATETIME        | No              |					|
-| attempt_duration     | INT             | No              |					|
-| chosen_answers       | JSON            | No              |					|
-| score		       | INT             | No              |					|
-| difficulty_rating    | INT             | No              | feedback on how the attempt was	|
-| admin_created_at     | DATETIME        | No              |					|
-<br>
 
-`
-4. Admin x
-| **Attribute Name** | **Data Type** | **Nullable** |	**Key**		|
-| ------------------ | ------------- | ------------ |	-----		|
-| admin_id           | INT           | No           | [PK]		|
+4. admin
+
+| **Attribute Name** | **Data Type** | **Nullable** |	**Key**	|
+| ------------------ | ------------- | ------------ |	-----	|
+| admin_id           | INT(11)       | No           | [PK]		|
 | admin_username     | VARCHAR(255)  | No           |			|
 | admin_password     | VARCHAR(255)  | No           |			|
-| admin_created_at   | DATETIME      | No           |			|
+| admin_DOJ			 | DATETIME      | No           |			|
 <br>
 
-`
-5. Student x
+
+5. student
+
 | **Attribute Name** | **Data Type** | **Nullable** |	**Key**		|
-| ------------------ | ------------- | ------------ |	------		|
-| student_id         | INT           | No           | [PK]		|
-| student_username   | VARCHAR(255)  | No           |			|
-| student_password   | VARCHAR(255)  | No           |			|
-| student_birthday   | DATE          | No           |			|
-| student_email      | VARCHAR(255)  | No           |			|
-| student_created_at | DATETIME      | No           |			|
+| ------------------ | ------------- | ------------ |	--------	|
+| student_id         | INT(11)       | No           | [PK]			|
+| student_username   | VARCHAR(255)  | No           |				|
+| student_password   | VARCHAR(255)  | No           |				|
+| student_email      | VARCHAR(255)  | No           |				|
+| student_DOJ		 | DATETIME      | No           |				|
 <br>
 
-`
-6. Lecturer x
-| **Attribute Name**  | **Data Type**                     | **Nullable** |		**Key**			|
-| ------------------- | --------------------------------- | ------------ | ------------------------------------ |
-| lecturer_id         | INT                               | No           | [PK]                                 |  
-| admin_id            | INT                               | No           | [FK] admin table                     |  
-| lecturer_username   | VARCHAR(255)                      | No           |					|
-| lecturer_password   | VARCHAR(255)                      | No           |					|
-| lecturer_name       | VARCHAR(255)                      | No           |					|
-| lecturer_email      | VARCHAR(255)                      | No           |					|
-| lecturer_created_at | DATETIME                          | No           |					|
-| registration_status | 'pending', 'approved', 'rejected' | No           |					|
-| approved_at         | DATETIME                          | Yes          | is null if not approved yet by admin |
 
+6. educator
+
+| **Attribute Name**  | **Data Type**      | **Nullable** |		**Key**		   |
+| ------------------- | ------------------ | ------------ | ------------------ |
+| educator_id         | INT(11)            | No           | [PK]               |  
+| educator_username   | VARCHAR(50)        | No           |					   |
+| educator_password   | VARCHAR(100)       | No           |					   |
+| educator_email      | VARCHAR(100)       | No           |					   |
+| educator_institution| TEXT		       | No           |					   |
+| educator_contacts   | VARCHAR(30)        | No           |					   |
+| educator_DOJ 		  | DATE	           | No           |					   |
+<br>
 **Note**
-- admin id is the person who approved the registration
-- Students and Lecturers are not the same, they have different interfaces and functionalities
+	- Students and Educators are not the same, they have different interfaces and functionalities.
 
-<!--7. BannedUsers
-| **Attribute Name** | **Data Type** | **Nullable** | key  |
-| ------------------ | ------------- | ------------ | ---- |
-| ban_id             | int           | no           | [PK] |  
-| admin_id           | int           | yes          | [FK] |  
-| student_id         | int           | yes          | [FK] |  
-| lecturer_id        | int           | yes          | [FK] |  
-| user_type          | varchar(255)  | yes          |      |
-| banned_at          | datetime      | yes          |	   |
-| ban_reason         | VARCHAR(255)  | Yes          |	   |-->
+7. quiz_submission
 
+| **Attribute Name** 		| **Data Type** | **Nullable** |	**Key**		|
+| ------------------ 		| ------------- | ------------ |	--------	|
+| ranked_quiz_id     		| INT(11)       | No           | [PK, FK]		|
+| quiz_id		     		| INT(11) 	    | No           | [PK, FK]		|
+| student_id	     		| INT(11)  	    | No           | [PK, FK] 		|
+| time_started   			| TIMESTAMP     | No           |				|
+| data&duration_submitted   | TIMESTAMP	    | No           |				|
 
+## Contributors
+@AngJianming
+<br>
+@Nexea1221
+<br>
+@Jayden2305
+<br>
+@genni1227
+<br>
+@zhiheng0614
