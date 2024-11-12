@@ -41,7 +41,7 @@
 	- Only accessable when admin login is successful
 	- Average score for question
 	- Average score for quiz
-	- For mcq only, % of chosen answer and the correct answer is highlighted
+	- For mcq, % of chosen answer and the correct answer is showed in a loaded animation
 
 ### Data dictionary (MySQL Database)
 
