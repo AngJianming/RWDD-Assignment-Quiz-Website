@@ -121,10 +121,10 @@
 | educator_institution| TEXT		       | No           |					   |
 | educator_contacts   | VARCHAR(30)        | No           |					   |
 | educator_DOJ 		  | DATE	           | No           |					   |
-<br>
+
 **Note**
 	- Students and Educators are not the same, they have different interfaces and functionalities.
-
+<br>
 7. quiz_submission
 
 | **Attribute Name** 		| **Data Type** | **Nullable** |	**Key**		|
