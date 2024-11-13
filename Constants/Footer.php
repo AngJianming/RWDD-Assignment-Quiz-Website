@@ -68,13 +68,14 @@
             padding: 20px;
             margin-top: 10px;
             margin-bottom: -10px;
+            font-size: 20px;
         }
     </style>
 </head>
 
 <body>
     <footer>
-        <div class="footer-container">
+        <!-- <div class="footer-container">
             <div class="footer-section">
                 <h4>Company</h4>
                 <ul>
@@ -100,7 +101,7 @@
                     <a href="#"><i class="fa fa-linkedin"></i></a>
                 </div>
             </div>
-        </div>
+        </div> -->
         <div class="copyright">
             <h6>© 2024 BatttleCombat.com FAQ | Privacy Policy | Terms of Service | RWDD Assignment Quiz Website</h4>
         </div>
