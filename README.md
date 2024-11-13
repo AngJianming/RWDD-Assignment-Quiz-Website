@@ -70,7 +70,7 @@
 | lecturer_id        		   | INT(11)       | No           | [FK] educator table |
 **Note**
 	- Total attemps are calculated by rows in attempt
-<br><br>
+<br>
 
 
 3. rank_quiz_levels
