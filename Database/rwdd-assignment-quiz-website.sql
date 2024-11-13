@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 12, 2024 at 11:45 AM
+-- Generation Time: Nov 13, 2024 at 08:11 AM
 -- Server version: 11.5.2-MariaDB
 -- PHP Version: 8.2.12
 
@@ -31,7 +31,7 @@ CREATE TABLE `admin` (
   `admin_id` int(11) NOT NULL,
   `admin_username` varchar(100) NOT NULL,
   `admin_password` varchar(100) NOT NULL,
-  `admin_DOJ` date NOT NULL DEFAULT current_timestamp()
+  `admin_DOJ` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -39,12 +39,12 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`admin_id`, `admin_username`, `admin_password`, `admin_DOJ`) VALUES
-(1, 'Elvan', 'asdfghjkl', '2024-10-12'),
-(2, 'AngJ', '@W3e', '2024-11-12'),
-(3, 'Jayden', '1234', '2024-11-11'),
-(4, 'Genni', '1010', '2024-10-31'),
-(5, 'Aurora', 'lol', '2024-11-23'),
-(6, 'Zhi Heng', 'ezz', '2024-11-12');
+(1, 'Elvan', 'asdfghjkl', NULL),
+(2, 'AngJ', '@W3e', NULL),
+(3, 'Jayden', '1234', NULL),
+(4, 'Genni', '1010', NULL),
+(5, 'Aurora', 'lol', NULL),
+(6, 'Zhi Heng', 'ezz', NULL);
 
 -- --------------------------------------------------------
 
@@ -57,8 +57,8 @@ CREATE TABLE `custom_quiz` (
   `quiz_name` varchar(255) NOT NULL,
   `description` varchar(255) DEFAULT NULL,
   `public_visibility` tinyint(1) DEFAULT NULL,
-  `custom_quiz_time_of_creation` datetime NOT NULL DEFAULT current_timestamp(),
-  `custom_quiz_last_updated_at` datetime DEFAULT current_timestamp(),
+  `custom_quiz_time_of_creation` datetime DEFAULT NULL,
+  `custom_quiz_last_updated_at` datetime DEFAULT NULL,
   `quiz_code` int(4) UNSIGNED ZEROFILL NOT NULL,
   `educator_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -83,7 +83,7 @@ CREATE TABLE `educator` (
   `educator_email` varchar(100) NOT NULL,
   `educator_institution` text NOT NULL,
   `educator_contacts` varchar(30) DEFAULT NULL,
-  `educator_DOJ` date NOT NULL DEFAULT current_timestamp()
+  `educator_DOJ` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -91,8 +91,8 @@ CREATE TABLE `educator` (
 --
 
 INSERT INTO `educator` (`educator_id`, `educator_username`, `educator_password`, `educator_email`, `educator_institution`, `educator_contacts`, `educator_DOJ`) VALUES
-(1, 'Elvin', 'asdfghjkl', 'elvin@gmail.com', 'Asia Pacific University (APU)', '+60123456789', '2024-11-12'),
-(2, 'AngJ', '0', 'ang@gmail.com', 'Burh Community College (BCC)', '+60172538620', '2024-11-12');
+(1, 'Elvin', 'asdfghjkl', 'elvin@gmail.com', 'Asia Pacific University (APU)', '+60123456789', NULL),
+(2, 'AngJ', '0', 'ang@gmail.com', 'Burh Community College (BCC)', '+60172538620', NULL);
 
 -- --------------------------------------------------------
 
@@ -127,7 +127,7 @@ CREATE TABLE `quiz_submission` (
   `quiz_id` int(11) NOT NULL,
   `student_id` int(11) NOT NULL,
   `time_started` timestamp NOT NULL,
-  `date&duration_submitted` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `date&duration_submitted` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -148,7 +148,7 @@ CREATE TABLE `ranked_quiz_levels` (
   `ranked_quiz_name` varchar(255) NOT NULL,
   `ranked_quiz_duration` int(11) NOT NULL,
   `ranked_score` int(20) DEFAULT NULL,
-  `admin_time_of_creation` date NOT NULL DEFAULT current_timestamp(),
+  `admin_time_of_creation` date DEFAULT NULL,
   `admin_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -170,7 +170,7 @@ CREATE TABLE `student` (
   `student_username` varchar(50) NOT NULL,
   `student_password` varchar(100) NOT NULL,
   `student_email` varchar(100) NOT NULL,
-  `student_DOJ` date NOT NULL
+  `student_DOJ` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
