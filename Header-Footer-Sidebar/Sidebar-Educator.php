@@ -30,14 +30,14 @@
             top: 0;
             left: 0;
             height: 100%;
-            width: 78px;
+            width: 7rem;
             background: #11101D;
             padding: 6px 14px;
             transition: all 0.5s ease;
         }
 
         .sidebar.active {
-            width: 240px;
+            width: 25rem;
         }
 
         .sidebar .logo_content .logo {
@@ -56,9 +56,10 @@
             pointer-events: none;
         }
 
-        .logo_content .logo i {
-            font-size: 28px;
-            margin-right: 5px;
+        .logo_content .logo img {
+            margin-top: 30px;
+            width: 190px;
+            height: 60px;
         }
 
         .logo_content .logo .logo_name {
@@ -69,14 +70,14 @@
         .sidebar #btn {
             position: absolute;
             color: #FFF;
-            left: 50%;
-            top: 6px;
-            font-size: 20px;
+            top: 15px;
+            left: 50px;
+            font-size: 30px;
             height: 50px;
             width: 50px;
             text-align: center;
             line-height: 50px;
-            transform: translateX(-50%);
+            transform: translateX(-30%);
         }
 
         .sidebar.active #btn {
@@ -84,12 +85,12 @@
         }
 
         .sidebar ul {
-            margin-top: 20px;
+            margin-top: 35px;
         }
 
         .sidebar ul li {
             position: relative;
-            height: 50px;
+            height: 100px;
             width: 100%;
             margin: 0 5px;
             list-style: none;
@@ -139,17 +140,8 @@
             color: #FFF;
         }
 
-        .sidebar ul li .ms-Icon--Search {
-            position: absolute;
-            z-index: 99;
-            color: #FFF;
-            font-size: 22px;
-            transition: all 0.5s ease;
-        }
-
-        .sidebar ul li .ms-Icon--Search:hover {
-            background: #FFF;
-            color: #11101D;
+        .sidebar ul li span {
+            font-size: large;
         }
 
         .sidebar ul li a {
@@ -168,11 +160,12 @@
         }
 
         .sidebar ul li i {
-            height: 50px;
-            min-width: 50px;
+            height: 80px;
+            min-width: 85px;
             border-radius: 12px;
-            line-height: 50px;
+            line-height: 80px;
             text-align: center;
+            font-size: 1.6rem;
         }
 
         .sidebar .links_name {
@@ -197,7 +190,7 @@
         .sidebar .profile_content .profile {
             position: relative;
             padding: 10px 6px;
-            height: 60px;
+            height: 7rem;
             background: none;
             transition: all 0.5s ease;
         }
@@ -220,10 +213,10 @@
         }
 
         .profile .profile_details img {
-            height: 45px;
-            width: 45px;
+            height: 90px;
+            width: 90px;
             object-fit: cover;
-            border-radius: 12px;
+            border-radius: 6px;
         }
 
         .profile .profile_details .name_job {
@@ -241,12 +234,12 @@
 
         .profile #log_out {
             position: absolute;
-            bottom: 5px;
+            bottom: 29px;
             left: 50%;
             transform: translateX(-50%);
             min-width: 50px;
             line-height: 50px;
-            font-size: 20px;
+            font-size: 35px;
             border-radius: 12px;
             text-align: center;
             transition: all 0.5s ease;
@@ -255,9 +248,6 @@
 
         .sidebar.active .profile #log_out {
             left: 88%;
-        }
-
-        .sidebar.active .profile #log_out {
             background: none;
         }
 
@@ -269,17 +259,10 @@
             transition: all 0.5s ease;
         }
 
-        .home_content .text {
-            font-size: 25px;
-            font-weight: 500;
-            color: #fff;
-            margin-left: 12px;
-            margin-top: 12px;
-        }
-
+        /* This V section is where we make animation push to when opening home content */
         .sidebar.active~.home_content {
-            width: calc(100% - 240px);
-            left: 240px;
+            width: calc(100% - 25rem);
+            left: 25rem;
         }
     </style>
 </head>
@@ -302,40 +285,34 @@
                 </a>
                 <span class="tooltip">Dashboard</span>
             </li>
-            <li>
-                <a href="#">
-                    <i class="fa-solid fa-gamepad-modern"></i>
-                    <span class="links_name">Play</span>
-                </a>
-                <span class="tooltip">Play</span>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="fa-light fa-pen-field"></i>
-                    <span class="links_name">Custom Quiz</span>
-                </a>
-                <span class="tooltip">Custom Quiz</span>
-            </li>
+
             <li>
                 <a href="#">
                     <i class="ms-Icon ms-Icon--Contact"></i>
-                    <span class="links_name">User</span>
+                    <span class="links_name">User Board</span>
                 </a>
-                <span class="tooltip">User</span>
+                <span class="tooltip">User Board</span>
             </li>
             <li>
                 <a href="#">
-                    <i class="fa-solid fa-trophy"></i>
-                    <span class="links_name">Leaderboard</span>
+                    <i class="ms-Icon ms-Icon--PieDouble"></i>
+                    <span class="links_name">Analytics</span>
                 </a>
-                <span class="tooltip">Leaderboard</span>
+                <span class="tooltip">Analytics</span>
             </li>
             <li>
                 <a href="#">
-                    <i class="fa-regular fa-clock-rotate-left"></i>
-                    <span class="links_name">History</span>
+                    <i class="ms-Icon ms-Icon--FabricFolder"></i>
+                    <span class="links_name">Files</span>
                 </a>
-                <span class="tooltip">History</span>
+                <span class="tooltip">Files</span>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-circle-plus"></i>
+                    <span class="links_name">Add Quiz</span>
+                </a>
+                <span class="tooltip">Add Quiz</span>
             </li>
             <li>
                 <a href="#">
@@ -348,10 +325,10 @@
         <div class="profile_content">
             <div class="profile">
                 <div class="profile_details">
-                    <img src="img/WIN_20240717_15_03_12_Pro.jpg" alt="">
+                    <img src="/img/Profile Pic.png" alt="Profile Picture">
                     <div class="name_job">
                         <div class="name">USER</div>
-                        <div class="job">Student</div>
+                        <div class="job">Educator</div>
                     </div>
                 </div>
                 <i class="ms-Icon ms-Icon--SignOut" id="log_out"></i>
@@ -361,6 +338,7 @@
     <div class="home_content">
         <!-- Content home principal page -->
 
+        
 
         
     </div>
@@ -371,10 +349,6 @@
         let searchBtn = document.querySelector(".ms-Icon--Search");
 
         btn.onclick = function () {
-            sidebar.classList.toggle("active");
-        }
-
-        searchBtn.onclick = function () {
             sidebar.classList.toggle("active");
         }
     </script>
