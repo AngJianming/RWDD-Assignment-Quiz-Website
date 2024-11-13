@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 13, 2024 at 08:11 AM
+-- Generation Time: Nov 13, 2024 at 10:17 AM
 -- Server version: 11.5.2-MariaDB
 -- PHP Version: 8.2.12
 
@@ -167,6 +167,7 @@ INSERT INTO `ranked_quiz_levels` (`ranked_quiz_id`, `ranked_quiz_name`, `ranked_
 
 CREATE TABLE `student` (
   `student_id` int(11) NOT NULL,
+  `google_id` varchar(255) DEFAULT NULL,
   `student_username` varchar(50) NOT NULL,
   `student_password` varchar(100) NOT NULL,
   `student_email` varchar(100) NOT NULL,
@@ -177,9 +178,9 @@ CREATE TABLE `student` (
 -- Dumping data for table `student`
 --
 
-INSERT INTO `student` (`student_id`, `student_username`, `student_password`, `student_email`, `student_DOJ`) VALUES
-(1, 'Elvan', 'asdfghjkl', 'elvin@apu.edu.my', '2024-11-12'),
-(2, 'Ang', '0', 'ang@burh.edu.my', '2024-11-12');
+INSERT INTO `student` (`student_id`, `google_id`, `student_username`, `student_password`, `student_email`, `student_DOJ`) VALUES
+(1, NULL, 'Elvan', 'asdfghjkl', 'elvin@apu.edu.my', '2024-11-12'),
+(2, NULL, 'Ang', '0', 'ang@burh.edu.my', '2024-11-12');
 
 --
 -- Indexes for dumped tables
@@ -231,7 +232,8 @@ ALTER TABLE `ranked_quiz_levels`
 -- Indexes for table `student`
 --
 ALTER TABLE `student`
-  ADD PRIMARY KEY (`student_id`);
+  ADD PRIMARY KEY (`student_id`),
+  ADD UNIQUE KEY `google_id` (`google_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables

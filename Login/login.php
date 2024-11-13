@@ -1,4 +1,18 @@
 <?php
+$servername = "localhost";
+$dbname = "rwdd-assignment-quiz-website";
+$username = "root";
+$password = "";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+echo "Connected successfully";
+
 session_start();
 
 require_once 'vendor/autoload.php';
@@ -28,7 +42,7 @@ if (!isset($_GET['code'])) {
     // Get user profile information
     $google_oauth = new Google_Service_Oauth2($client);
     $google_account_info = $google_oauth->userinfo->get();
-    
+
     // Store user information in session
     $_SESSION['id'] = $google_account_info->id;
     $_SESSION['email'] = $google_account_info->email;
@@ -38,4 +52,3 @@ if (!isset($_GET['code'])) {
     header('Location: dashboard.php');
     exit();
 }
-?>
