@@ -68,6 +68,7 @@
 | custom_quiz_time_of_creation | DATETIME      | No           |						|
 | custom_quiz_last_updated_at  | DATETIME      | No           |						|
 | lecturer_id        		   | INT(11)       | No           | [FK] educator table |
+
 **Note**
 	- Total attemps are calculated by rows in attempt
 <br>
@@ -125,6 +126,7 @@
 **Note**
 	- Students and Educators are not the same, they have different interfaces and functionalities.
 <br>
+
 7. quiz_submission
 
 | **Attribute Name** 		| **Data Type** | **Nullable** |	**Key**		|
