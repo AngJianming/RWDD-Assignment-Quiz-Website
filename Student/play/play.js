@@ -25,10 +25,10 @@ function clearLeaderboard() {
 
 // Function to update the leaderboard
 function updateLeaderboard (student) {
-    // Sort student by power in descending order
-    student.sort((student1, student2) => student2.power - student1.power);
+    // Sort student by points in descending order
+    student.sort((student1, student2) => student2.points - student1.points);
 
-    // Loop through the sorted student and display their rank, name, and power
+    // Loop through the sorted student and display their rank, name, and points
     student.forEach((student, index) => {
         const rank = index + 1;
 
@@ -36,14 +36,14 @@ function updateLeaderboard (student) {
         const template = rankingTemplate.cloneNode(true);
         template.querySelector(".rank").textContent = `${rank}.`;
         template.querySelector(".student_username").textContent = studnet_username;
-        template.querySelector(".power-value").textContent = student.power;
+        template.querySelector(".power-points").textContent = student.points;
 
         // Append the player entry to the leaderboard
         leaderboard.appendChild(template);
     });
 }
 
-// Example only is not going to be in database
+// --- Sample data only, is not going to be in database --- //
 const student = [
     { name: "Student1", points: 1500 },
     { name: "Student2", points: 2000 },
