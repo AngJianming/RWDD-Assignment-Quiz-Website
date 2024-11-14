@@ -24,7 +24,7 @@ function clearLeaderboard() {
 }
 
 // Function to update the leaderboard
-function updateLeaderboard (student) {
+function updateLeaderboard(student) {
     // Sort student by points in descending order
     student.sort((student1, student2) => student2.points - student1.points);
 
@@ -53,5 +53,27 @@ const student = [
 // Update leaderboard every second (similar to the Lua script's task.wait loop)
 setInterval(() => {
     clearLeaderboard();
-    updateLeaderboard (student);
+    updateLeaderboard(student);
 }, 1000);
+
+var TrandingSlider = new Swiper('.tranding-slider', {
+    effect: 'coverflow',
+    grabCursor: true,
+    centeredSlides: true,
+    loop: true,
+    slidesPerView: 'auto',
+    coverflowEffect: {
+        rotate: 0,
+        stretch: 0,
+        depth: 100,
+        modifier: 2.5,
+    },
+    pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+    },
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    }
+});
