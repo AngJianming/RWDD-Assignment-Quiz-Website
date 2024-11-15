@@ -171,6 +171,7 @@ CREATE TABLE `student` (
   `student_username` varchar(50) NOT NULL,
   `student_password` varchar(100) NOT NULL,
   `student_email` varchar(100) NOT NULL,
+  `student_contacts` varchar(30) DEFAULT NULL,
   `student_DOJ` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -178,9 +179,9 @@ CREATE TABLE `student` (
 -- Dumping data for table `student`
 --
 
-INSERT INTO `student` (`student_id`, `google_id`, `student_username`, `student_password`, `student_email`, `student_DOJ`) VALUES
-(1, NULL, 'Elvan', 'asdfghjkl', 'elvin@apu.edu.my', '2024-11-12'),
-(2, NULL, 'Ang', '0', 'ang@burh.edu.my', '2024-11-12');
+INSERT INTO `student` (`student_id`, `google_id`, `student_username`, `student_password`, `student_email`,`student_contacts`, `student_DOJ`) VALUES
+(1, NULL, 'Elvan', 'asdfghjkl', 'elvin@apu.edu.my', NULL,'2024-11-12'),
+(2, NULL, 'Ang', '0', 'ang@burh.edu.my', NULL,'2024-11-12');
 
 --
 -- Indexes for dumped tables
