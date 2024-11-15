@@ -10,9 +10,23 @@
 </head>
 
 <body>
+
     <section>
         <form>
+            <!-- Login Form -->
             <h1>Login</h1>
+
+            <div class="radio-group">
+                <input type="radio" id="student" name="role" value="Student">
+                <label for="student">Student</label>
+
+                <input type="radio" id="educator" name="role" value="Educator">
+                <label for="educator">Educator</label>
+
+                <input type="radio" id="admin" name="role" value="Admin">
+                <label for="admin">Admin</label>
+            </div>  
+
             <div class="inputbox">
                 <ion-icon name="mail-outline"></ion-icon>
                 <input type="email" required>
@@ -24,13 +38,16 @@
                 <label for="">Password</label>
             </div>
             <div class="forget">
-                <label for=""><input type="checkbox">Remember Me</label>
+                <label for=""><input type="checkbox" class="remember-me">Remember Me</label>
                 <a href="#">Forget Password</a>
             </div>
             <button>Log in</button>
             <div class="register">
                 <p>Don't have a account? <a href="#">Register</a></p>
             </div>
+
+            <!-- Sign-up Form -->
+
         </form>
     </section>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>

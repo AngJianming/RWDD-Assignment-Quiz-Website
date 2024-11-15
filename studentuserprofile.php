@@ -1,8 +1,8 @@
 <?php
 session_start();
-include("header.php");
-include("footer.php");
-include("sidebar.php");
+include("Constants/Header.php");
+include("Constants/Footer.php");
+include("Constants/Sidebar-Student.php");
 // include("connection.php");
 ?>
 
@@ -12,6 +12,7 @@ include("sidebar.php");
     <link rel="stylesheet" href="sup2.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="studentuserprofile.css">
     <title>Student User Profile</title>
 </head>
 <body>
