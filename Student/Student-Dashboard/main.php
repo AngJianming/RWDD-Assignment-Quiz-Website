@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Responsive SideBar Menu</title>
-    <link rel="stylesheet" href="/main/Main.css">
+    <link rel="stylesheet" href="main.css">
     <!-- Fluent UI CDN Link -->
     <link rel="stylesheet"
         href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/11.0.0/css/fabric.min.css">
