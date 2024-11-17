@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="login.css">
-    <title>Sign-in Sign-up form</title>
+    <title>Login form</title>
 </head>
 
 <body>
@@ -33,9 +33,9 @@
                 <label for="">Email</label>
             </div>
             <div class="inputbox">
-                <ion-icon name="lock-closed-outline"></ion-icon>
-                <input type="password" required>
-                <label for="">Password</label>
+                <ion-icon name="eye-off-outline" id="togglePassword1"></ion-icon>
+                <input type="password" id="password1" required>
+                <label for="password1">Password</label>
             </div>
             <div class="forget">
                 <label for=""><input type="checkbox" class="remember-me">Remember Me</label>
@@ -43,15 +43,14 @@
             </div>
             <button>Log in</button>
             <div class="register">
-                <p>Don't have a account? <a href="#">Register</a></p>
+                <p>Don't have an account? <a href="register.php">Register</a></p>
             </div>
-
-            <!-- Sign-up Form -->
 
         </form>
     </section>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="register.js"></script>
 </body>
 
 </html>

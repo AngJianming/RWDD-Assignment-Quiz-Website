@@ -129,6 +129,7 @@ input:valid~label {
 .remember-me {
     width: 20px;
     height: 20px;
+    cursor: pointer;
 }
 
 .forget {
