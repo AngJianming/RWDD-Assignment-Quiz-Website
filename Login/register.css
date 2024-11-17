@@ -33,7 +33,7 @@ body:after {
 
 section {
     position: relative;
-    width: 25%;
+    width: 450px;
     height: 48rem;
     background-color: transparent;
     border: 2px solid rgba(255, 255, 255, 0.5);
@@ -203,14 +203,50 @@ button:hover {
     text-decoration: underline;
 }
 
-@media (max-width: 768px) {
-    .inputbox {
-        max-width: 100%; /* Allow the input box to take full width on smaller screens */
+/* Responsive design */
+@media (max-width: 600px) {
+    section {
+        width: 90%;
+        padding: 1.5rem;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    .radio-group label {
+        font-size: 0.8rem;
+        padding: 8px 10px;
+    }
+
+    .inputbox input {
+        height: 45px;
     }
 }
 
 @media (max-width: 480px) {
-    .inputbox {
-        margin: 20px 0; /* Reduce margin on very small screens */
+    section {
+        width: 95%;
+    }
+
+    h1 {
+        font-size: 1.6rem;
+    }
+
+    .radio-group label {
+        font-size: 0.8rem;
+        padding: 6px 8px;
+    }
+
+    .inputbox input {
+        height: 40px;
+    }
+
+    button {
+        height: 35px;
+    }
+
+    .forget {
+        font-size: 0.8rem;
     }
 }
