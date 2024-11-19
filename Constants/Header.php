@@ -103,7 +103,7 @@
         }
 
         /* Responsive Design */
-        @media (max-width: 768px) {
+        @media (max-width: 390px) {
             .navbar {
                 flex-direction: column;
                 align-items: flex-start;
