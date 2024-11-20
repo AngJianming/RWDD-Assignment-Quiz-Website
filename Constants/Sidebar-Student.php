@@ -342,8 +342,7 @@
     <div class="sidebar">
         <div class="logo_content">
             <div class="logo">
-                <i class="ms-Icon ms-Icon--Code"></i>
-                <div class="logo_name">logo</div>
+                <img src="/img/Code-Combat (trans) logo.png" alt="Logo">
             </div>
             <i class="ms-Icon ms-Icon--CollapseMenu" id="btn"></i>
         </div>

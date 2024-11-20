@@ -264,6 +264,77 @@
             width: calc(100% - 25rem);
             left: 25rem;
         }
+
+        /* General Reset for Responsive Design */
+        @media (max-width: 400px),
+        (max-height:700px) {
+
+            /* Adjust sidebar for smaller screens */
+            .sidebar {
+                width: 100%;
+                height: auto;
+                padding: 6px;
+            }
+
+            .sidebar.active {
+                width: 100%;
+                height: 100%;
+            }
+
+            .sidebar .logo_content .logo {
+                justify-content: center;
+            }
+
+            .sidebar #btn {
+                left: 85%;
+            }
+
+            /* Adjust sidebar menu items for better spacing */
+            .sidebar ul li {
+                height: 50px;
+            }
+
+            /* Adjust tooltip positioning for better visibility */
+            .sidebar ul li .tooltip {
+                left: auto;
+                right: 10px;
+            }
+
+            /* Reduce profile section size for mobile */
+            .sidebar .profile_content .profile {
+                padding: 5px;
+                height: auto;
+                background: #1D1B31;
+            }
+
+            .profile .profile_details img {
+                height: 60px;
+                width: 60px;
+            }
+
+            .profile .profile_details .name_job .name,
+            .profile .profile_details .name_job .job {
+                font-size: 12px;
+            }
+
+            /* Adjust logout button for mobile */
+            .profile #log_out {
+                font-size: 25px;
+                bottom: 20px;
+            }
+
+            /* Home content adjustments */
+            .home_content {
+                left: 0;
+                width: 100%;
+                transition: all 0.5s ease;
+            }
+
+            .sidebar.active~.home_content {
+                width: 100%;
+                left: 0;
+            }
+        }
     </style>
 </head>
 
@@ -345,9 +416,9 @@
     <div class="home_content">
         <!-- Content home principal page -->
 
-        
 
-        
+
+
     </div>
 
     <script>
@@ -355,7 +426,7 @@
         let sidebar = document.querySelector(".sidebar");
         let searchBtn = document.querySelector(".ms-Icon--Search");
 
-        btn.onclick = function () {
+        btn.onclick = function() {
             sidebar.classList.toggle("active");
         }
     </script>
