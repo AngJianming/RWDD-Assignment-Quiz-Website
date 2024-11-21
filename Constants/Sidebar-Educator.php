@@ -266,7 +266,7 @@
         }
 
         /* General Reset for Responsive Design */
-        @media (max-width: 400px),
+        @media (max-width: 600px),
         (max-height:700px) {
 
             /* Adjust sidebar for smaller screens */
