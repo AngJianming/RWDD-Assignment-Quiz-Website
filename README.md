@@ -2,7 +2,7 @@
 
 ## Project outline
 1. Landing Page
-	- /landingPage.php
+	- /landingPg.php
 <br><br>
 
 1. Login / OAuth2.0 / Registration page
