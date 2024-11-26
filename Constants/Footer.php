@@ -65,9 +65,9 @@
         .copyright {
             color: #f5f5f5;
             text-align: center;
-            padding: 20px;
-            margin-top: 10px;
-            margin-bottom: -10px;
+            padding: 0px;
+            margin-top: 0px;
+            margin-bottom: -4px;
             font-size: 20px;
         }
 
