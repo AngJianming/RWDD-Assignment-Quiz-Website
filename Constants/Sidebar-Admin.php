@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en" dir="US">
 
 <head>
@@ -356,7 +357,6 @@
                 </a>
                 <span class="tooltip">Dashboard</span>
             </li>
-
             <li>
                 <a href="#">
                     <i class="ms-Icon ms-Icon--Contact"></i>

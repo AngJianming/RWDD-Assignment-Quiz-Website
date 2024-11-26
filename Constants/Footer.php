@@ -70,6 +70,11 @@
             margin-bottom: -10px;
             font-size: 20px;
         }
+
+        @media (max-width: 932px) {
+            /* Collapse move lower by width */
+            
+        }
     </style>
 </head>
 
