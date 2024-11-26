@@ -1,13 +1,12 @@
-<html lang="en" dir="US">
 
 <head>
     <meta charset="UTF-8">
     <title>Responsive SideBar Menu</title>
-    <link rel="stylesheet" href="style.css">
     <!-- Fluent UI CDN Link -->
     <link rel="stylesheet"
         href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/11.0.0/css/fabric.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Font Awesome CSS -->
     <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.6.0/css/all.css">
     <style>
         * {
@@ -15,6 +14,16 @@
             padding: 0;
             box-sizing: border-box;
             font-family: "Poppins", sans-serif;
+        }
+
+        #btn {
+            margin: 0;
+            cursor: pointer;
+        }
+
+        #log_out {
+            margin: 0;
+            cursor: pointer;
         }
 
         body {
@@ -31,7 +40,7 @@
             left: 0;
             height: 100%;
             width: 7rem;
-            background: #11101D;
+            background: #2d0d3f;
             padding: 6px 14px;
             transition: all 0.5s ease;
         }
@@ -254,84 +263,57 @@
         .home_content {
             position: absolute;
             height: 100%;
-            width: calc(100%-78px);
+            width: calc(100% - 78px);
             left: 78px;
             transition: all 0.5s ease;
         }
 
-        /* This V section is where we make animation push to when opening home content */
+        /* This section adjusts the home content when the sidebar is active */
         .sidebar.active~.home_content {
             width: calc(100% - 25rem);
             left: 25rem;
         }
 
-        /* General Reset for Responsive Design */
-        @media (max-width: 400px), (max-height:700px) {
-
-            /* Adjust sidebar for smaller screens */
+        /* Responsive adjustments */
+        @media (max-width: 932px) {
+            /* Collapse the sidebar by default */
             .sidebar {
-                width: 100%;
-                height: auto;
-                padding: 6px;
+                width: 70px;
+                transition: all 0.5s ease;
             }
 
+            /* Hide the navigation list and profile content by default */
+            .sidebar .nav_list,
+            .sidebar .profile_content {
+                display: none;
+            }
+
+            /* Expand the sidebar and show contents when active */
             .sidebar.active {
-                width: 100%;
-                height: 100%;
+                width: 250px;
             }
 
-            .sidebar .logo_content .logo {
-                justify-content: center;
+            .sidebar.active .nav_list,
+            .sidebar.active .profile_content {
+                display: block;
             }
 
-            .sidebar #btn {
-                left: 85%;
-            }
-
-            /* Adjust sidebar menu items for better spacing */
-            .sidebar ul li {
-                height: 50px;
-            }
-
-            /* Adjust tooltip positioning for better visibility */
-            .sidebar ul li .tooltip {
-                left: auto;
-                right: 10px;
-            }
-
-            /* Reduce profile section size for mobile */
-            .sidebar .profile_content .profile {
-                padding: 5px;
-                height: auto;
-                background: #1D1B31;
-            }
-
-            .profile .profile_details img {
-                height: 60px;
-                width: 60px;
-            }
-
-            .profile .profile_details .name_job .name,
-            .profile .profile_details .name_job .job {
-                font-size: 12px;
-            }
-
-            /* Adjust logout button for mobile */
-            .profile #log_out {
-                font-size: 25px;
-                bottom: 20px;
-            }
-
-            /* Home content adjustments */
+            /* Adjust the home content width when sidebar is active */
             .home_content {
-                left: 0;
-                width: 100%;
+                width: calc(100% - 70px);
+                left: 70px;
                 transition: all 0.5s ease;
             }
 
             .sidebar.active~.home_content {
-                width: 100%;
-                left: 0;
+                width: calc(100% - 250px);
+                left: 250px;
+            }
+
+            /* Center the menu button */
+            .sidebar #btn {
+                left: 50%;
+                transform: translateX(-50%);
             }
         }
     </style>
@@ -348,49 +330,49 @@
         </div>
         <ul class="nav_list">
             <li>
-                <a href="#">
+                <a href="dashboard_nav">
                     <i class="ms-Icon ms-Icon--WaffleOffice365"></i>
                     <span class="links_name">Dashboard</span>
                 </a>
                 <span class="tooltip">Dashboard</span>
             </li>
             <li>
-                <a href="#">
-                <i class="fa-solid fa-gamepad-modern"></i>
-                <span class="links_name">Play</span>
+                <a href="play_nav">
+                    <i class="fa-solid fa-gamepad-modern"></i>
+                    <span class="links_name">Play</span>
                 </a>
                 <span class="tooltip">Play</span>
             </li>
             <li>
-                <a href="#">
+                <a href="custom_quiz_nav">
                     <i class="fa-light fa-pen-field"></i>
                     <span class="links_name">Custom Quiz</span>
                 </a>
                 <span class="tooltip">Custom Quiz</span>
             </li>
             <li>
-                <a href="#">
+                <a href="user_nav">
                     <i class="ms-Icon ms-Icon--Contact"></i>
                     <span class="links_name">User</span>
                 </a>
                 <span class="tooltip">User</span>
             </li>
             <li>
-                <a href="#">
+                <a href="leaderboard_nav">
                     <i class="fa-solid fa-trophy"></i>
                     <span class="links_name">Leaderboard</span>
                 </a>
                 <span class="tooltip">Leaderboard</span>
             </li>
             <li>
-                <a href="#">
-                <i class="fa-solid fa-clock-rotate-left"></i>
-                <span class="links_name">History</span>
+                <a href="history_nav">
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+                    <span class="links_name">History</span>
                 </a>
                 <span class="tooltip">History</span>
             </li>
             <li>
-                <a href="#">
+                <a href="setting_nav">
                     <i class="ms-Icon ms-Icon--Settings"></i>
                     <span class="links_name">Settings</span>
                 </a>
@@ -400,7 +382,7 @@
         <div class="profile_content">
             <div class="profile">
                 <div class="profile_details">
-                    <img src="/img/Profile Pic.png" alt="Profile Picture">
+                    <img src="/img/Profile Pic.png" alt="Profile Picture" style="cursor: pointer;">
                     <div class="name_job">
                         <div class="name">USER</div>
                         <div class="job">Student</div>
@@ -411,21 +393,16 @@
         </div>
     </div>
     <div class="home_content">
-        <!-- Content home principal page -->
-
-
-
-
+        <!-- Main content goes here -->
     </div>
 
     <script>
         let btn = document.querySelector("#btn");
         let sidebar = document.querySelector(".sidebar");
-        let searchBtn = document.querySelector(".ms-Icon--Search");
 
         btn.onclick = function() {
             sidebar.classList.toggle("active");
-        }
+        };
     </script>
 </body>
 
