@@ -119,7 +119,7 @@ if ($stmt->fetch()) {
     if (password_verify($loginPassword, $hashed_password)) {
         // Password is correct, regenerate session ID to prevent session fixation
         session_regenerate_id(true);
-        $_SESSION['userid'] = $student_id;
+        $_SESSION['student_id'] = $student_id;
         exit();
     } else {
         // Invalid password
