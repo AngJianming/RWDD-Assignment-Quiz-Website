@@ -167,7 +167,6 @@ INSERT INTO `ranked_quiz_levels` (`ranked_quiz_id`, `ranked_quiz_name`, `ranked_
 
 CREATE TABLE `student` (
   `student_id` int(11) NOT NULL,
-  `google_id` varchar(255) DEFAULT NULL,
   `student_username` varchar(50) NOT NULL,
   `student_password` varchar(100) NOT NULL,
   `student_email` varchar(100) NOT NULL,
@@ -179,9 +178,9 @@ CREATE TABLE `student` (
 -- Dumping data for table `student`
 --
 
-INSERT INTO `student` (`student_id`, `google_id`, `student_username`, `student_password`, `student_email`,`student_contacts`, `student_DOJ`) VALUES
-(1, NULL, 'Elvan', 'asdfghjkl', 'elvin@apu.edu.my', NULL,'2024-11-12'),
-(2, NULL, 'Ang', '0', 'ang@burh.edu.my', NULL,'2024-11-12');
+INSERT INTO `student` (`student_id`, `student_username`, `student_password`, `student_email`,`student_contacts`, `student_DOJ`) VALUES
+(1, NULL, 'Elvan', 'elvin@apu.edu.my', NULL,'2024-11-12'),
+(2, NULL, 'Ang', 'ang@burh.edu.my', NULL,'2024-11-12');
 
 --
 -- Indexes for dumped tables
@@ -234,7 +233,6 @@ ALTER TABLE `ranked_quiz_levels`
 --
 ALTER TABLE `student`
   ADD PRIMARY KEY (`student_id`),
-  ADD UNIQUE KEY `google_id` (`google_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables

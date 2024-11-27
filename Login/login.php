@@ -91,7 +91,7 @@ $loginPassword = isset($_POST['LoginPassword']) ? $_POST['LoginPassword'] : '';
 // Validate inputs
 if (empty($loginEmail) || empty($loginPassword)) {
     $_SESSION['errMsg'] = "Please enter both email and password.";
-    header("Location: login_form.php"); // Redirect back to login form
+    header("Location: login.php"); // Redirect back to login form
     exit();
 }
 
@@ -120,61 +120,21 @@ if ($stmt->fetch()) {
         // Password is correct, regenerate session ID to prevent session fixation
         session_regenerate_id(true);
         $_SESSION['userid'] = $student_id;
-        header("Location: StudentInformation.php");
         exit();
     } else {
         // Invalid password
         $_SESSION['errMsg'] = "Invalid email or password.";
-        header("Location: login_form.php");
+        header("Location: login.php");
         exit();
     }
 } else {
     // No user found with that email
     $_SESSION['errMsg'] = "Invalid email or password.";
-    header("Location: login_form.php");
+    header("Location: login.php");
     exit();
 }
 
 // Close the statement and connection
 $stmt->close();
 $mysqli->close();
-
-
-// require_once 'vendor/autoload.php';
-
-// // Google OAuth configuration
-// $clientID = 'YOUR_GOOGLE_CLIENT_ID';
-// $clientSecret = 'YOUR_GOOGLE_CLIENT_SECRET';
-// $redirectUri = 'http://yourdomain.com/login.php';
-
-// // Create Google Client
-// $client = new Google_Client();
-// $client->setClientId($clientID);
-// $client->setClientSecret($clientSecret);
-// $client->setRedirectUri($redirectUri);
-// $client->addScope('email');
-// $client->addScope('profile');
-
-// // If there is no authorization code, get it
-// if (!isset($_GET['code'])) {
-//     $authUrl = $client->createAuthUrl();
-//     echo "<a href='$authUrl'>Login with Google</a>";
-// } else {
-//     // Exchange authorization code for access token
-//     $token = $client->fetchAccessTokenWithAuthCode($_GET['code']);
-//     $client->setAccessToken($token);
-
-//     // Get user profile information
-//     $google_oauth = new Google_Service_Oauth2($client);
-//     $google_account_info = $google_oauth->userinfo->get();
-
-//     // Store user information in session
-//     $_SESSION['id'] = $google_account_info->id;
-//     $_SESSION['email'] = $google_account_info->email;
-//     $_SESSION['name'] = $google_account_info->name;
-
-//     // Redirect to another page or display user info
-//     header('Location: dashboard.php');
-//     exit();
-// }
 ?>
