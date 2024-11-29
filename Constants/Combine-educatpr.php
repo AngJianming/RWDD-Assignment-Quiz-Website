@@ -36,6 +36,89 @@
             background: #444;
         }
 
+        header {
+            background-color: #2d0d3f;
+            color: white;
+            width: 100%;
+            top: 0;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: .5rem;
+        }
+
+        .logo {
+            max-width: 6rem;
+            max-height: 6rem;
+            margin: 0 auto;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5em;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .search-signup {
+            display: flex;
+            align-items: center;
+            gap: 0.5em;
+        }
+
+        .search-signup input {
+            padding: 0.5em;
+            border-radius: 4px;
+            border: none;
+        }
+
+        .sign-in,
+        .sign-up {
+            padding: 0.5em 1em;
+            border: none;
+            border-radius: 4px;
+        }
+
+        .sign-in {
+            background-color: #dadada;
+            color: #333;
+        }
+
+        .sign-up {
+            background-color: #6e30a8;
+            color: white;
+        }
+
+        .sign-in:hover {
+            background-color: #ffffff;
+            color: #333;
+        }
+
+        .sign-up:hover {
+            background-color: #a94dff;
+            color: white;
+        }
+
+        img {
+            width: 9rem;
+            height: 3rem;
+        }
+
         /* Sidebar Styles */
         .sidebar {
             position: fixed;
@@ -329,6 +412,59 @@
             /* Adjusted left position */
         }
 
+        /* Footer */
+        footer {
+            background-color: #2d0d3f;
+            color: white;
+            padding: 2em 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .footer-section h4 {
+            color: #ff005c;
+            margin-bottom: 1em;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li a {
+            color: #ccc;
+            text-decoration: none;
+        }
+
+        .footer-section ul li a:hover {
+            color: white;
+        }
+
+        .social-icons a {
+            color: #ccc;
+            margin: 0 0.5em;
+            text-decoration: none;
+            font-size: 1.2em;
+        }
+
+        .social-icons a:hover {
+            color: #ff005c;
+        }
+
+        .copyright {
+            color: #f5f5f5;
+            text-align: center;
+            padding: 0px;
+            margin-top: 0px;
+            margin-bottom: -4px;
+            font-size: 20px;
+        }
+
         /* Responsive Adjustments */
         @media (max-width: 932px) {
 
@@ -415,63 +551,117 @@
                 /* Match min-width */
             }
         }
+
+        /* for header */
+        @media (max-width: 100px) {
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 0.5em;
+                margin-top: 0.5em;
+            }
+
+            .search-signup {
+                flex-direction: column;
+                width: 100%;
+                margin-top: 1em;
+            }
+
+            .search-signup input {
+                width: 100%;
+            }
+
+            footer .footer-container {
+                flex-direction: column;
+                gap: 1em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar {
+                padding: 0.5em;
+            }
+
+            .footer-container {
+                padding: 1em;
+                font-size: 0.9em;
+            }
+
+            .search-signup input {
+                width: 100%;
+                margin-bottom: 0.5em;
+            }
+        }
+
+        /* for footer */
+        @media (max-width: 932px) {
+            /* Collapse move lower by width */
+
+        }
     </style>
 </head>
 
 <body class="ms-Fabric">
+    <header>
+        <div class="navbar">
+            <div class="logo">
+                <img src="/img/Code-Combat (trans) logo.png" alt="Logo" />
+            </div>
+            <div class="search-signup">
+                <button class="sign-in">Sign in</button>
+                <button class="sign-up">Sign up</button>
+            </div>
+        </div>
+    </header>
 
     <div class="sidebar">
         <div class="logo_content">
             <div class="logo">
-                <!-- Logo can be placed here if needed -->
             </div>
             <i class="ms-Icon ms-Icon--CollapseMenu" id="btn"></i>
         </div>
         <ul class="nav_list">
             <li>
-                <a href="dashboard_nav">
+                <a href="#">
                     <i class="ms-Icon ms-Icon--WaffleOffice365"></i>
                     <span class="links_name">Dashboard</span>
                 </a>
                 <span class="tooltip">Dashboard</span>
             </li>
             <li>
-                <a href="play_nav">
-                    <i class="fa-solid fa-gamepad-modern"></i>
-                    <span class="links_name">Play</span>
-                </a>
-                <span class="tooltip">Play</span>
-            </li>
-            <li>
-                <a href="custom_quiz_nav">
-                    <i class="fa-light fa-pen-field"></i>
-                    <span class="links_name">Custom Quiz</span>
-                </a>
-                <span class="tooltip">Custom Quiz</span>
-            </li>
-            <li>
-                <a href="user_nav">
+                <a href="#">
                     <i class="ms-Icon ms-Icon--Contact"></i>
-                    <span class="links_name">User</span>
+                    <span class="links_name">User Board</span>
                 </a>
-                <span class="tooltip">User</span>
+                <span class="tooltip">User Board</span>
             </li>
             <li>
-                <a href="leaderboard_nav">
-                    <i class="fa-solid fa-trophy"></i>
-                    <span class="links_name">Leaderboard</span>
+                <a href="#">
+                    <i class="ms-Icon ms-Icon--PieDouble"></i>
+                    <span class="links_name">Analytics</span>
                 </a>
-                <span class="tooltip">Leaderboard</span>
+                <span class="tooltip">Analytics</span>
             </li>
             <li>
-                <a href="history_nav">
-                    <i class="fa-solid fa-clock-rotate-left"></i>
-                    <span class="links_name">History</span>
+                <a href="#">
+                    <i class="ms-Icon ms-Icon--FabricFolder"></i>
+                    <span class="links_name">Files</span>
                 </a>
-                <span class="tooltip">History</span>
+                <span class="tooltip">Files</span>
             </li>
             <li>
-                <a href="setting_nav">
+                <a href="#">
+                    <i class="fa-solid fa-circle-plus"></i>
+                    <span class="links_name">Add Quiz</span>
+                </a>
+                <span class="tooltip">Add Quiz</span>
+            </li>
+            <li>
+                <a href="#">
                     <i class="ms-Icon ms-Icon--Settings"></i>
                     <span class="links_name">Settings</span>
                 </a>
@@ -481,18 +671,26 @@
         <div class="profile_content">
             <div class="profile">
                 <div class="profile_details">
-                    <img src="/img/Profile Pic.png" alt="Profile Picture" style="cursor: pointer;">
+                    <img src="/img/Profile Pic.png" alt="Profile Picture">
                     <div class="name_job">
                         <div class="name">USER</div>
-                        <div class="job">Student</div>
+                        <div class="job">Educator</div>
                     </div>
                 </div>
                 <i class="ms-Icon ms-Icon--SignOut" id="log_out"></i>
             </div>
         </div>
     </div>
+
+    <footer>
+        <div class="copyright">
+            <h6>© 2024 BatttleCombat.com FAQ | Privacy Policy | Terms of Service | RWDD Assignment Quiz Website</h4>
+        </div>
+    </footer>
+    
     <div class="home_content">
         <!-- Main content goes here -->
+
     </div>
 
     <script>
