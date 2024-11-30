@@ -53,22 +53,22 @@
                     </div>
                     <!-- Slide-end -->
 
-                <div class="tranding-slider-control">
-                    <div class="swiper-button-prev slider-arrow">
-                        <ion-icon name="arrow-back-outline"></ion-icon>
+                    <div class="tranding-slider-control">
+                        <div class="swiper-button-prev slider-arrow">
+                            <ion-icon name="arrow-back-outline"></ion-icon>
+                        </div>
+                        <div class="swiper-button-next slider-arrow">
+                            <ion-icon name="arrow-forward-outline"></ion-icon>
+                        </div>
+                        <div class="swiper-pagination"></div>
                     </div>
-                    <div class="swiper-button-next slider-arrow">
-                        <ion-icon name="arrow-forward-outline"></ion-icon>
-                    </div>
-                    <div class="swiper-pagination"></div>
-                </div>
 
+                </div>
             </div>
-        </div>
-        <div class="container">
-            <h3 class="text-center section-subheading">-- Start Now --</h3>
-            <h1 class="text-center section-heading">Play</h1>
-        </div>
+            <div class="container">
+                <h3 class="text-center section-subheading">-- Start Now --</h3>
+                <h1 class="text-center section-heading">Play</h1>
+            </div>
     </section>
 
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>

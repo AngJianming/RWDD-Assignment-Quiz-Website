@@ -1,8 +1,8 @@
+/* Import Google Fonts */
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
 
-*,
-*::before,
-*::after {
+/* Reset default styles */
+*, *::before, *::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -10,229 +10,226 @@
     text-decoration: none;
 }
 
+/* Define CSS variables for colors */
 :root {
     --primary: #ec994b;
     --white: #ffffff;
     --bg: #f5f5f5;
 }
 
+/* Base font settings */
 html {
-    font-size: 62.5%;
+    font-size: 62.5%; /* 1rem = 10px */
     font-family: "Montserrat", sans-serif;
     scroll-behavior: smooth;
 }
 
-@media (min-width: 1440px) {
-    html {
-        zoom: 1.5;
-    }
-}
-
-@media (min-width: 2560px) {
-    html {
-        zoom: 1.7;
-    }
-}
-
-@media (min-width: 3860px) {
-    html {
-        zoom: 2.5;
-    }
-}
-
-::-webkit-scrollbar {
-    width: 1.3rem;
-}
-
-::-webkit-scrollbar-thumb {
-    border-radius: 1rem;
-    background: #797979;
-    transition: all 0.5s ease-in-out;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: #222224;
-}
-
-::-webkit-scrollbar-track {
-    background: #f9f9f9;
-}
-
+/* Body styles */
 body {
-    font-size: 1.6rem;
+    font-size: 1.6rem; /* Default font size */
     background: var(--bg);
+    margin: 0;
+    padding: 0;
+    /* Center content vertically */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensure full viewport height */
 }
 
+/* Container to center content horizontally */
 .container {
     max-width: 124rem;
     padding: 0 1rem;
     margin: 0 auto;
+    width: 100%;
 }
 
+/* Center text */
 .text-center {
     text-align: center;
 }
 
+/* Section heading styles */
 .section-heading {
     font-size: 3rem;
     color: var(--primary);
     padding: 2rem 0;
 }
 
+/* Tranding section styles */
 #tranding {
-    padding: 4rem 0;
+    /* Center content vertically and horizontally */
+    flex: 1; /* Allow section to grow and fill available space */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
 
-@media (max-width:1440px) {
-    #tranding {
-        padding: 7rem 0;
-    }
-}
-
+/* Adjust the slider container */
 #tranding .tranding-slider {
-    height: 52rem;
+    width: 100%;
+    position: relative;
     padding: 2rem 0;
-    position: relative;
 }
 
-@media (max-width:500px) {
-    #tranding .tranding-slider {
-        height: 45rem;
-    }
+/* Center the slides */
+.swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
+/* Slide styles */
 .tranding-slide {
-    width: 37rem;
-    height: 42rem;
     position: relative;
+    width: 100%;
+    max-width: 37rem; /* Similar size as original */
+    /* Adjust height to maintain aspect ratio */
+    aspect-ratio: 1/1.2; /* Approximate ratio */
 }
 
-@media (max-width:500px) {
-    .tranding-slide {
-        width: 28rem !important;
-        height: 36rem !important;
-    }
-
-    .tranding-slide .tranding-slide-img img {
-        width: 28rem !important;
-        height: 36rem !important;
-    }
-}
-
+/* Image styles */
 .tranding-slide .tranding-slide-img img {
-    width: 37rem;
-    height: 42rem;
+    width: 100%;
+    height: 100%;
     border-radius: 2rem;
     object-fit: cover;
 }
 
-.tranding-slide .tranding-slide-content {
-    position: absolute;
-    left: 0;
+/* Responsive adjustments */
+@media (max-width: 500px) {
+    .tranding-slide {
+        max-width: 28rem; /* Smaller on mobile */
+    }
+}
+
+/* Slider controls (navigation arrows and pagination dots) */
+.tranding-slider-control {
+    position: absolute; /* Position relative to the slider */
     top: 0;
-    right: 0;
-    bottom: 0;
-}
-
-.tranding-slide-content .food-price {
-    position: absolute;
-    top: 2rem;
-    right: 2rem;
-    color: var(--white);
-}
-
-.tranding-slide-content .tranding-slide-content-bottom {
-    position: absolute;
-    bottom: 2rem;
-    left: 2rem;
-    color: var(--white);
-}
-
-.food-rating {
-    padding-top: 1rem;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Use flexbox to position arrows and pagination */
     display: flex;
-    gap: 1rem;
+    justify-content: space-between; /* Space arrows evenly */
+    align-items: center; /* Vertically center arrows */
+    pointer-events: none; /* Allow clicks to pass through */
 }
 
-.rating ion-icon {
-    color: var(--primary);
+/* Navigation arrows */
+.tranding-slider-control .swiper-button-prev,
+.tranding-slider-control .swiper-button-next {
+    background: var(--white);
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    filter: drop-shadow(0px 8px 24px rgba(18, 28, 53, 0.1));
+    pointer-events: all; /* Enable clicks on arrows */
+    z-index: 10; /* Ensure arrows are above the slider content */
 }
 
+/* Left arrow positioned on the left side */
+.tranding-slider-control .swiper-button-prev {
+    margin-left: 1rem;
+}
+
+/* Right arrow positioned on the right side */
+.tranding-slider-control .swiper-button-next {
+    margin-right: 1rem;
+}
+
+/* Arrow icons */
+.tranding-slider-control .swiper-button-prev ion-icon,
+.tranding-slider-control .swiper-button-next ion-icon {
+    font-size: 2rem;
+    color: #222224;
+}
+
+/* Remove default arrow styles */
+.tranding-slider-control .swiper-button-prev::after,
+.tranding-slider-control .swiper-button-next::after {
+    display: none;
+}
+
+/* Pagination dots centered at the bottom */
+.tranding-slider-control .swiper-pagination {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    pointer-events: all; /* Enable clicks on pagination dots */
+}
+
+/* Pagination bullet styles */
+.tranding-slider-control .swiper-pagination .swiper-pagination-bullet {
+    width: 1rem;
+    height: 1rem;
+    background: #ccc;
+    opacity: 1;
+    margin: 0 0.3rem;
+    border-radius: 50%;
+    filter: drop-shadow(0px 8px 24px rgba(18, 28, 53, 0.1));
+}
+
+/* Active pagination bullet */
+.tranding-slider-control .swiper-pagination .swiper-pagination-bullet-active {
+    background: var(--primary);
+}
+
+/* Hide default shadows on slides */
 .swiper-slide-shadow-left,
 .swiper-slide-shadow-right {
     display: none;
 }
 
-.tranding-slider-control {
-    position: relative;
-    bottom: 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+/* Adjust heading positions */
+#tranding .container {
+    /* Override the container styling within #tranding */
+    width: 100%;
+    text-align: center;
 }
 
-.tranding-slider-control .swiper-button-next {
-    left: 58% !important;
-    transform: translateX(-58%) !important;
+/* Adjust the headings to be above the slider */
+#tranding h3.section-subheading,
+#tranding h1.section-heading {
+    margin-bottom: 2rem;
 }
 
-@media (max-width:990px) {
+/* Optional: Adjust heading font sizes on mobile */
+@media (max-width: 500px) {
+    .section-heading {
+        font-size: 2.5rem;
+    }
+}
+
+/* Ensure that the slider content doesn't overlap with the arrows on small screens */
+@media (max-width: 768px) {
+    /* Adjust arrow sizes on mobile */
+    .tranding-slider-control .swiper-button-prev,
     .tranding-slider-control .swiper-button-next {
-        left: 70% !important;
-        transform: translateX(-70%) !important;
+        width: 3rem;
+        height: 3rem;
     }
-}
 
-@media (max-width:450px) {
+    /* Adjust arrow icon sizes */
+    .tranding-slider-control .swiper-button-prev ion-icon,
+    .tranding-slider-control .swiper-button-next ion-icon {
+        font-size: 1.6rem;
+    }
+
+    /* Reduce margin on arrows */
+    .tranding-slider-control .swiper-button-prev {
+        margin-left: 0.5rem;
+    }
     .tranding-slider-control .swiper-button-next {
-        left: 80% !important;
-        transform: translateX(-80%) !important;
+        margin-right: 0.5rem;
     }
-}
-
-@media (max-width:990px) {
-    .tranding-slider-control .swiper-button-prev {
-        left: 30% !important;
-        transform: translateX(-30%) !important;
-    }
-}
-
-@media (max-width:450px) {
-    .tranding-slider-control .swiper-button-prev {
-        left: 20% !important;
-        transform: translateX(-20%) !important;
-    }
-}
-
-.tranding-slider-control .slider-arrow {
-    background: var(--white);
-    width: 3.5rem;
-    height: 3.5rem;
-    border-radius: 50%;
-    left: 42%;
-    transform: translateX(-42%);
-    filter: drop-shadow(0px 8px 24px rgba(18, 28, 53, 0.1));
-}
-
-.tranding-slider-control .slider-arrow ion-icon {
-    font-size: 2rem;
-    color: #222224;
-}
-
-.tranding-slider-control .slider-arrow::after {
-    content: '';
-}
-
-.tranding-slider-control .swiper-pagination {
-    position: relative;
-    width: 15rem;
-    bottom: 1rem;
-}
-
-.tranding-slider-control .swiper-pagination .swiper-pagination-bullet {
-    filter: drop-shadow(0px 8px 24px rgba(18, 28, 53, 0.1));
-}
-
-.tranding-slider-control .swiper-pagination .swiper-pagination-bullet-active {
-    background: var(--primary);
 }
