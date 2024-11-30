@@ -1,20 +1,31 @@
+<!-- play.php -->
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+    <!-- Meta tags and title -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Play section</title>
+    <title>Student Play Section</title>
+
+    <!-- External CSS and Swiper.js stylesheets -->
     <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
     <link rel="stylesheet" href="play.css">
 
+    <!-- Include styles from Bg-Animation.php -->
+    <?php include '/xampp/htdocs/RWDD-Assignment-Quiz-Website/Constants/Combine-student.php'; ?>
+    
 </head>
 
 <body>
-    <section id="tranding">
+    <!-- Include HTML content from Bg-Animation.php -->
+    <?php include '/xampp/htdocs/RWDD-Assignment-Quiz-Website/Constants/Bg-Animation.php'; ?>
 
+    <!-- Main Content -->
+    <section id="tranding">
         <div class="container">
+            <!-- Swiper Slider -->
             <div class="swiper tranding-slider">
                 <div class="swiper-wrapper">
                     <!-- Slide-start -->
@@ -52,25 +63,28 @@
                         </div>
                     </div>
                     <!-- Slide-end -->
-
-                    <div class="tranding-slider-control">
-                        <div class="swiper-button-prev slider-arrow">
-                            <ion-icon name="arrow-back-outline"></ion-icon>
-                        </div>
-                        <div class="swiper-button-next slider-arrow">
-                            <ion-icon name="arrow-forward-outline"></ion-icon>
-                        </div>
-                        <div class="swiper-pagination"></div>
-                    </div>
-
                 </div>
             </div>
-            <div class="container">
-                <h3 class="text-center section-subheading">-- Start Now --</h3>
-                <h1 class="text-center section-heading">Play</h1>
+        </div>
+
+        <!-- Slider Controls -->
+        <div class="tranding-slider-control">
+            <div class="swiper-button-prev slider-arrow">
+                <ion-icon name="arrow-back-outline"></ion-icon>
             </div>
+            <div class="swiper-button-next slider-arrow">
+                <ion-icon name="arrow-forward-outline"></ion-icon>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+
+        <div class="container">
+            <h3 class="text-center section-subheading">-- Start Now --</h3>
+            <button class="btn"><h2>Play</h2></button>
+        </div>
     </section>
 
+    <!-- External JS scripts -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>

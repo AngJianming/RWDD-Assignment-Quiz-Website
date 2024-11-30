@@ -201,6 +201,15 @@ body {
 #tranding h3.section-subheading,
 #tranding h1.section-heading {
     margin-bottom: 2rem;
+    color: navajowhite;
+    pointer-events: all;
+}
+/* got problem with cursor fix it later */
+.btn {
+    width: 100px;
+    height: 40px;
+    color: #ccc;
+    pointer-events: all;
 }
 
 /* Optional: Adjust heading font sizes on mobile */
