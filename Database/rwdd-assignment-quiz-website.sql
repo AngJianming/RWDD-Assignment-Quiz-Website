@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 13, 2024 at 10:17 AM
+-- Generation Time: Nov 30, 2024 at 01:06 PM
 -- Server version: 11.5.2-MariaDB
 -- PHP Version: 8.2.12
 
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `rwdd-assignment-quiz-website`
 --
+CREATE DATABASE IF NOT EXISTS `rwdd-assignment-quiz-website` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `rwdd-assignment-quiz-website`;
 
 -- --------------------------------------------------------
 
@@ -128,7 +130,7 @@ CREATE TABLE `quiz_submission` (
   `quiz_id` int(11) NOT NULL,
   `student_id` int(11) NOT NULL,
   `time_started` timestamp NOT NULL,
-  `date&duration_submitted` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE current_timestamp()
+  `date&duration_submitted` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -136,7 +138,7 @@ CREATE TABLE `quiz_submission` (
 --
 
 INSERT INTO `quiz_submission` (`ranked_quiz_id`, `quiz_id`, `student_id`, `time_started`, `date&duration_submitted`) VALUES
-(1, 1, 2, '2024-11-12 10:44:54', '2024-11-12 10:44:54');
+(1, 1, 2, '2024-11-12 10:44:54', '2024-11-30 20:01:32');
 
 -- --------------------------------------------------------
 
@@ -179,9 +181,9 @@ CREATE TABLE `student` (
 -- Dumping data for table `student`
 --
 
-INSERT INTO `student` (`student_id`, `student_username`, `student_password`, `student_email`,`student_contacts`, `student_DOJ`) VALUES
-(1, NULL, 'Elvan', 'elvin@apu.edu.my', NULL,'2024-11-12'),
-(2, NULL, 'Ang', 'ang@burh.edu.my', NULL,'2024-11-12');
+INSERT INTO `student` (`student_id`, `student_username`, `student_password`, `student_email`, `student_contacts`, `student_DOJ`) VALUES
+(1, '', 'Elvan', 'elvin@apu.edu.my', NULL, '2024-11-12'),
+(2, '', 'Ang', 'ang@burh.edu.my', NULL, '2024-11-12');
 
 --
 -- Indexes for dumped tables
@@ -204,7 +206,8 @@ ALTER TABLE `custom_quiz`
 -- Indexes for table `educator`
 --
 ALTER TABLE `educator`
-  ADD PRIMARY KEY (`educator_id`,`educator_username`,`educator_password`);
+  ADD PRIMARY KEY (`educator_id`) USING BTREE,
+  ADD UNIQUE KEY `educator_id` (`educator_id`,`educator_username`);
 
 --
 -- Indexes for table `questions`
@@ -233,47 +236,7 @@ ALTER TABLE `ranked_quiz_levels`
 -- Indexes for table `student`
 --
 ALTER TABLE `student`
-  ADD PRIMARY KEY (`student_id`),
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `admin`
---
-ALTER TABLE `admin`
-  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT for table `custom_quiz`
---
-ALTER TABLE `custom_quiz`
-  MODIFY `quiz_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `educator`
---
-ALTER TABLE `educator`
-  MODIFY `educator_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `questions`
---
-ALTER TABLE `questions`
-  MODIFY `question_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `ranked_quiz_levels`
---
-ALTER TABLE `ranked_quiz_levels`
-  MODIFY `ranked_quiz_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `student`
---
-ALTER TABLE `student`
-  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  ADD PRIMARY KEY (`student_id`);
 
 --
 -- Constraints for dumped tables
@@ -283,28 +246,28 @@ ALTER TABLE `student`
 -- Constraints for table `custom_quiz`
 --
 ALTER TABLE `custom_quiz`
-  ADD CONSTRAINT `Creation of custom_quiz` FOREIGN KEY (`educator_id`) REFERENCES `educator` (`educator_id`);
+  ADD CONSTRAINT `custom_quiz_ibfk_1` FOREIGN KEY (`educator_id`) REFERENCES `educator` (`educator_id`);
 
 --
 -- Constraints for table `questions`
 --
 ALTER TABLE `questions`
-  ADD CONSTRAINT `custom writing question` FOREIGN KEY (`quiz_id`) REFERENCES `custom_quiz` (`quiz_id`),
-  ADD CONSTRAINT `rank writing questions` FOREIGN KEY (`ranked_quiz_id`) REFERENCES `ranked_quiz_levels` (`ranked_quiz_id`);
+  ADD CONSTRAINT `quiz_id` FOREIGN KEY (`quiz_id`) REFERENCES `custom_quiz` (`quiz_id`),
+  ADD CONSTRAINT `ranked_quiz_id` FOREIGN KEY (`ranked_quiz_id`) REFERENCES `ranked_quiz_levels` (`ranked_quiz_id`);
 
 --
 -- Constraints for table `quiz_submission`
 --
 ALTER TABLE `quiz_submission`
-  ADD CONSTRAINT `Custom Quiz` FOREIGN KEY (`quiz_id`) REFERENCES `custom_quiz` (`quiz_id`),
-  ADD CONSTRAINT `Rank Quiz` FOREIGN KEY (`ranked_quiz_id`) REFERENCES `ranked_quiz_levels` (`ranked_quiz_id`),
-  ADD CONSTRAINT `Student info` FOREIGN KEY (`student_id`) REFERENCES `student` (`student_id`);
+  ADD CONSTRAINT `quiz_submission_ibfk_1` FOREIGN KEY (`quiz_id`) REFERENCES `custom_quiz` (`quiz_id`),
+  ADD CONSTRAINT `quiz_submission_ibfk_2` FOREIGN KEY (`ranked_quiz_id`) REFERENCES `ranked_quiz_levels` (`ranked_quiz_id`),
+  ADD CONSTRAINT `student_id` FOREIGN KEY (`student_id`) REFERENCES `student` (`student_id`);
 
 --
 -- Constraints for table `ranked_quiz_levels`
 --
 ALTER TABLE `ranked_quiz_levels`
-  ADD CONSTRAINT `Creation of ranked_quiz_levels` FOREIGN KEY (`admin_id`) REFERENCES `admin` (`admin_id`);
+  ADD CONSTRAINT `admin_id` FOREIGN KEY (`admin_id`) REFERENCES `admin` (`admin_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
