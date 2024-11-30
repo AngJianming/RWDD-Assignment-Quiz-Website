@@ -60,6 +60,7 @@ CREATE TABLE `custom_quiz` (
   `custom_quiz_time_of_creation` datetime DEFAULT NULL,
   `custom_quiz_last_updated_at` datetime DEFAULT NULL,
   `quiz_code` int(4) UNSIGNED ZEROFILL NOT NULL,
+  `custom_quiz_score` int(20) DEFAULT NULL,
   `educator_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -67,8 +68,8 @@ CREATE TABLE `custom_quiz` (
 -- Dumping data for table `custom_quiz`
 --
 
-INSERT INTO `custom_quiz` (`quiz_id`, `quiz_name`, `description`, `public_visibility`, `custom_quiz_time_of_creation`, `custom_quiz_last_updated_at`, `quiz_code`, `educator_id`) VALUES
-(1, 'Function Python', 'Function Python code identification', 1, '2024-11-12 18:41:10', '2024-11-12 18:41:10', 0001, 2);
+INSERT INTO `custom_quiz` (`quiz_id`, `quiz_name`, `description`, `public_visibility`, `custom_quiz_time_of_creation`, `custom_quiz_last_updated_at`, `quiz_code`, `custom_quiz_score`, `educator_id`) VALUES
+(1, 'Function Python', 'Function Python code identification', 1, '2024-11-12 18:41:10', '2024-11-12 18:41:10', 0001, 100, 2);
 
 -- --------------------------------------------------------
 
