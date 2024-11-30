@@ -1,24 +1,16 @@
-<!-- play.php -->
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <!-- Meta tags and title -->
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Play Section</title>
-
-    <!-- External CSS and Swiper.js stylesheets -->
-    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="play.css">
-    
+    <title>Document</title>
     <!-- Include styles from Bg-Animation.php -->
     <?php include '/xampp/htdocs/RWDD-Assignment-Quiz-Website/Constants/Combine-student.php'; ?>
-</head>
 
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="play.css">
+</head>
 <body>
-    <!-- Include HTML content from Bg-Animation.php -->
     <?php include '/xampp/htdocs/RWDD-Assignment-Quiz-Website/Constants/Bg-Animation.php'; ?>
 
     <!-- Main Content -->
@@ -89,5 +81,4 @@
     <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
     <script src="play.js"></script>
 </body>
-
 </html>
