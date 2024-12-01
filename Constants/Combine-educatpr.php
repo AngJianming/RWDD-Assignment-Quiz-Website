@@ -55,19 +55,19 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: .5rem;
+            padding: 8px;
         }
 
         .logo {
-            max-width: 6rem;
-            max-height: 6rem;
+            max-width: 96px;
+            max-height: 96px;
             margin: 0 auto;
         }
 
         nav ul {
             display: flex;
             list-style: none;
-            gap: 1.5em;
+            gap: 24px;
         }
 
         nav ul li a {
@@ -78,18 +78,18 @@
         .search-signup {
             display: flex;
             align-items: center;
-            gap: 0.5em;
+            gap: 8px;
         }
 
         .search-signup input {
-            padding: 0.5em;
+            padding: 8px;
             border-radius: 4px;
             border: none;
         }
 
         .sign-in,
         .sign-up {
-            padding: 0.5em 1em;
+            padding: 8px 16px;
             border: none;
             border-radius: 4px;
         }
@@ -103,7 +103,7 @@
             background-color: #6e30a8;
             color: white;
         }
-
+        
         .sign-in:hover {
             background-color: #ffffff;
             color: #333;
@@ -115,8 +115,8 @@
         }
 
         img {
-            width: 9rem;
-            height: 3rem;
+            width: 144px;
+            height: 48px;
         }
 
         /* Sidebar Styles */
@@ -125,7 +125,7 @@
             top: 0;
             left: 0;
             height: 100%;
-            width: 5rem;
+            width: 80px;
             /* Adjusted width */
             background: #2d0d3f;
             padding: 12px 10px;
@@ -137,7 +137,7 @@
         }
 
         .sidebar.active {
-            width: 20rem;
+            width: 320px;
             /* Adjusted active width */
             box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
         }
@@ -259,7 +259,7 @@
         }
 
         .sidebar ul li span {
-            font-size: 0.9rem;
+            font-size: 14.4px;
             /* Reduced font size for links */
         }
 
@@ -287,7 +287,7 @@
             line-height: 60px;
             /* Match height */
             text-align: center;
-            font-size: 1.2rem;
+            font-size: 19.2px;
             /* Reduced font size */
         }
 
@@ -296,7 +296,7 @@
         .sidebar ul li a .fa-pen-field,
         .sidebar ul li a .fa-trophy,
         .sidebar ul li a .fa-clock-rotate-left {
-            font-size: 1.2rem;
+            font-size: 19.2px;
             /* consistent with Fluent UI icons */
         }
 
@@ -323,7 +323,7 @@
         .sidebar .profile_content .profile {
             position: relative;
             padding: 8px 0px;
-            height: 5rem;
+            height: 80px;
             background: none;
             transition: all 0.5s ease-in-out;
         }
@@ -353,7 +353,7 @@
             /* Reduced size */
             object-fit: cover;
             border-radius: 6px;
-            margin-left: 1rem;
+            margin-left: 16px;
         }
 
         .profile .profile_details .name_job {
@@ -397,18 +397,18 @@
         .home_content {
             position: absolute;
             height: 100%;
-            width: calc(100% - 5rem);
+            width: calc(100% - 80px);
             /* Adjusted width */
-            left: 5rem;
+            left: 80px;
             /* Adjusted left position */
             transition: margin-left 0.5s ease;
         }
 
         /* When Sidebar is Active */
         .sidebar.active~.home_content {
-            width: calc(100% - 20rem);
+            width: calc(100% - 320px);
             /* Adjusted width */
-            left: 20rem;
+            left: 320px;
             /* Adjusted left position */
         }
 
@@ -416,7 +416,7 @@
         footer {
             background-color: #2d0d3f;
             color: white;
-            padding: 2em 0;
+            padding: 32px 0;
             position: fixed;
             bottom: 0;
             width: 100%;
@@ -429,7 +429,7 @@
 
         .footer-section h4 {
             color: #ff005c;
-            margin-bottom: 1em;
+            margin-bottom: 16px;
         }
 
         .footer-section ul {
@@ -447,15 +447,15 @@
 
         .social-icons a {
             color: #ccc;
-            margin: 0 0.5em;
+            margin: 0 8px;
             text-decoration: none;
-            font-size: 1.2em;
+            font-size: 19.2px;
         }
 
         .social-icons a:hover {
             color: #ff005c;
         }
-
+        
         .copyright {
             color: #f5f5f5;
             text-align: center;
@@ -528,7 +528,7 @@
                 /* Further reduced height */
                 line-height: 25px;
                 /* Match height */
-                font-size: 0.8rem;
+                font-size: 12.8px;
                 /* Reduced font size */
             }
 
@@ -537,7 +537,7 @@
             .sidebar ul li a .fa-pen-field,
             .sidebar ul li a .fa-trophy,
             .sidebar ul li a .fa-clock-rotate-left {
-                font-size: 1rem;
+                font-size: 16px;
                 /* Further reduced font size */
             }
 
@@ -561,14 +561,14 @@
 
             nav ul {
                 flex-direction: column;
-                gap: 0.5em;
-                margin-top: 0.5em;
+                gap: 8px;
+                margin-top: 8px;
             }
 
             .search-signup {
                 flex-direction: column;
                 width: 100%;
-                margin-top: 1em;
+                margin-top: 16px;
             }
 
             .search-signup input {
@@ -577,30 +577,30 @@
 
             footer .footer-container {
                 flex-direction: column;
-                gap: 1em;
+                gap: 16px;
             }
         }
 
         @media (max-width: 480px) {
             .navbar {
-                padding: 0.5em;
+                padding: 8px;
             }
 
             .footer-container {
-                padding: 1em;
-                font-size: 0.9em;
+                padding: 16px;
+                font-size: 14.4px;
             }
 
             .search-signup input {
                 width: 100%;
-                margin-bottom: 0.5em;
+                margin-bottom: 8px;
             }
         }
 
         /* for footer */
         @media (max-width: 932px) {
             /* Collapse move lower by width */
-
+            
         }
     </style>
 </head>
@@ -611,12 +611,12 @@
             <div class="logo">
                 <img src="/img/Code-Combat (trans) logo.png" alt="Logo" />
             </div>
-            <div class="search-signup">
+            <!-- <div class="search-signup">
                 <button class="sign-in">Sign in</button>
                 <button class="sign-up">Sign up</button>
-            </div>
+            </div> -->
         </div>
-    </header>
+    </header>   
 
     <div class="sidebar">
         <div class="logo_content">
@@ -687,10 +687,9 @@
             <h6>© 2024 BatttleCombat.com FAQ | Privacy Policy | Terms of Service | RWDD Assignment Quiz Website</h4>
         </div>
     </footer>
-    
     <div class="home_content">
         <!-- Main content goes here -->
-
+        
     </div>
 
     <script>
