@@ -668,13 +668,13 @@
                 </a>
                 <span class="tooltip">History</span>
             </li>
-            <li>
+            <!-- <li>
                 <a href="setting_nav">
                     <i class="ms-Icon ms-Icon--Settings"></i>
                     <span class="links_name">Settings</span>
                 </a>
                 <span class="tooltip">Settings</span>
-            </li>
+            </li> -->
         </ul>
         <div class="profile_content">
             <div class="profile">
