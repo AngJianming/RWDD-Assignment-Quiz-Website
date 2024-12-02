@@ -19,7 +19,7 @@ body {
     padding: 70px;
     text-align: center;
     width: 800px;
-    z-index: 1000;
+    z-index: 900;
     left: -2000px;
 }
 
@@ -84,3 +84,44 @@ h1 {
     padding: 15px;
 } */
 
+@media (max-width: 550px) {
+    body {
+        flex-direction: column; /* Adjust layout for smaller screens */
+        padding: 10px;
+    }
+
+    .container {
+        width: 90%; /* Make the container width flexible */
+        padding: 20px; /* Reduce padding */
+        position: relative;
+        text-align: center;
+        left: 25px;
+    }
+
+    h1 {
+        font-size: 1.5em; /* Reduce font size */
+        margin-bottom: 10px;
+    }
+
+    .code-input {
+        gap: 20px; /* Reduce the gap between inputs */
+        padding-left: 50px; /* Reduce padding */
+    }
+
+    .code-input input {
+        width: 60px; /* Reduce input size */
+        height: 60px; /* Reduce input size */
+        font-size: 2em; /* Adjust font size */
+    }
+
+    .enterbutton {
+        margin-top: 20px;
+        padding: 15px 50px; /* Reduce button size */
+        font-size: 16px; /* Adjust font size */
+    }
+
+    .enterbutton:hover {
+        box-shadow: 0 0 8px #8000ff, 0 0 16px #8000ff, 0 0 24px #8000ff, 0 0 32px #8000ff;
+        letter-spacing: .1rem; /* Reduce spacing */
+    }
+}
