@@ -12,15 +12,3 @@ for(let i = 0; i< navbarLinks.length; i++){
         navbarToggler.classList.remove("active");
     });
 }
-
-// let btn = document.querySelector("#btn");
-// let sidebar = document.querySelector(".sidebar");
-// let searchBtn = document.querySelector(".ms-Icon--Search");
-
-// btn.onclick = function() {
-//     sidebar.classList.toggle("active");
-// }
-
-// searchBtn.onclick = function() {
-//     sidebar.classList.toggle("active");
-// }
