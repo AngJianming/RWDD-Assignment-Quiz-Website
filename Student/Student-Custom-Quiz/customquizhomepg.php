@@ -1,9 +1,7 @@
 <?php
     session_start();
     include("connection.php");
-    include("header.php");
-    include("footer.php");
-    include("sidebar.php");
+    include("combine-student.php");
     include("bganimation.php");
 ?>
 
