@@ -1,0 +1,178 @@
+/* General styles */
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: 100vh;
+    overflow-y: auto;
+}
+
+.class-container {
+    padding-top: 90px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    overflow: visible;
+    padding-bottom: 90px;
+}
+
+.quiz-container {
+    background: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 800px;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    box-sizing: border-box;
+    overflow: visible;
+}
+
+h1 {
+    margin: 0 auto;
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+.question-box {
+    margin-bottom: 20px;
+    padding-right: 10px;
+}
+
+.question {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+    padding: 15px;
+    background: #e0e0e0;
+    border-radius: 4px;
+}
+
+.question-number {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.question-text {
+    margin-bottom: 10px;
+    background-color: #f8f8f8;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: text;
+    min-height: 40px;
+}
+
+.answer-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: space-between;
+}
+
+.answer-options .option {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    flex: 0 0 calc(50% - 10px);
+    box-sizing: border-box;
+}
+
+.answer-options .option input[type="text"] {
+    margin-left: 10px;
+    font-size: 14px;
+    padding: 5px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    flex-grow: 1;
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.btn {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.btn.return {
+    background-color: #d3d3d3;
+    color: #000;
+}
+
+.btn.return:hover {
+    background-color: #858585;
+    color: #fff;
+}
+
+.btn.save {
+    background-color: #007BFF;
+    color: #fff;
+}
+
+.btn.save:hover {
+    background-color: #99c9fc;
+    color: #000;
+}
+
+/* Media Queries */
+
+/* For Surface Pro (12.3-inch screen, 2736 x 1824 pixels) */
+@media (max-width: 1400px) {
+    .quiz-container {
+        padding: 20px;
+    }
+
+    .answer-options .option {
+        flex: 0 0 calc(100% - 10px);
+    }
+
+    .answer-options .option input[type="text"] {
+        font-size: 16px;
+    }
+}
+
+/* For Surface Duo (5.6-inch dual-screen, 1800 x 1350 pixels) */
+@media (max-width: 900px) {
+    .quiz-container {
+        padding: 15px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .answer-options {
+        gap: 5px;
+    }
+
+    .answer-options .option {
+        flex: 0 0 100%;
+    }
+
+    .answer-options .option input[type="text"] {
+        font-size: 14px;
+    }
+}
