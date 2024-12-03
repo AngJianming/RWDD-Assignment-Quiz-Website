@@ -1,0 +1,136 @@
+/* General Reset and Basic Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+    display: flex;
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    min-height: 100vh; /* Ensure full viewport height */
+    margin: 0;
+}
+
+/* Main Content Container */
+.container {
+    max-width: 800px;
+    width: 100%; /* Ensure container is responsive */
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    text-align: center;
+    box-sizing: border-box; /* Include padding in width calculation */
+    transform: translateX(30px);
+}
+
+/* Header Section */
+.header {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    font-weight: 600; /* Slightly bolder for emphasis */
+}
+
+/* Import Box */
+.import-box {
+    border: 2px dashed #aaa;
+    border-radius: 8px;
+    padding: 40px;
+    background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.import-box img {
+    width: 60px; /* Adjust for a more prominent icon */
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.import-box p {
+    font-size: 1em;
+    color: #666;
+    margin-bottom: 10px; /* Add space below text */
+}
+
+/* Buttons Section */
+.buttons {
+    display: flex;
+    justify-content: space-evenly; /* Space evenly instead of around */
+    width: 100%; /* Make sure buttons take full width */
+}
+
+.buttons button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth hover transition */
+    width: 45%; /* Make buttons take up equal space */
+}
+
+.cancel-button {
+    background-color: #c4c0c2;
+}
+
+.save-button {
+    background-color: #007BFF;
+}
+
+.cancel-button:hover {
+    background-color: #acaaac;
+}
+
+.save-button:hover {
+    background-color: #0056b3;
+}
+
+@media (max-width: 768px) {
+    body {
+        justify-content: flex-start;
+    }
+
+    .container {
+        padding: 20px;
+    }
+
+    .header {
+        font-size: 1.5em;
+    }
+
+    .import-box {
+        padding: 25px;
+    }
+
+    .buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .buttons button {
+        width: 80%;
+        margin-bottom: 10px;
+    }
+
+    .import-box img {
+        width: 40px;
+    }
+}
+
+/* Larger screens, applying translateX for slight right shift */
+@media (min-width: 912px) {
+    .container {
+        transform: translateX(20px); /* Shifts the container slightly to the right */
+    }
+}
