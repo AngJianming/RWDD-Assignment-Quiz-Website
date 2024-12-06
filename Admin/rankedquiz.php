@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create Ranked Levels</title>
     <link rel="stylesheet" href="rankedquiz.css">
-    <?php include '../Constants/Combine-admin.php'; ?>
+    <!-- <?php include '../Constants/Combine-admin.php'; ?> -->
+    <?php include 'Combine-admin.php'; ?>
 </head>
 <body>
     <div class="container">
@@ -18,6 +19,7 @@
                 <button id="add-level-btn">Add New Level</button>
                 <button id ="delete-level-btn">Delete Level</button>
                 <button id="edit-level-btn">Edit Quiz</button>
+                <button id="publish-btn">Publish Quiz</button>
             </div>
         </div>
     </div>
@@ -128,6 +130,18 @@
                 window.location.href = `addranked.php?level=${encodeURIComponent(levelText)}`;
             } else {
                 alert('Please select a level to edit.');
+            }
+        });
+
+        // Publish Quiz Button
+        document.getElementById('publish-btn').addEventListener('click', function () {
+            const selectedLevel = document.querySelector('.level.selected');
+
+            if (selectedLevel) {
+                const levelText = selectedLevel.textContent.trim();
+                    //how to save to database
+            } else {
+                alert('Please select a level to publish.');
             }
         });
 

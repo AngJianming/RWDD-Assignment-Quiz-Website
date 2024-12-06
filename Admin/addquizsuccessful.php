@@ -5,11 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Ranked</title>
-    <?php include '../Constants/Combine-admin.php'; ?>
+    <!-- <?php include '../Constants/Combine-admin.php'; ?> -->
+    <?php include 'Combine-admin.php'; ?>
 
     <style>
         .container {
-            background-color: #fff;
             padding: 20px;
             border-radius: 10px;
             display: flex;
@@ -37,7 +37,7 @@
         }
         h1{
             font-weight: 1px bold;
-            color: black;
+            color: #fff;
         }
     </style>
 </head>
