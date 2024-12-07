@@ -630,21 +630,21 @@
                 <span class="tooltip">Dashboard</span>
             </li>
             <li>
-                <a href="#">
+                <a href="useraccount.php">
                     <i class="ms-Icon ms-Icon--Contact"></i>
                     <span class="links_name">Manage User Account</span>
                 </a>
                 <span class="tooltip">Manage User Account</span>
             </li>
             <li>
-                <a href="#">
+                <a href="userperformance.php">
                     <i class="ms-Icon ms-Icon--Chat"></i>
                     <span class="links_name">Manage Performance</span>
                 </a>
                 <span class="tooltip">Manage Performance</span>
             </li>
             <li>
-                <a href="#">
+                <a href="eduaccount.php">
                     <i class="ms-Icon ms-Icon--PieDouble"></i>
                     <span class="links_name">Manage Educator Account</span>
                 </a>
