@@ -12,6 +12,8 @@ body {
     justify-content: center;
     align-items: flex-start;
     height: 100vh;
+    padding: 0 10px;
+    margin: 0;
 }
 
 /* Main container */
@@ -42,8 +44,9 @@ body {
 /* Content area for levels and actions side by side */
 .content {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     gap: 25px;
+    width: 100%;
 }
 
 /* Levels Styling */
@@ -57,7 +60,7 @@ body {
     min-height: 350px;
     max-height: 450px;
     overflow-y: auto;
-    width: 250px;
+    width: 100%;
     box-sizing: border-box;
     justify-content: flex-start;
 }
@@ -96,9 +99,8 @@ body {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    margin-top: 100px;
-    margin-bottom: 100px;
-    width: 150px;
+    width: 100%;
+    margin-top: 80px;
 }
 
 .actions button {
@@ -113,4 +115,98 @@ body {
 
 .actions button:hover {
     background: #ccc;
+}
+
+/* Responsive Design */
+@media (min-width: 768px) {
+    .content {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .levels {
+        width: 48%;
+    }
+
+    .actions {
+        width: 48%;
+    }
+}
+
+@media (min-width: 900px) and (max-width: 1200px) {
+
+    /* Target Surface Pro (and similar tablets/laptops) */
+    .container {
+        margin-top: 100px;
+        padding: 20px;
+        max-width: 800px;
+    }
+
+    .page-title {
+        font-size: 28px;
+    }
+
+    .levels {
+        min-height: 300px;
+        max-height: 400px;
+    }
+
+    .actions button {
+        font-size: 16px;
+    }
+}
+
+/*
+@media (max-width: 600px) {
+    .container {
+        margin-top: 50px;
+        padding: 15px;
+        width: 100%;
+        max-width: none;
+    }
+
+    .page-title {
+        font-size: 24px;
+    }
+
+    .levels {
+        min-height: 250px;
+        max-height: 300px;
+    }
+
+    .actions button {
+        font-size: 16px;
+    }
+} */
+
+@media (max-width: 540px) {
+
+    /* Target Surface Duo and similar small-screen devices */
+    .container {
+        padding: 10px;
+        margin-top: 30px;
+    }
+
+    .page-title {
+        font-size: 20px;
+    }
+
+    .levels {
+        min-height: 200px;
+        max-height: 250px;
+    }
+
+    .actions button {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .level {
+        font-size: 16px;
+        padding: 10px;
+    }
+
+    .content {
+        flex-direction: column;
+    }
 }
