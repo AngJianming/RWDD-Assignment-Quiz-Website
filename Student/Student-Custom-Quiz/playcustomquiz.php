@@ -1,9 +1,7 @@
 <?php
     session_start();
     include("connection.php");
-    include("header.php");
-    include("footer.php");
-    include("sidebar.php");
+    include("combine-student.php");
     include("bganimation.php");
 ?>
 
@@ -13,7 +11,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Enter Custom Quiz Code</title>
-    <link rel="stylesheet" href="customquizhomepg.css">
+    <link rel="stylesheet" href="playcustomquiz.css">
 </head>
 <body>
     <div class="container">
@@ -25,16 +23,7 @@
     </div>
     <script src="customquizhomepg.js"></script>
     <?php
-        if (isset($_POST['cqenter'])){
-            $cqnum1 = $_POST['cqnum1'];
-            $cqnum2 = $_POST['cqnum2'];
-            $cqnum3 = $_POST['cqnum3'];
-            $cqnum4 = $_POST['cqnum4'];
-            $cqcode = (int)($cqnum1 . $cqnum2 . $cqnum3 . $cqnum4);
-            #Check if the code is in system
-            #If yes, send $cqcode and pull up the next pg`
-        }
+        #play quiz
     ?>
-
 </body>
 </html>

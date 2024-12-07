@@ -1,0 +1,98 @@
+
+/* General Reset and Basic Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Container for the Library Page */
+.library-container {
+    max-width: 900px;
+    margin: 120px auto;
+    margin-top: 200px;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Header Section */
+.library-header {
+    font-size: 1.8em;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Search Bar */
+.search-bar {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.search-bar img {
+    position: absolute;
+    left: 10px;
+    width: 35px;
+    height: 35px;
+}
+
+.search-bar input {
+    width: 110%;
+    padding: 10px 10px 10px 40px; 
+    border-radius: 20px;
+    border: 1px solid #ddd;
+    outline: none;
+    text-align: left; /
+}
+
+/* Quiz List Items */
+.quiz-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+}
+
+.quiz-info {
+    flex-grow: 1;
+}
+
+.quiz-title {
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.quiz-meta {
+    font-size: 0.9em;
+    color: #666;
+    margin-top: 5px;
+}
+
+.view-button {
+    padding: 8px 15px;
+    font-size: 0.9em;
+    border: 1px solid #333;
+    border-radius: 15px;
+    background-color: #fff;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.view-button:hover {
+    background-color: #eee;
+}
