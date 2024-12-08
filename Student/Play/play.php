@@ -79,7 +79,13 @@
 
         <div class="container">
             <h3 class="text-center section-subheading">-- Start Now --</h3>
-            <button class="btn"><h2>Play</h2></button>
+            <!-- Original Play Button -->
+            <div style="display:flex; gap:1rem; justify-content:center; align-items:center;">
+                <button class="btn"><h2>Play</h2></button>
+                <!-- New Buttons added at the side of the Play button -->
+                <button class="btn">View Leaderboard</button>
+                <button class="btn">View All Levels</button>
+            </div>
         </div>
     </section>
 
