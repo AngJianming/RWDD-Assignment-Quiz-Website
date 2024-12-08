@@ -1,169 +1,152 @@
-html,
-body {
-    overflow: auto;
-}
-
 body {
     margin: 0;
     padding: 0;
-    padding-top: 100px;
-    /* margin-bottom: 0px; */
-    font-family: Arial, sans-serif;
-    display: flex;
-    /* height: 100vh; */
-    flex-direction: column;
+    font-family: 'Inter', sans-serif;
+    background: #111;
+    color: #fff;
 }
 
 h1 {
     text-align: center;
-    margin-bottom: 20px;
+    font-size: 32px;
+    font-weight: 600;
+    margin-top: 80px;
     color: #fff;
 }
 
-h2 {
-    margin-top: 50px;
-    color: #fff;
-}
-
-table {
-    width: 80%;
-    margin: 0 auto;
+#educatorTable {
+    width: 90%;
+    max-width: 1000px;
+    margin: 2rem auto;
     border-collapse: collapse;
+    background: #1a1a1a;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    overflow: hidden;
 }
 
-table th,
-table td {
-    border: 1px solid #ccc;
-    padding: 10px;
+#educatorTable thead {
+    background: #222;
+}
+
+#educatorTable th, #educatorTable td {
+    padding: 1rem;
     text-align: left;
-    background-color: #f4f4f4;
-}
-
-table th {
-    background-color: #b9b9b9;
-    text-align: center;
-}
-
-table td {
-    word-wrap: break-word;
-    text-align: center;
+    border-bottom: 1px solid #333;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #eee;
     vertical-align: middle;
+}
+
+#educatorTable th {
+    font-weight: 600;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+#educatorTable tbody tr:hover {
+    background: #2a2a2a;
 }
 
 .action-btn {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    gap: 0.5rem;
 }
 
-.edit-btn,
-.dlt-btn {
-    /* display: inline-block; */
-    margin: 0px auto;
-    padding: 8px 18px;
+.action-btn button {
+    background: #444;
     border: none;
-    border-radius: 4px;
-    font-size: 10px;
+    border-radius: 6px;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #fff;
     cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
 }
 
-.edit-btn {
-    background-color: #4CAF50;
-    color: #fff;
+.action-btn button:hover {
+    background: #555;
+    transform: translateY(-2px);
 }
 
-.edit-btn:hover {
-    background-color: #45a049;
-}
-
-.dlt-btn {
-    background-color: #ff0000;
-    color: #fff;
-    text-align: right;
-}
-
-.dlt-btn:hover {
-    background-color: #d32f2f;
-}
-
+/* Edit Section */
 .edit-section {
-    padding-bottom: 100px;
     display: none;
-    width: 80%;
-    margin: 20px auto;
-    /* Matches the table's width and centers it */
+    width: 90%;
+    max-width: 600px;
+    margin: 2rem auto;
+    background: #1a1a1a;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    padding: 2rem;
 }
 
 .edit-section h2 {
-    text-align: left;
-    margin-bottom: 10px;
-}
-
-.edit-box {
-    width: 100%;
-    height: 340px;
-    border: 1px solid #ccc;
-    background-color: #f9f9f9;
-}
-
-.edit-each-section {
-    margin: 10px;
-    font-size: 18px;
-    margin-left: 10px;
-}
-
-.edit-each-section input {
-    width: 95%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-}
-
-.edit-each-section input,
-.edit-each-section label {
-    margin-left: 10px;
-}
-
-.save-btn {
-    display: block;
-    margin: 20px auto;
-    padding: 10px 20px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    font-size: 16px;
-    cursor: pointer;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: #fff;
     text-align: center;
 }
 
-.save-btn:hover {
-    background-color: #91c199;
+.edit-box form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
-/* Media query for smaller screens */
-@media (max-width: 720px) {
-    h1 {
-        font-size: 20px;
+.edit-each-section label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: #ccc;
+    display: inline-block;
+}
+
+.edit-each-section input[type="text"] {
+    width: 100%;
+    padding: 0.5rem;
+    background: #222;
+    border: 1px solid #333;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 0.9rem;
+}
+
+.save-btn {
+    background: #444;
+    border: none;
+    border-radius: 6px;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    width: fit-content;
+    align-self: center;
+    margin-top: 1rem;
+}
+
+.save-btn:hover {
+    background: #555;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 600px) {
+    #educatorTable th, #educatorTable td {
+        font-size: 0.85rem;
+        padding: 0.75rem;
     }
 
-    body {
-        padding-left: 50px;
+    .edit-section h2 {
+        font-size: 1.2rem;
     }
 
-    .action-btn {
-        flex-direction: column;
-        /* Stack buttons vertically */
-        align-items: flex-start;
-        /* Align buttons to the left */
-    }
-
-    .edit-btn,
-    .dlt-btn {
-        margin: 5px 0;
-        /* Add space between buttons */
-        width: 100%;
-        /* Make buttons take full width */
+    .save-btn {
+        font-size: 0.9rem;
     }
 }

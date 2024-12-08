@@ -1,212 +1,96 @@
-/* General Reset */
-* {
+body {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+    background: #111;
+    color: #fff;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    background-color: #5c3d9a;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    height: 100vh;
-    padding: 0 10px;
-    margin: 0;
-}
-
-/* Main container */
 .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    padding: 20px;
-    width: 100%;
-    max-width: 600px;
-    margin-top: 120px;
-    background: #fff;
+    max-width: 800px;
+    margin: 4rem auto;
+    padding: 2rem;
+    background: #1a1a1a;
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
 }
 
-/* Page Title */
 .page-title {
-    color: #000000;
     text-align: center;
-    font-size: 32px;
-    font-weight: bold;
-    margin-bottom: 20px;
-    width: 100%;
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    color: #fff;
 }
 
-/* Content area for levels and actions side by side */
 .content {
     display: flex;
     flex-direction: column;
-    gap: 25px;
-    width: 100%;
+    gap: 2rem;
 }
 
-/* Levels Styling */
 .levels {
     display: flex;
-    flex-direction: column;
-    gap: 10px;
-    background: #e0e0e0;
-    padding: 12px;
-    border: 2px solid #000000;
-    min-height: 350px;
-    max-height: 450px;
-    overflow-y: auto;
-    width: 100%;
-    box-sizing: border-box;
-    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 1rem;
 }
 
 .level {
-    padding: 15px;
-    margin: 5px;
-    text-align: center;
-    background: #ffffff;
-    border: 2px solid #ccc;
+    background: #222;
+    border: none;
+    padding: 0.75rem 1rem;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #fff;
     cursor: pointer;
-    font-size: 20px;
-    flex-wrap: wrap;
+    transition: background 0.3s ease, transform 0.2s ease;
 }
 
-.level:hover,
-.new:hover {
-    background: #ccc;
+.level:hover {
+    background: #333;
+    transform: translateY(-2px);
 }
 
-.level:focus {
-    background-color: rgb(142, 142, 142);
-    color: #fff;
+.level.selected {
+    background: #444;
 }
 
-.new:hover {
-    color: #fff;
-}
-
-.highlighted {
-    border: 2px solid black;
-}
-
-/* Action Buttons */
 .actions {
     display: flex;
-    flex-direction: column;
-    gap: 10px;
-    width: 100%;
-    margin-top: 80px;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
 }
 
 .actions button {
-    padding: 10px;
-    background: #ddd;
-    border: 1px solid #ccc;
+    background: #444;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 500;
     cursor: pointer;
-    text-align: left;
-    min-height: 60px;
-    font-size: 18px;
+    transition: background 0.3s ease, transform 0.2s ease;
 }
 
 .actions button:hover {
-    background: #ccc;
+    background: #555;
+    transform: scale(1.05);
 }
 
-/* Responsive Design */
-@media (min-width: 768px) {
-    .content {
-        flex-direction: row;
-        justify-content: space-between;
-    }
-
-    .levels {
-        width: 48%;
-    }
-
-    .actions {
-        width: 48%;
-    }
-}
-
-@media (min-width: 900px) and (max-width: 1200px) {
-
-    /* Target Surface Pro (and similar tablets/laptops) */
-    .container {
-        margin-top: 100px;
-        padding: 20px;
-        max-width: 800px;
-    }
-
-    .page-title {
-        font-size: 28px;
-    }
-
-    .levels {
-        min-height: 300px;
-        max-height: 400px;
-    }
-
-    .actions button {
-        font-size: 16px;
-    }
-}
-
-/*
 @media (max-width: 600px) {
-    .container {
-        margin-top: 50px;
-        padding: 15px;
-        width: 100%;
-        max-width: none;
-    }
-
-    .page-title {
-        font-size: 24px;
-    }
-
-    .levels {
-        min-height: 250px;
-        max-height: 300px;
-    }
-
-    .actions button {
-        font-size: 16px;
-    }
-} */
-
-@media (max-width: 540px) {
-
-    /* Target Surface Duo and similar small-screen devices */
-    .container {
-        padding: 10px;
-        margin-top: 30px;
-    }
-
-    .page-title {
-        font-size: 20px;
-    }
-
-    .levels {
-        min-height: 200px;
-        max-height: 250px;
-    }
-
-    .actions button {
-        font-size: 14px;
-        padding: 8px;
-    }
-
-    .level {
-        font-size: 16px;
-        padding: 10px;
-    }
-
-    .content {
+    .actions {
         flex-direction: column;
+    }
+
+    .container {
+        margin: 2rem auto;
+        padding: 1.5rem;
+    }
+
+    .levels {
+        justify-content: center;
     }
 }

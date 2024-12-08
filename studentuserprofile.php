@@ -1,39 +1,48 @@
 <?php
 session_start();
-include("Constants/Header.php");
-include("Constants/Footer.php");
-include("Constants/Sidebar-Student.php");
-// include("connection.php");
+include("Constants/Combine-student.php");
+
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="sup2.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="studentuserprofile.css">
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Student User Profile</title>
+    <link rel="stylesheet" href="studentuserprofile.css">
 </head>
-<body>
-    <img src="Image/userprofile.png" width="150" height="150">
-    <br>
-    <h1>Welcome, XXX</h1> 
-    <br><br><br>
-    <div class="container">
-        <h2>Username: </h2>
-        <br><br>
-        <h2>Email: XXX</h2>  
-        <br><br>
-        <h2>Contact Number: XXX
-            <button style="background: none; border: none; font-size:20px; color: #333; cursor: pointer; margin-left: 250px" name="cqenter" class="button"><b>&gt;</b></button>
-        </h2>
-        <br><br>
-        <h2>Change Password
-            <button style="background: none; border: none; font-size: 20px; color: #333; cursor: pointer; margin-left: 290px" name="cqenter" class="button"><b>&gt;</b></button>
-        </h2>
-        </p>
-</h2>
+<body class="dark-theme">
+
+    <!-- If your included header/sidebar already outputs a header section, ensure no duplication -->
+    <div class="profile-container">
+        <div class="profile-header text-center">
+            <div class="profile-pic-container">
+                <img src="Image/userprofile.png" alt="User Profile" class="profile-pic"/>
+            </div>
+            <h1 class="profile-welcome">Welcome, XXX</h1>
+        </div>
+
+        <div class="profile-details">
+            <div class="detail-row">
+                <h2 class="detail-label">Username:</h2>
+                <span class="detail-value">XXX</span>
+            </div>
+            <div class="detail-row">
+                <h2 class="detail-label">Email:</h2>
+                <span class="detail-value">XXX@example.com</span>
+            </div>
+            <div class="detail-row interactive-row">
+                <h2 class="detail-label">Contact Number:</h2>
+                <span class="detail-value">XXX</span>
+                <button class="action-btn" aria-label="Edit Contact Number">&gt;</button>
+            </div>
+            <div class="detail-row interactive-row">
+                <h2 class="detail-label">Change Password</h2>
+                <button class="action-btn" aria-label="Change Password">&gt;</button>
+            </div>
+        </div>
     </div>
+
 </body>
 </html>
