@@ -13,72 +13,74 @@
 // }
 // echo "Connected successfully";
 
-session_start();
 
-$link = mysqli_connect("localhost", "root", "", "rwdd-assignment-quiz-website");
+// ------------------------ START HERE ------------------------
+// session_start();
 
-// Check connection
-if ($mysqli->connect_error) {
-    // Log the error message internally
-    error_log("Database connection error: " . $mysqli->connect_error);
-    // Display a generic error message to the user
-    die("Sorry, we're experiencing technical difficulties. Please try again later.");
-}
-echo "Connected successfully";
+// $link = mysqli_connect("localhost", "root", "", "rwdd-assignment-quiz-website");
 
-// Initialize variables
-$loginEmail = isset($_POST['LoginEmail']) ? trim($_POST['LoginEmail']) : '';
-$loginPassword = isset($_POST['LoginPassword']) ? $_POST['LoginPassword'] : '';
+// // Check connection
+// if ($mysqli->connect_error) {
+//     // Log the error message internally
+//     error_log("Database connection error: " . $mysqli->connect_error);
+//     // Display a generic error message to the user
+//     die("Sorry, we're experiencing technical difficulties. Please try again later.");
+// }
+// echo "Connected successfully";
 
-// Validate inputs
-if (empty($loginEmail) || empty($loginPassword)) {
-    $_SESSION['errMsg'] = "Please enter both email and password.";
-    header("Location: login.php"); // Redirect back to login form
-    exit();
-}
+// // Initialize variables
+// $loginEmail = isset($_POST['LoginEmail']) ? trim($_POST['LoginEmail']) : '';
+// $loginPassword = isset($_POST['LoginPassword']) ? $_POST['LoginPassword'] : '';
 
-// Prepare the SQL statement to prevent SQL injection
-$stmt = $mysqli->prepare("SELECT student_id, student_password FROM student WHERE student_email = ?");
-if (!$stmt) {
-    error_log("Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error);
-    die("Sorry, we're experiencing technical difficulties. Please try again later.");
-}
+// // Validate inputs
+// if (empty($loginEmail) || empty($loginPassword)) {
+//     $_SESSION['errMsg'] = "Please enter both email and password.";
+//     header("Location: login.php"); // Redirect back to login form
+//     exit();
+// }
 
-$stmt->bind_param("s", $loginEmail);
+// // Prepare the SQL statement to prevent SQL injection
+// $stmt = $mysqli->prepare("SELECT student_id, student_password FROM student WHERE student_email = ?");
+// if (!$stmt) {
+//     error_log("Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error);
+//     die("Sorry, we're experiencing technical difficulties. Please try again later.");
+// }
 
-// Execute the statement
-if (!$stmt->execute()) {
-    error_log("Execute failed: (" . $stmt->errno . ") " . $stmt->error);
-    die("Sorry, we're experiencing technical difficulties. Please try again later.");
-}
+// $stmt->bind_param("s", $loginEmail);
 
-// Bind the result variables
-$stmt->bind_result($student_id, $hashed_password);
+// // Execute the statement
+// if (!$stmt->execute()) {
+//     error_log("Execute failed: (" . $stmt->errno . ") " . $stmt->error);
+//     die("Sorry, we're experiencing technical difficulties. Please try again later.");
+// }
 
-// Fetch the result
-if ($stmt->fetch()) {
-    // Verify the password
-    if (password_verify($loginPassword, $hashed_password)) {
-        // Password is correct, regenerate session ID to prevent session fixation
-        session_regenerate_id(true);
-        $_SESSION['student_id'] = $student_id;
-        exit();
-    } else {
-        // Invalid password
-        $_SESSION['errMsg'] = "Invalid email or password.";
-        header("Location: login.php");
-        exit();
-    }
-} else {
-    // No user found with that email
-    $_SESSION['errMsg'] = "Invalid email or password.";
-    header("Location: login.php");
-    exit();
-}
+// // Bind the result variables
+// $stmt->bind_result($student_id, $hashed_password);
 
-// Close the statement and connection
-$stmt->close();
-$mysqli->close();
+// // Fetch the result
+// if ($stmt->fetch()) {
+//     // Verify the password
+//     if (password_verify($loginPassword, $hashed_password)) {
+//         // Password is correct, regenerate session ID to prevent session fixation
+//         session_regenerate_id(true);
+//         $_SESSION['student_id'] = $student_id;
+//         exit();
+//     } else {
+//         // Invalid password
+//         $_SESSION['errMsg'] = "Invalid email or password.";
+//         header("Location: login.php");
+//         exit();
+//     }
+// } else {
+//     // No user found with that email
+//     $_SESSION['errMsg'] = "Invalid email or password.";
+//     header("Location: login.php");
+//     exit();
+// }
+
+// // Close the statement and connection
+// $stmt->close();
+// $mysqli->close();
 ?>
 
 <!DOCTYPE html>
