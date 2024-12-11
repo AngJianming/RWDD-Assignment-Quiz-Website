@@ -44,7 +44,7 @@
             top:0;
             left:0;
             width: 100%;
-            background-color: #2d0d3f;
+            background-color: #221c36;
             color: white;
             width: 100%;
             top: 0;
@@ -135,7 +135,7 @@
             height: 100%;
             width: 80px;
             /* Adjusted width */
-            background: #2d0d3f;
+            background: #221c36;
             padding: 12px 10px;
             transition: all 0.5s ease;
             display: flex;
@@ -411,7 +411,7 @@
 
         /* Footer */
         footer {
-            background-color: #2d0d3f;
+            background-color: #221c36;
             color: white;
             padding: 32px 0;
             position: fixed;
@@ -632,23 +632,23 @@
             <li>
                 <a href="useraccount.php">
                     <i class="ms-Icon ms-Icon--Contact"></i>
-                    <span class="links_name">Manage User Account</span>
+                    <span class="links_name">Manage User</span>
                 </a>
-                <span class="tooltip">Manage User Account</span>
+                <span class="tooltip">Manage User</span>
             </li>
             <li>
                 <a href="userperformance.php">
-                    <i class="ms-Icon ms-Icon--Chat"></i>
-                    <span class="links_name">Manage Performance</span>
+                    <i class="ms-Icon ms-Icon--PieDouble"></i>
+                    <span class="links_name">Performance</span>
                 </a>
-                <span class="tooltip">Manage Performance</span>
+                <span class="tooltip">Performance</span>
             </li>
             <li>
                 <a href="eduaccount.php">
-                    <i class="ms-Icon ms-Icon--PieDouble"></i>
-                    <span class="links_name">Manage Educator Account</span>
+                    <i class="ms-Icon ms-Icon--Chat"></i>
+                    <span class="links_name">Manage Educator</span>
                 </a>
-                <span class="tooltip">Manage Educator Account</span>
+                <span class="tooltip">Manage Educator</span>
             </li>
             <li>
                 <a href="#">

@@ -20,7 +20,7 @@
 
         /* Footer */
         footer {
-            background-color: #2d0d3f;
+            background-color: #221c36;
             color: white;
             padding: 2em 0;
             position: fixed;

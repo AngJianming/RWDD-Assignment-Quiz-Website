@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manage Student Account</title>
     <link rel="stylesheet" href="useraccount.css">
-    <!-- <?php include '../Constants/Combine-admin.php'; ?> -->
+    <?php //include '../Constants/Combine-admin.php'; ?>
     <?php include 'Combine-admin.php'; ?>
 </head>
 

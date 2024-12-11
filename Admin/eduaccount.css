@@ -10,8 +10,14 @@ h1 {
     text-align: center;
     font-size: 32px;
     font-weight: 600;
-    margin-top: 80px;
+    margin-top: 120px;
     color: #fff;
+}
+
+.admin_home_content {
+    margin-left: 320px; /* or the width of the sidebar */
+    padding: 20px;
+    background: #f0f0f0; /* Just as an example */
 }
 
 #educatorTable {
@@ -136,17 +142,112 @@ h1 {
     transform: translateY(-2px);
 }
 
-@media (max-width: 600px) {
+/* Adjustments for screens smaller than or equal to 910px in width */
+@media (max-width: 915px) {
+    h1 {
+        font-size: 28px;
+        margin-top: 6rem;
+    }
+
+    #educatorTable {
+        width: 90%;
+        max-width: 1000px;
+        margin: 2rem auto auto 4.5rem;
+        border-collapse: collapse;
+        background: #1a1a1a;
+        border-radius: 8px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        overflow: hidden;
+    }
+
     #educatorTable th, #educatorTable td {
-        font-size: 0.85rem;
-        padding: 0.75rem;
+        font-size: 0.95rem;
+        padding: 0.8rem;
+    }
+
+    .edit-section {
+        max-width: 500px;
+        padding: 1.5rem;
     }
 
     .edit-section h2 {
-        font-size: 1.2rem;
+        font-size: 1.3rem;
+    }
+
+    .edit-each-section label {
+        font-size: 0.85rem;
+    }
+
+    .edit-each-section input[type="text"] {
+        font-size: 0.85rem;
+        padding: 0.45rem;
     }
 
     .save-btn {
-        font-size: 0.9rem;
+        font-size: 0.95rem;
+        padding: 0.65rem 1.2rem;
+    }
+
+    .action-btn button {
+        font-size: 0.85rem;
+        padding: 0.4rem 0.8rem;
+    }
+}
+
+/* Further adjustments for screens smaller than or equal to 540px in width */
+@media (max-width: 544px) {
+    h1 {
+        font-size: 24px;
+        margin-top: 40px;
+    }
+
+    #educatorTable {
+        width: 100%;
+        margin: 10px auto;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    #educatorTable th, #educatorTable td {
+        font-size: 0.85rem;
+        padding: 0.5rem;
+    }
+
+    .action-btn {
+        flex-direction: column;
+        gap: 0.3rem;
+    }
+
+    .action-btn button {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.6rem;
+        width: 100%;
+    }
+
+    .edit-section {
+        width: 95%;
+        max-width: 100%;
+        margin: 1rem auto;
+        padding: 1rem;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    .edit-section h2 {
+        font-size: 1.1rem;
+    }
+
+    .edit-each-section label {
+        font-size: 0.8rem;
+    }
+
+    .edit-each-section input[type="text"] {
+        font-size: 0.8rem;
+        padding: 0.4rem;
+    }
+
+    .save-btn {
+        font-size: 0.85rem;
+        padding: 0.5rem 1rem;
     }
 }

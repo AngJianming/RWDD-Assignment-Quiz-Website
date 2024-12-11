@@ -9,8 +9,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Font Awesome CSS -->
     <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.6.0/css/all.css">
-    <?php include '../Constants/Bg-Animation.php'; ?>
-
     <style>
         /* Reset and Base Styles */
         * {
@@ -39,7 +37,7 @@
         }
 
         header {
-            background-color: #221c36;
+            background-color: #2d0d3f;
             color: white;
             width: 100%;
             top: 0;
@@ -129,7 +127,7 @@
             height: 100%;
             width: 80px;
             /* Adjusted width */
-            background: #221c36;
+            background: #2d0d3f;
             padding: 12px 10px;
             transition: all 0.5s ease;
             display: flex;
@@ -416,7 +414,7 @@
 
         /* Footer */
         footer {
-            background-color: #221c36;
+            background-color: #2d0d3f;
             color: white;
             padding: 32px 0;
             position: fixed;
@@ -623,55 +621,54 @@
     <div class="sidebar">
         <div class="logo_content">
             <div class="logo">
-                <!-- Logo can be placed here if needed -->
             </div>
             <i class="ms-Icon ms-Icon--CollapseMenu" id="btn"></i>
         </div>
         <ul class="nav_list">
             <li>
-                <a href="dashboard_nav">
+                <a href="#">
                     <i class="ms-Icon ms-Icon--WaffleOffice365"></i>
                     <span class="links_name">Dashboard</span>
                 </a>
                 <span class="tooltip">Dashboard</span>
             </li>
             <li>
-                <a href="play_nav">
-                    <i class="fa-solid fa-gamepad-modern"></i>
-                    <span class="links_name">Play</span>
-                </a>
-                <span class="tooltip">Play</span>
-            </li>
-            <li>
-                <a href="custom_quiz_nav">
-                    <i class="fa-light fa-pen-field"></i>
-                    <span class="links_name">Custom Quiz</span>
-                </a>
-                <span class="tooltip">Custom Quiz</span>
-            </li>
-            <li>
-                <a href="user_nav">
+                <a href="#">
                     <i class="ms-Icon ms-Icon--Contact"></i>
-                    <span class="links_name">User</span>
+                    <span class="links_name">User Board</span>
                 </a>
-                <span class="tooltip">User</span>
+                <span class="tooltip">User Board</span>
             </li>
             <li>
-                <a href="leaderboard_nav">
-                    <i class="fa-solid fa-trophy"></i>
-                    <span class="links_name">Leaderboard</span>
+                <a href="#">
+                    <i class="ms-Icon ms-Icon--Chat"></i>
+                    <span class="links_name">Chat</span>
                 </a>
-                <span class="tooltip">Leaderboard</span>
+                <span class="tooltip">Chat</span>
             </li>
             <li>
-                <a href="history_nav">
-                    <i class="fa-solid fa-clock-rotate-left"></i>
-                    <span class="links_name">History</span>
+                <a href="#">
+                    <i class="ms-Icon ms-Icon--PieDouble"></i>
+                    <span class="links_name">Analytics</span>
                 </a>
-                <span class="tooltip">History</span>
+                <span class="tooltip">Analytics</span>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="ms-Icon ms-Icon--FabricFolder"></i>
+                    <span class="links_name">Files</span>
+                </a>
+                <span class="tooltip">Files</span>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-circle-plus"></i>
+                    <span class="links_name">Add Quiz</span>
+                </a>
+                <span class="tooltip">Add Quiz</span>
             </li>
             <!-- <li>
-                <a href="setting_nav">
+                <a href="#">
                     <i class="ms-Icon ms-Icon--Settings"></i>
                     <span class="links_name">Settings</span>
                 </a>
@@ -681,16 +678,17 @@
         <div class="profile_content">
             <div class="profile">
                 <div class="profile_details">
-                    <img src="/img/Profile Pic.png" alt="Profile Picture" style="cursor: pointer;">
+                    <img src="/img/Profile Pic.png" alt="Profile Picture">
                     <div class="name_job">
                         <div class="name">USER</div>
-                        <div class="job">Student</div>
+                        <div class="job">Admin</div>
                     </div>
                 </div>
                 <i class="ms-Icon ms-Icon--SignOut" id="log_out"></i>
             </div>
         </div>
     </div>
+
     <footer>
         <div class="copyright">
             <h6>© 2024 BatttleCombat.com FAQ | Privacy Policy | Terms of Service | RWDD Assignment Quiz Website</h4>

@@ -18,7 +18,7 @@
 
         /* Header */
         header {
-            background-color: #2d0d3f;
+            background-color: #221c36;
             color: white;
             position: fixed;
             width: 100%;
@@ -38,12 +38,12 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 1em;
+            padding: 10px;
         }
 
         .logo {
             max-width: 6rem;
-            max-height: 6rem;
+            max-height: 4rem;
             margin: 0 auto;
         }
 
@@ -99,7 +99,7 @@
 
         img {
             width: 9rem;
-            height: 3.7rem;
+            height: 3.0rem;
         }
 
         /* Responsive Design */
@@ -156,8 +156,8 @@
                 <img src="/img/Code-Combat (trans) logo.png" alt="Logo" />
             </div>
             <div class="search-signup">
-                <button class="sign-in">Sign in</button>
-                <button class="sign-up">Sign up</button>
+                <!-- <button class="sign-in">Sign in</button> -->
+                <!-- <button class="sign-up">Sign up</button> -->
             </div>
         </div>
     </header>
