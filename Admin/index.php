@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Page</title>
+    <title>Admin Dashboard</title>
     <!-- <?php include '../Constants/Combine-admin.php'; ?> -->
     <?php include 'dashboard.php'; ?>
     <style>

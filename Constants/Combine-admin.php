@@ -9,6 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Font Awesome CSS -->
     <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.6.0/css/all.css">
+    <?php include '../Constants/Bg-Animation.php'; ?>
+
     <style>
         /* Reset and Base Styles */
         * {
@@ -33,14 +35,20 @@
             min-height: 100vh;
             width: 100%;
             overflow: hidden;
-            background: #444;
+            /* background: #444; */
+            /* background-color: #5c3d9a; */
         }
 
         header {
-            background-color: #2d0d3f;
+            position: fixed;
+            top:0;
+            left:0;
+            width: 100%;
+            background-color: #221c36;
             color: white;
             width: 100%;
             top: 0;
+
         }
 
         .header-container {
@@ -127,7 +135,7 @@
             height: 100%;
             width: 80px;
             /* Adjusted width */
-            background: #2d0d3f;
+            background: #221c36;
             padding: 12px 10px;
             transition: all 0.5s ease;
             display: flex;
@@ -393,17 +401,6 @@
             rotate: (180deg);
         }
 
-        /* Home Content */
-        .home_content {
-            position: absolute;
-            height: 100%;
-            width: calc(100% - 80px);
-            /* Adjusted width */
-            left: 80px;
-            /* Adjusted left position */
-            transition: margin-left 0.5s ease;
-        }
-
         /* When Sidebar is Active */
         .sidebar.active~.home_content {
             width: calc(100% - 320px);
@@ -414,7 +411,7 @@
 
         /* Footer */
         footer {
-            background-color: #2d0d3f;
+            background-color: #221c36;
             color: white;
             padding: 32px 0;
             position: fixed;
@@ -609,7 +606,7 @@
     <header>
         <div class="navbar">
             <div class="logo">
-                <img src="/img/Code-Combat (trans) logo.png" alt="Logo" />
+                <img src="../img/Code-Combat (trans) logo.png" alt="Logo" />
             </div>
             <!-- <div class="search-signup">
                 <button class="sign-in">Sign in</button>
@@ -633,25 +630,25 @@
                 <span class="tooltip">Dashboard</span>
             </li>
             <li>
-                <a href="#">
+                <a href="useraccount.php">
                     <i class="ms-Icon ms-Icon--Contact"></i>
-                    <span class="links_name">User Board</span>
+                    <span class="links_name">Manage User</span>
                 </a>
-                <span class="tooltip">User Board</span>
+                <span class="tooltip">Manage User</span>
             </li>
             <li>
-                <a href="#">
-                    <i class="ms-Icon ms-Icon--Chat"></i>
-                    <span class="links_name">Chat</span>
-                </a>
-                <span class="tooltip">Chat</span>
-            </li>
-            <li>
-                <a href="#">
+                <a href="userperformance.php">
                     <i class="ms-Icon ms-Icon--PieDouble"></i>
-                    <span class="links_name">Analytics</span>
+                    <span class="links_name">Performance</span>
                 </a>
-                <span class="tooltip">Analytics</span>
+                <span class="tooltip">Performance</span>
+            </li>
+            <li>
+                <a href="eduaccount.php">
+                    <i class="ms-Icon ms-Icon--Chat"></i>
+                    <span class="links_name">Manage Educator</span>
+                </a>
+                <span class="tooltip">Manage Educator</span>
             </li>
             <li>
                 <a href="#">
@@ -661,7 +658,7 @@
                 <span class="tooltip">Files</span>
             </li>
             <li>
-                <a href="#">
+                <a href="../Admin/rankedquiz.php">
                     <i class="fa-solid fa-circle-plus"></i>
                     <span class="links_name">Add Quiz</span>
                 </a>
@@ -678,7 +675,7 @@
         <div class="profile_content">
             <div class="profile">
                 <div class="profile_details">
-                    <img src="/img/Profile Pic.png" alt="Profile Picture">
+                    <img src="../img/Profile Pic.png" alt="Profile Picture">
                     <div class="name_job">
                         <div class="name">USER</div>
                         <div class="job">Admin</div>
@@ -696,7 +693,7 @@
     </footer>
     <div class="home_content">
         <!-- Main content goes here -->
-        
+
     </div>
 
     <script>

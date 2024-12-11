@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amimated Bg</title>
+    <title>Animated Background</title>
     <style>
         body {
-            margin: auto;
+            margin: 0;
             font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-            overflow: auto;
+            overflow: hidden;
+            /* Animated Gradient Background */
             background: linear-gradient(315deg, #6f006b 3%, #040031 38%, #4e0f63 68%, #48003b 98%);
             animation: gradient 15s ease infinite;
             background-size: 400% 400%;
@@ -20,72 +20,83 @@
             0% {
                 background-position: 0% 0%;
             }
-
             50% {
                 background-position: 100% 100%;
             }
-
             100% {
                 background-position: 0% 0%;
             }
         }
 
-        .wave {
-            background: rgba(42, 35, 35, 0.25);
-            border-radius: 1000% 1000% 0 0;
+        canvas {
+            display: block;
             position: fixed;
-            width: 200%;
-            height: 12em;
-            animation: wave 10s -3s linear infinite;
-            transform: translate3d(0, 0, 0);
-            opacity: 0.8;
-            bottom: 0;
+            top: 0;
             left: 0;
             z-index: -1;
         }
-
-        .wave:nth-of-type(2) {
-            bottom: -1.25em;
-            animation: wave 18s linear reverse infinite;
-            opacity: 0.8;
-        }
-
-        .wave:nth-of-type(3) {
-            bottom: -2.5em;
-            animation: wave 20s -1s reverse infinite;
-            opacity: 0.9;
-        }
-
-        @keyframes wave {
-            2% {
-                transform: translateX(1);
-            }
-
-            25% {
-                transform: translateX(-25%);
-            }
-
-            50% {
-                transform: translateX(-50%);
-            }
-
-            75% {
-                transform: translateX(-25%);
-            }
-
-            100% {
-                transform: translateX(1);
-            }
-        }
     </style>
 </head>
-
 <body>
-    <div>
-        <div class="wave"></div>
-        <div class="wave"></div>
-        <div class="wave"></div>
-    </div>
-</body>
+<canvas id="matrixCanvas"></canvas>
+<script>
+    const canvas = document.getElementById('matrixCanvas');
+    const ctx = canvas.getContext('2d');
 
+    function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    // Characters for matrix rain
+    const characters = 'アィイゥウェエォオカガキギクグケゲコゴサザシジスズセゼソゾタダチヂツヅテデトドナニヌネノハバパヒビピフブプヘベペホボポマミムメモヤユヨラリルレロワヲンABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    const charArray = characters.split('');
+
+    const fontSize = 24; // Larger font size for more prominence
+    const columns = Math.floor(canvas.width / fontSize);
+    const drops = [];
+
+    for (let i = 0; i < columns; i++) {
+        drops[i] = Math.floor(Math.random() * canvas.height / fontSize);
+    }
+
+    let frameCount = 0; // Count frames to slow down movement
+
+    function draw() {
+        // Draw a semi-transparent black rectangle to create trailing effect
+        ctx.fillStyle = 'rgba(0,0,0,0.05)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        ctx.fillStyle = '#b027f4'; // Neon purple color
+        ctx.font = fontSize + 'px monospace';
+
+        // Update the drops position less frequently to slow down the rain
+        frameCount++;
+        const shouldMove = (frameCount % 5 === 0); // Move every 5 frames
+
+        for (let i = 0; i < drops.length; i++) {
+            const text = charArray[Math.floor(Math.random() * charArray.length)];
+            const x = i * fontSize;
+            const y = drops[i] * fontSize;
+
+            ctx.fillText(text, x, y);
+
+            // Move drop down one character only if shouldMove is true
+            if (shouldMove) {
+                drops[i]++;
+                // Reset to top occasionally
+                if (y > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+            }
+        }
+
+        requestAnimationFrame(draw);
+    }
+
+    draw();
+</script>
+</body>
 </html>

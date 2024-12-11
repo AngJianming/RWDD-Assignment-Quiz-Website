@@ -9,6 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Font Awesome CSS -->
     <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.6.0/css/all.css">
+    <?php include '../Constants/Bg-Animation.php'; ?>
+
     <style>
         /* Reset and Base Styles */
         * {
@@ -37,7 +39,7 @@
         }
 
         header {
-            background-color: #2d0d3f;
+            background-color: #221c36;
             color: white;
             width: 100%;
             top: 0;
@@ -127,7 +129,7 @@
             height: 100%;
             width: 80px;
             /* Adjusted width */
-            background: #2d0d3f;
+            background: #221c36;
             padding: 12px 10px;
             transition: all 0.5s ease;
             display: flex;
@@ -414,7 +416,7 @@
 
         /* Footer */
         footer {
-            background-color: #2d0d3f;
+            background-color: #221c36;
             color: white;
             padding: 32px 0;
             position: fixed;
