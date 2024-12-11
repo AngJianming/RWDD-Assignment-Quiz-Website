@@ -127,11 +127,59 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <body>
 
-    
+    <section>
+        <form>
+            <!-- Register / Sign-up form-->
+            <h1>Register / Sign-up</h1>
+
+            <div class="radio-group">
+                <input type="radio" id="student" name="role" value="Student">
+                <label for="student">Student</label>
+
+                <input type="radio" id="educator" name="role" value="Educator">
+                <label for="educator">Educator</label>
+
+                <input type="radio" id="admin" name="role" value="Admin">
+                <label for="admin">Admin</label>
+            </div>
+
+            <div class="inputbox">
+                <ion-icon name="mail-outline"></ion-icon>
+                <input type="email" required>
+                <label for="">Email</label>
+            </div>
+            <div class="inputbox">
+                <ion-icon name="lock-closed-outline"></ion-icon>
+                <input type="text" required>
+                <label for="">Username</label>
+            </div>
+            <div class="inputbox">
+                <ion-icon name="eye-off-outline" id="togglePassword1"></ion-icon>
+                <input type="password" id="password1" required>
+                <label for="password1">Add Password</label>
+            </div>
+            <div class="inputbox">
+                <ion-icon name="eye-off-outline" id="togglePassword2"></ion-icon>
+                <input type="password" id="password2" required>
+                <label for="password2">Confirm Password</label>
+            </div>
+
+            <div class="forget">
+                <label for=""><input type="checkbox" class="remember-me">Remember Me</label>
+            </div>
+            <button>Sign up</button>
+            <div class="register">
+                <p>Already have an account? <a href="login.php">Login</a></p>
+            </div>
+
+        </form>
+    </section>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="register.js"></script>
 
     <?php
 
-    
     // session_start();
     // require_once 'vendor/autoload.php';
 

@@ -318,8 +318,8 @@
                 </ul>
             </nav>
             <div class="actions">
-                <a href="#login" class="login">Log in</a>
-                <a href="#signup" class="cta">Sign up</a>
+                <a href="/Login/login.php" class="login">Log in</a>
+                <a href="/Login/register.php" class="cta">Sign up</a>
             </div>
         </div>
     </header>
