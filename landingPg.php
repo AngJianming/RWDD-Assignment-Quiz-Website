@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="scroll-behavior: smooth;">
 
 <head>
     <title>Quiz Combat</title>
@@ -29,14 +29,19 @@
         }
 
         header.global-nav {
+            height: 100px;
             position: fixed;
+            display: flex;
+            text-align: center;
             width: 100%;
             z-index: 1000;
             background: #000;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            top: 0px;
         }
 
         .nav-content {
+            width: 100%;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -67,6 +72,11 @@
 
         .actions .login {
             font-weight: 500;
+            background: #444;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: background 0.2s ease;
         }
 
         .actions .cta {
@@ -106,7 +116,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9));
+            /* background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)); */
             z-index: -1;
         }
 
@@ -141,9 +151,9 @@
 
         .container {
             width: 90%;
-            margin: 0 auto;
+            margin: 0px auto 0;
             max-width: 1200px;
-            padding: 4rem 0;
+            padding: 7rem 0;
         }
 
         .section-title {
@@ -284,6 +294,178 @@
             border-bottom: 1px dashed #fff;
         }
 
+        /* Container and Heading Styles */
+        .team {
+            background: #000;
+            color: #fff;
+            padding: 4rem 0;
+            text-align: center;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .team .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .title-w3-agileits.title-black-wthree {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 3rem;
+            color: #fff;
+            text-transform: uppercase;
+        }
+
+        /* Tabs Container */
+        #horizontalTab {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Tab Navigation (Team Member Thumbnails) */
+        .resp-tabs-list {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            margin-bottom: 3rem;
+            padding: 0;
+        }
+
+        .resp-tabs-list li {
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .resp-tabs-list li:hover {
+            transform: scale(1.05);
+        }
+
+        .resp-tabs-list li img {
+            display: block;
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 2px solid #333;
+        }
+
+        /* Tab Content Area */
+        .resp-tabs-container {
+            width: 100%;
+        }
+
+        /* Each Tab Content */
+        .resp-tabs-container>div {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            background: #111;
+            padding: 2rem;
+            border: 1px solid #222;
+            border-radius: 8px;
+        }
+
+        /* Team Member Image Section */
+        .team-img-w3-agile {
+            flex: 1 1 300px;
+            min-height: 200px;
+            background: #000;
+            border-radius: 8px;
+            border: 1px solid #222;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Placeholder for where you'd put a background image or a styled element */
+        .team-img-w3-agile::before {
+            content: "Member Image";
+            color: #555;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+
+        /* Team Member Info */
+        .team-Info-agileits {
+            flex: 1 1 300px;
+            text-align: left;
+        }
+
+        .team-Info-agileits h4 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+
+        .team-Info-agileits span {
+            display: block;
+            font-size: 0.9rem;
+            color: #aaa;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .team-Info-agileits p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #ccc;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Social Icons */
+        .social-bnr-agileits.footer-icons-agileinfo {
+            margin-top: 1rem;
+        }
+
+        .social-icons3 {
+            list-style: none;
+            display: flex;
+            gap: 1rem;
+            padding: 0;
+        }
+
+        .social-icons3 li a {
+            color: #ccc;
+            font-size: 1.1rem;
+            transition: color 0.2s ease;
+        }
+
+        .social-icons3 li a:hover {
+            color: #fff;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .resp-tabs-list li img {
+                width: 80px;
+                height: 80px;
+            }
+
+            .team-Info-agileits h4 {
+                font-size: 1.2rem;
+            }
+
+            .team-Info-agileits p {
+                font-size: 0.95rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .resp-tabs-list {
+                gap: 1rem;
+            }
+
+            .resp-tabs-list li img {
+                width: 60px;
+                height: 60px;
+            }
+        }
+
+
         @media (max-width: 640px) {
             .hero-content h1 {
                 font-size: 2rem;
@@ -294,7 +476,11 @@
             }
         }
     </style>
+    <?php //include '/xampp/htdocs/RWDD-Assignment-Quiz-Website/Constants/Bg-Animation.php';
+    ?>
+
 </head>
+
 
 <body class="dark-theme">
     <header class="global-nav">
@@ -302,18 +488,19 @@
             <div class="logo-area">
                 <!-- Example SVG Logo -->
                 <a href="#" class="logo-link">
-                    <svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true" fill="none">
+                    <img src="/img/Code-Combat (trans) logo.png" alt="Logo" width="120px" height="40px">
+                    <!-- <svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true" fill="none">
                         <circle cx="20" cy="20" r="19" stroke="white" stroke-width="2" />
                         <text x="50%" y="50%" fill="white" text-anchor="middle" font-size="10" dy=".3em">QC</text>
-                    </svg>
-                    <span class="sr-only">Quiz Combat</span>
+                    </svg> -->
+                    <!-- <span class="sr-only">Quiz Combat</span> -->
                 </a>
             </div>
             <nav class="main-nav">
                 <ul>
                     <li><a href="#features">Features</a></li>
                     <li><a href="#leaderboard">Leaderboard</a></li>
-                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#aboutus">About Us</a></li>
                     <li><a href="#resources">Resources</a></li>
                 </ul>
             </nav>
@@ -330,7 +517,7 @@
             <div class="hero-bg-overlay"></div>
             <video class="hero-video" autoplay muted loop playsinline>
                 <!-- Replace with your own video or remove video and use a background image -->
-                <source src="your-video.mp4" type="video/mp4" />
+                <source src="/vid/Purple Matrix vid.mp4" type="video/mp4" />
             </video>
             <div class="hero-content">
                 <h1>Quiz Combat</h1>
@@ -391,13 +578,152 @@
             </div>
         </section>
 
+        <!-- ABOUT US SECTION -->
+        <div class="team" id="team">
+            <div class="container">
+                <h3 class="title-w3-agileits title-black-wthree">Meet Our Team</h3>
+                <div id="horizontalTab">
+                    <ul class="resp-tabs-list">
+                        <li>
+                            <img src="images/yAng.png" alt="Member1" class="img-responsive" />
+                        </li>
+                        <li>
+                            <img src="images/yBeh.png" alt="Member2" class="img-responsive" />
+                        </li>
+                        <li>
+                            <img src="images/yHJ.png" alt="Member3" class="img-responsive" />
+                        </li>
+                        <li>
+                            <img src="images/yCho.png" alt="Member4" class="img-responsive" />
+                        </li>
+                        <li>
+                            <img src="images/yCho.png" alt="Member5" class="img-responsive" />
+                        </li>
+                        <li>
+                            <img src="images/yCho.png" alt="Member6" class="img-responsive" />
+                        </li>
+                    </ul>
+                    <div class="resp-tabs-container">
+                        <div class="tab1">
+                            <div class="col-md-6 team-img-w3-agile">
+                            </div>
+                            <div class="col-md-6 team-Info-agileits">
+                                <h4>Ang Jianming</h4>
+                                <span>Leader / Full-stack Developer</span>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis.Lorem ipsum dolor .</p>
+                                <div class="social-bnr-agileits footer-icons-agileinfo">
+                                    <ul class="social-icons3">
+                                        <li><a href="#" class="fa fa-facebook icon-border facebook"> </a></li>
+                                        <li><a href="#" class="fa fa-twitter icon-border twitter"> </a></li>
+                                        <li><a href="#" class="fa fa-google-plus icon-border googleplus"> </a></li>
+                                        <li><a href="#" class="fa fa-rss icon-border rss"> </a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="clearfix"> </div>
+                        </div>
+                        <div class="tab2">
+                            <div class="col-md-6 team-img-w3-agile">
+                            </div>
+                            <div class="col-md-6 team-Info-agileits">
+                                <h4>Beh Hon Sheng</h4>
+                                <span>Designer UIUX</span>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis.Lorem ipsum dolor .</p>
+                                <div class="social-bnr-agileits footer-icons-agileinfo">
+                                    <ul class="social-icons3">
+                                        <li><a href="#" class="fa fa-facebook icon-border facebook"> </a></li>
+                                        <li><a href="#" class="fa fa-twitter icon-border twitter"> </a></li>
+                                        <li><a href="#" class="fa fa-google-plus icon-border googleplus"> </a></li>
+                                        <li><a href="#" class="fa fa-rss icon-border rss"> </a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="clearfix"> </div>
+                        </div>
+                        <div class="tab3">
+                            <div class="col-md-6 team-img-w3-agile">
+                            </div>
+                            <div class="col-md-6 team-Info-agileits">
+                                <h4>Cheng Hao Jee</h4>
+                                <span>Developer</span>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis.Lorem ipsum dolor .</p>
+                                <div class="social-bnr-agileits footer-icons-agileinfo">
+                                    <ul class="social-icons3">
+                                        <li><a href="#" class="fa fa-facebook icon-border facebook"> </a></li>
+                                        <li><a href="#" class="fa fa-twitter icon-border twitter"> </a></li>
+                                        <li><a href="#" class="fa fa-google-plus icon-border googleplus"> </a></li>
+                                        <li><a href="#" class="fa fa-rss icon-border rss"> </a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="clearfix"> </div>
+                        </div>
+                        <div class="tab4">
+                            <div class="col-md-6 team-img-w3-agile">
+                            </div>
+                            <div class="col-md-6 team-Info-agileits">
+                                <h4>Cho Kar Hin</h4>
+                                <span>Front-end Developer</span>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis.Lorem ipsum dolor .</p>
+                                <div class="social-bnr-agileits footer-icons-agileinfo">
+                                    <ul class="social-icons3">
+                                        <li><a href="#" class="fa fa-facebook icon-border facebook"> </a></li>
+                                        <li><a href="#" class="fa fa-twitter icon-border twitter"> </a></li>
+                                        <li><a href="#" class="fa fa-google-plus icon-border googleplus"> </a></li>
+                                        <li><a href="#" class="fa fa-rss icon-border rss"> </a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="clearfix"> </div>
+                        </div>
+                        <div class="tab5">
+                            <div class="col-md-6 team-img-w3-agile">
+                            </div>
+                            <div class="col-md-6 team-Info-agileits">
+                                <h4>Cho Kar Hin</h4>
+                                <span>Front-end Developer</span>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis.Lorem ipsum dolor .</p>
+                                <div class="social-bnr-agileits footer-icons-agileinfo">
+                                    <ul class="social-icons3">
+                                        <li><a href="#" class="fa fa-facebook icon-border facebook"> </a></li>
+                                        <li><a href="#" class="fa fa-twitter icon-border twitter"> </a></li>
+                                        <li><a href="#" class="fa fa-google-plus icon-border googleplus"> </a></li>
+                                        <li><a href="#" class="fa fa-rss icon-border rss"> </a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="clearfix"> </div>
+                        </div>
+                        <div class="tab6">
+                            <div class="col-md-6 team-img-w3-agile">
+                            </div>
+                            <div class="col-md-6 team-Info-agileits">
+                                <h4>Cho Kar Hin</h4>
+                                <span>Front-end Developer</span>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis.Lorem ipsum dolor .</p>
+                                <div class="social-bnr-agileits footer-icons-agileinfo">
+                                    <ul class="social-icons3">
+                                        <li><a href="#" class="fa fa-facebook icon-border facebook"> </a></li>
+                                        <li><a href="#" class="fa fa-twitter icon-border twitter"> </a></li>
+                                        <li><a href="#" class="fa fa-google-plus icon-border googleplus"> </a></li>
+                                        <li><a href="#" class="fa fa-rss icon-border rss"> </a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="clearfix"> </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- RESOURCES SECTION -->
         <section class="resources-section" id="resources">
             <div class="container">
                 <h2 class="section-title">Resources</h2>
                 <ul class="resources-list">
                     <li><a href="#guides">Guides and Tips</a></li>
-                    <li><a href="#api">API Documentation</a></li>
+                    <li><a href="#api">Documentation</a></li>
                     <li><a href="#community">Community Forum</a></li>
                     <li><a href="#help">Help Center</a></li>
                 </ul>
@@ -411,7 +737,7 @@
             <div class="footer-col">
                 <h3>Quiz Combat</h3>
                 <p>&copy; 2024 BatttleCombat.com FAQ | Privacy Policy | Terms of Service | RWDD Assignment Quiz Website </p>
-            </div>
+                <!-- </div>
             <div class="footer-col">
                 <h3>Company</h3>
                 <ul>
@@ -427,9 +753,8 @@
                     <li><a href="#forum">Community Forum</a></li>
                     <li><a href="#guides">Guides</a></li>
                 </ul>
+            </div> -->
             </div>
-            
-        </div>
     </footer>
 </body>
 
