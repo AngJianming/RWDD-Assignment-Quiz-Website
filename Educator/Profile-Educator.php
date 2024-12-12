@@ -1,18 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reset Password</title>
-    <link rel="stylesheet" href="confirm_password.css">
+    <title>Profile Educator</title>
 </head>
+
 <body>
-    <!-- Pop-up Container -->
     <div class="popup-container">
         <!-- Header Section -->
         <div class="popup-header">
-        <img src="images/ResetPassword.png" alt="Lock Icon"style="width: 35px; height: auto;"> 
+            <img src="images/ResetPassword.png" alt="Lock Icon" style="width: 35px; height: auto;">
             Reset Password
         </div>
 
@@ -39,4 +38,5 @@
         </div>
     </div>
 </body>
+
 </html>

@@ -1,32 +1,26 @@
 <?php
-session_start();
-$link = mysqli_connect("localhost", "root", "", "rwdd-assignment-quiz-website.sql"); //take care, you should avoid posting sensitive data 
+// Database configuration
+$servername = "localhost"; //host server name
+$username = "your_username"; //replace with MySQL username
+$password = "your_password"; // replace with MySQL password (I'm pretty sure everyone is the same)
+$dbname = "rwdd-assignment-quiz-website"; //database name
 
-if (mysqli_connect_error()) {
-
-    die("There was an error connecting to the database");
+try {
+    // Create a new PDO instance
+    $conn = new PDO("mysql:host=$servername;dbname=$dbname;charset=utf8mb4", $username, $password);
+    
+    // Set PDO error mode to exception for better error handling
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    
+    // Optional: You can set the default fetch mode
+    $conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+    
+    // Connection successful
+    // echo "Connected successfully";
+} catch(PDOException $e) {
+    // If there's a connection error, terminate the script and display the error
+    die("Connection failed: " . $e->getMessage());
 }
-$username = "";
-$LoginEmail = (isset($_POST['LoginEmail']) &&
-    !empty($_POST['LoginEmail'])) ? $_POST['LoginEmail'] : false;
-$LoginPassword = (isset($_POST['LoginPassword']) &&
-    !empty($_POST['LoginPassword'])) ? $_POST['LoginPassword'] : false;
 
-
-$query = "SELECT `Email`,`ID`, `Password` FROM `StudentInfo` WHERE 
-Email='" . $LoginEmail . "' AND Password='" . $LoginPassword . "'";
-$result = mysqli_query($link, $query);
-$count = mysqli_num_rows($result);
-if ($count == 1) {
-    $query = "SELECT `ID` FROM `StudentInfo` WHERE Email='" . $LoginEmail . "' AND Password='" . $LoginPassword . "'";
-    $result = mysqli_query($link, $query);
-    $array = array();
-    while ($row = mysqli_fetch_assoc($result)) {
-        $array[] = $row;
-    }
-    $_SESSION['userid'] = $array['userid']; //instead of saving the complete row, you can save just the variable
-    header("location: StudentInfo.php");
-} else {
-
-    $_SESSION['errMsg'] = "Invalid username or password";
-}
+// You can now use $conn to interact with your database using PDO
+?>

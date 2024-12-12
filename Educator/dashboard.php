@@ -3,100 +3,18 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible=" IE=edge">
+    <meta http-equiv="X-UA-Compatible=" IE="edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Code Combat for Educators</title>
     <link rel="stylesheet" href="dashboard.css">
     <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/11.0.0/css/fabric.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <?php include '../Constants/Combine-admin.php'; ?>
 </head>
 
 <body class="ms-Fabric">
-    <!-- Main Content Container -->
 
-    <div class="sidebar">
-        <div class="logo_content">
-            <div class="logo">
-                <i class="ms-Icon ms-Icon--Code"></i>
-                <div class="logo_name">logo</div>
-            </div>
-            <i class="ms-Icon ms-Icon--CollapseMenu" id="btn"></i>
-        </div>
-        <ul class="nav_list">   
-            <li>
-                <a href="#">
-                    <i class="ms-Icon ms-Icon--WaffleOffice365"></i>
-                    <span class="links_name">Dashboard</span>
-                </a>
-                <span class="tooltip">Dashboard</span>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="ms-Icon ms-Icon--Contact"></i>
-                    <span class="links_name">User</span>
-                </a>
-                <span class="tooltip">User</span>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="ms-Icon ms-Icon--Chat"></i>
-                    <span class="links_name">Chat</span>
-                </a>
-                <span class="tooltip">Chat</span>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="ms-Icon ms-Icon--PieDouble"></i>
-                    <span class="links_name">Analytics</span>
-                </a>
-                <span class="tooltip">Analytics</span>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="ms-Icon ms-Icon--FabricFolder"></i>
-                    <span class="links_name">File Manager</span>
-                </a>
-                <span class="tooltip">File Manager</span>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="ms-Icon ms-Icon--ShoppingCart"></i>
-                    <span class="links_name">Order</span>
-                </a>
-                <span class="tooltip">Order</span>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="ms-Icon ms-Icon--Heart"></i>
-                    <span class="links_name">Saved</span>
-                </a>
-                <span class="tooltip">Saved</span>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="ms-Icon ms-Icon--Settings"></i>
-                    <span class="links_name">Settings</span>
-                </a>
-                <span class="tooltip">Settings</span>
-            </li>
-        </ul>
-        <div class="profile_content">
-            <div class="profile">
-                <div class="profile_details">
-                    <img src="img/WIN_20240717_15_03_12_Pro.jpg" alt="">
-                    <div class="name_job">
-                        <div class="name">Ang Jianming</div>
-                        <div class="job">Full Stack Dev</div>
-                    </div>
-                </div>
-                <i class="ms-Icon ms-Icon--SignOut" id="log_out"></i>
-            </div>
-        </div>
-    </div>
-    <div class="home_content">
-        <!-- Content home principal page -->
-        <div class="text">Home Content</div>
-    </div>
+    
 
     <script>
         let btn = document.querySelector("#btn");

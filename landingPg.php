@@ -2,10 +2,10 @@
 <html lang="en" style="scroll-behavior: smooth;">
 
 <head>
-    <title>Quiz Combat</title>
+    <title>Code Combat</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <meta name="description" content="Battle your friends in knowledge tests with Quiz Combat—a Python-powered quiz showdown." />
+    <meta name="description" content="Battle your friends in knowledge tests with Code Combat—a Python-powered quiz showdown." />
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22></svg>" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -129,6 +129,7 @@
             font-size: 3rem;
             margin-bottom: 1rem;
             font-weight: 700;
+            color: #00FFFF;
         }
 
         .hero-content p {
@@ -180,6 +181,10 @@
             font-size: 1.4rem;
             margin-bottom: 1rem;
             font-weight: 600;
+        }
+
+        .footerCodeCombat {
+            color: #00FFFF;
         }
 
         .feature-card p {
@@ -493,7 +498,7 @@
                         <circle cx="20" cy="20" r="19" stroke="white" stroke-width="2" />
                         <text x="50%" y="50%" fill="white" text-anchor="middle" font-size="10" dy=".3em">QC</text>
                     </svg> -->
-                    <!-- <span class="sr-only">Quiz Combat</span> -->
+                    <!-- <span class="sr-only">Code Combat</span> -->
                 </a>
             </div>
             <nav class="main-nav">
@@ -520,7 +525,7 @@
                 <source src="/vid/Purple Matrix vid.mp4" type="video/mp4" />
             </video>
             <div class="hero-content">
-                <h1>Quiz Combat</h1>
+                <h1>Code Combat</h1>
                 <p>Test your Python knowledge. Defeat your rivals. Become a quiz champion.</p>
                 <div class="hero-cta">
                     <a href="#signup" class="hero-button">Start your challenge</a>
@@ -531,7 +536,7 @@
         <!-- FEATURES SECTION -->
         <section class="features-section" id="features">
             <div class="container">
-                <h2 class="section-title">Why Quiz Combat?</h2>
+                <h2 class="section-title">Why Code Combat?</h2>
                 <div class="features-grid">
                     <div class="feature-card">
                         <h3>Real-time Battles</h3>
@@ -579,37 +584,37 @@
         </section>
 
         <!-- ABOUT US SECTION -->
-        <div class="team" id="team">
+        <div class="team" id="aboutus">
             <div class="container">
                 <h3 class="title-w3-agileits title-black-wthree">Meet Our Team</h3>
                 <div id="horizontalTab">
                     <ul class="resp-tabs-list">
                         <li>
-                            <img src="images/yAng.png" alt="Member1" class="img-responsive" />
+                            <img src="images/yAng.png" alt="Member1" class="img-responsive" href="TM1"/>
                         </li>
                         <li>
-                            <img src="images/yBeh.png" alt="Member2" class="img-responsive" />
+                            <img src="images/yBeh.png" alt="Member2" class="img-responsive" href="TM2"/>
                         </li>
                         <li>
-                            <img src="images/yHJ.png" alt="Member3" class="img-responsive" />
+                            <img src="images/yHJ.png" alt="Member3" class="img-responsive" href="TM3"/>
                         </li>
                         <li>
-                            <img src="images/yCho.png" alt="Member4" class="img-responsive" />
+                            <img src="images/yCho.png" alt="Member4" class="img-responsive" href="TM4"/>
                         </li>
                         <li>
-                            <img src="images/yCho.png" alt="Member5" class="img-responsive" />
+                            <img src="images/yCho.png" alt="Member5" class="img-responsive" href="TM5"/>
                         </li>
                         <li>
-                            <img src="images/yCho.png" alt="Member6" class="img-responsive" />
+                            <img src="images/yCho.png" alt="Member6" class="img-responsive" href="TM6"/>
                         </li>
                     </ul>
                     <div class="resp-tabs-container">
-                        <div class="tab1">
+                        <div class="tab1" id="TM1">
                             <div class="col-md-6 team-img-w3-agile">
                             </div>
                             <div class="col-md-6 team-Info-agileits">
                                 <h4>Ang Jianming</h4>
-                                <span>Leader / Full-stack Developer</span>
+                                <span>Full-stack Developer</span>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis.Lorem ipsum dolor .</p>
                                 <div class="social-bnr-agileits footer-icons-agileinfo">
                                     <ul class="social-icons3">
@@ -622,12 +627,12 @@
                             </div>
                             <div class="clearfix"> </div>
                         </div>
-                        <div class="tab2">
+                        <div class="tab2" id="TM2">
                             <div class="col-md-6 team-img-w3-agile">
                             </div>
                             <div class="col-md-6 team-Info-agileits">
-                                <h4>Beh Hon Sheng</h4>
-                                <span>Designer UIUX</span>
+                                <h4>Elvan Sea Meng Ji</h4>
+                                <span>Leader / Product manager</span>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis.Lorem ipsum dolor .</p>
                                 <div class="social-bnr-agileits footer-icons-agileinfo">
                                     <ul class="social-icons3">
@@ -640,12 +645,12 @@
                             </div>
                             <div class="clearfix"> </div>
                         </div>
-                        <div class="tab3">
+                        <div class="tab3" id="TM3">
                             <div class="col-md-6 team-img-w3-agile">
                             </div>
                             <div class="col-md-6 team-Info-agileits">
-                                <h4>Cheng Hao Jee</h4>
-                                <span>Developer</span>
+                                <h4>Jayden Foo Lok Hin</h4>
+                                <span>Backend Developer</span>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis.Lorem ipsum dolor .</p>
                                 <div class="social-bnr-agileits footer-icons-agileinfo">
                                     <ul class="social-icons3">
@@ -658,12 +663,12 @@
                             </div>
                             <div class="clearfix"> </div>
                         </div>
-                        <div class="tab4">
+                        <div class="tab4" id="TM4">
                             <div class="col-md-6 team-img-w3-agile">
                             </div>
                             <div class="col-md-6 team-Info-agileits">
-                                <h4>Cho Kar Hin</h4>
-                                <span>Front-end Developer</span>
+                                <h4>Kee Genni</h4>
+                                <span>Frontend Developer</span>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis.Lorem ipsum dolor .</p>
                                 <div class="social-bnr-agileits footer-icons-agileinfo">
                                     <ul class="social-icons3">
@@ -676,12 +681,12 @@
                             </div>
                             <div class="clearfix"> </div>
                         </div>
-                        <div class="tab5">
+                        <div class="tab5" id="TM5">
                             <div class="col-md-6 team-img-w3-agile">
                             </div>
                             <div class="col-md-6 team-Info-agileits">
-                                <h4>Cho Kar Hin</h4>
-                                <span>Front-end Developer</span>
+                                <h4>Lai Xiao Chun (Aurora)</h4>
+                                <span>UIUX Designer</span>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis.Lorem ipsum dolor .</p>
                                 <div class="social-bnr-agileits footer-icons-agileinfo">
                                     <ul class="social-icons3">
@@ -694,12 +699,12 @@
                             </div>
                             <div class="clearfix"> </div>
                         </div>
-                        <div class="tab6">
+                        <div class="tab6" id="TM6">
                             <div class="col-md-6 team-img-w3-agile">
                             </div>
                             <div class="col-md-6 team-Info-agileits">
-                                <h4>Cho Kar Hin</h4>
-                                <span>Front-end Developer</span>
+                                <h4>Yip Zhi Heng</h4>
+                                <span>Backend Developer</span>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis.Lorem ipsum dolor .</p>
                                 <div class="social-bnr-agileits footer-icons-agileinfo">
                                     <ul class="social-icons3">
@@ -735,7 +740,7 @@
     <footer class="site-footer">
         <div class="container footer-content">
             <div class="footer-col">
-                <h3>Quiz Combat</h3>
+                <h3 class="footerCodeCombat">Code Combat</h3>
                 <p>&copy; 2024 BatttleCombat.com FAQ | Privacy Policy | Terms of Service | RWDD Assignment Quiz Website </p>
                 <!-- </div>
             <div class="footer-col">
