@@ -608,10 +608,6 @@
             <div class="logo">
                 <img src="../img/Code-Combat (trans) logo.png" alt="Logo" />
             </div>
-            <!-- <div class="search-signup">
-                <button class="sign-in">Sign in</button>
-                <button class="sign-up">Sign up</button>
-            </div> -->
         </div>
     </header>   
 
@@ -623,7 +619,7 @@
         </div>
         <ul class="nav_list">
             <li>
-                <a href="dashboard.php">
+                <a href="#">
                     <i class="ms-Icon ms-Icon--WaffleOffice365"></i>
                     <span class="links_name">Dashboard</span>
                 </a>
@@ -651,7 +647,7 @@
                 <span class="tooltip">Manage Educator</span>
             </li>
             <li>
-                <a href="FilesPg.php">
+                <a href="#">
                     <i class="ms-Icon ms-Icon--FabricFolder"></i>
                     <span class="links_name">Files</span>
                 </a>
@@ -664,13 +660,6 @@
                 </a>
                 <span class="tooltip">Add Quiz</span>
             </li>
-            <!-- <li>
-                <a href="#">
-                    <i class="ms-Icon ms-Icon--Settings"></i>
-                    <span class="links_name">Settings</span>
-                </a>
-                <span class="tooltip">Settings</span>
-            </li> -->
         </ul>
         <div class="profile_content">
             <div class="profile">
@@ -692,8 +681,7 @@
         </div>
     </footer>
     <div class="home_content">
-        <!-- Main content goes here -->
-
+        <!-- main content -->
     </div>
 
     <script>

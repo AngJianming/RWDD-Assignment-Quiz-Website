@@ -623,7 +623,7 @@
         </div>
         <ul class="nav_list">
             <li>
-                <a href="#">
+                <a href="/Admin/dashboard.php">
                     <i class="ms-Icon ms-Icon--WaffleOffice365"></i>
                     <span class="links_name">Dashboard</span>
                 </a>
@@ -651,7 +651,7 @@
                 <span class="tooltip">Manage Educator</span>
             </li>
             <li>
-                <a href="#">
+                <a href="FilesPg.php">
                     <i class="ms-Icon ms-Icon--FabricFolder"></i>
                     <span class="links_name">Files</span>
                 </a>
