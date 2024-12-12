@@ -51,10 +51,10 @@
     window.addEventListener('resize', resizeCanvas);
 
     // Characters for matrix rain
-    const characters = 'アィイゥウェエォオカガキギクグケゲコゴサザシジスズセゼソゾタダチヂツヅテデトドナニヌネノハバパヒビピフブプヘベペホボポマミムメモヤユヨラリルレロワヲンABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    const characters = '0    1    2    3    4    5    6    7    8    9';
     const charArray = characters.split('');
 
-    const fontSize = 24; // Larger font size for more prominence
+    const fontSize = 30; // Larger font size for more prominence
     const columns = Math.floor(canvas.width / fontSize);
     const drops = [];
 
