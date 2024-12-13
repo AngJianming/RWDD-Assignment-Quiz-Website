@@ -39,7 +39,7 @@
         }
 
         header {
-            background-color: #221c36;
+            background-color: #020104;
             color: white;
             width: 100%;
             top: 0;
@@ -129,7 +129,7 @@
             height: 100%;
             width: 80px;
             /* Adjusted width */
-            background: #221c36;
+            background: #020104;
             padding: 12px 10px;
             transition: all 0.5s ease;
             display: flex;
@@ -416,7 +416,7 @@
 
         /* Footer */
         footer {
-            background-color: #221c36;
+            background-color: #020104;
             color: white;
             padding: 32px 0;
             position: fixed;

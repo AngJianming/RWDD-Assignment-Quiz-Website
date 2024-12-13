@@ -44,7 +44,7 @@
             top:0;
             left:0;
             width: 100%;
-            background-color: #221c36;
+            background-color: #020104;
             color: white;
             width: 100%;
             top: 0;
@@ -135,7 +135,7 @@
             height: 100%;
             width: 80px;
             /* Adjusted width */
-            background: #221c36;
+            background: #020104;
             padding: 12px 10px;
             transition: all 0.5s ease;
             display: flex;
@@ -411,7 +411,7 @@
 
         /* Footer */
         footer {
-            background-color: #221c36;
+            background-color: #020104;
             color: white;
             padding: 32px 0;
             position: fixed;
@@ -623,7 +623,7 @@
         </div>
         <ul class="nav_list">
             <li>
-                <a href="#">
+                <a href="dashboard.php">
                     <i class="ms-Icon ms-Icon--WaffleOffice365"></i>
                     <span class="links_name">Dashboard</span>
                 </a>
@@ -651,7 +651,7 @@
                 <span class="tooltip">Manage Educator</span>
             </li>
             <li>
-                <a href="#">
+                <a href="FilesPg.php">
                     <i class="ms-Icon ms-Icon--FabricFolder"></i>
                     <span class="links_name">Files</span>
                 </a>
