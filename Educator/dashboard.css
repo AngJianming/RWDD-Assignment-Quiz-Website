@@ -141,6 +141,7 @@ body {
     max-width: 300px;
     text-align: center;
     margin: 10px;
+    background: radial-gradient(circle, #333, #02010410);
 }
 
 .feature img {

@@ -5,26 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View Student Performance</title>
     <!-- Include Combine-admin if needed -->
-    <?php include 'Combine-admin.php'; ?>
+    <?php include '../Constants/Combine-admin.php'; ?>
     <style>
         html, body {
-            margin: 0;
-            padding: 0;
             overflow: auto;
             font-family: 'Inter', sans-serif;
-            background: #000; /* Dark background */
             color: #fff;
         }
 
-        body {
-            padding-top: 100px;
+        #stuPerformanceTable {
             margin-bottom: 100px;
+        }
+
+        body {
             display: flex;
             flex-direction: column;
             align-items: center;
         }
 
         h1 {
+            padding-top: 70px;
             text-align: center;
             margin-bottom: 20px;
             font-weight: 600;

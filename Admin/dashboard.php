@@ -20,7 +20,7 @@
 
         h1 {
             color: #fff;
-            margin-top: 100px;
+            margin-top: 30px;
             margin-bottom: 40px;
             text-align: center;
             font-size: 32px;
@@ -33,6 +33,8 @@
             align-items: center;
             min-height: 100vh;
             width: 100%;
+            padding: 20px; /* Added padding for better spacing */
+            box-sizing: border-box; /* Ensure padding doesn't affect total width */
         }
 
         .dashboard-row {
@@ -53,6 +55,7 @@
             flex-direction: column;
             justify-content: center;
             transition: background 0.3s ease;
+            box-sizing: border-box; /* Ensure padding doesn't affect total size */
         }
 
         .dashboard-box:hover {
@@ -112,26 +115,70 @@
             border-radius: 6px;
             padding: 20px;
             margin-bottom: 20px;
+            position: relative;
+            background-color: #1a1a1a; /* Enhance contrast */
         }
 
-        .chart-container h2 {
-            color: #fff;
-            font-size: 1.2rem;
-            font-weight: 500;
-            margin-bottom: 15px;
-        }
-
-        .chart-placeholder {
+        /* Bar Chart Styles */
+        .bar-chart {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-around;
             width: 100%;
-            height: 250px;
+            height: 250px; /* Adjust height as needed */
             background: #222;
             border-radius: 6px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #555;
-            font-size: 1rem;
-            font-style: italic;
+            padding: 20px;
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        /* Individual Bar Styles */
+        .bar {
+            width: 40px;
+            background-color: #b027f4; /* Neon purple accent */
+            border-radius: 4px 4px 0 0;
+            position: relative;
+            transition: height 1s ease-out, background-color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .bar:hover {
+            background-color: #d047ff; /* Lighter purple on hover */
+        }
+
+        /* Bar Labels */
+        .bar-label {
+            position: absolute;
+            bottom: -20px;
+            width: 100%;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+
+        /* Bar Values */
+        .bar-value {
+            position: absolute;
+            top: -25px;
+            width: 100%;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #fff;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .bar:hover .bar-value {
+            opacity: 1;
+        }
+
+        /* Chart Note Styling */
+        .chart-note {
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: #ccc;
+            text-align: center;
         }
 
         /* Recent Activity or Additional Info */
@@ -181,6 +228,24 @@
 
             .dashboard-big {
                 width: 90%;
+                margin-left: 40px;
+            }
+
+            .bar-chart {
+                height: 200px;
+                padding: 15px;
+            }
+
+            .bar {
+                width: 30px;
+            }
+
+            .bar-label {
+                font-size: 0.8rem;
+            }
+
+            .bar-value {
+                font-size: 0.8rem;
             }
         }
     </style>
@@ -205,12 +270,15 @@
             </div>
         </div>
 
-        <!-- Big box: Could hold a chart and recent activity -->
+        <!-- Big box: Holds the chart and recent activity -->
         <div class="dashboard-box dashboard-big">
             <div class="chart-container">
                 <h2>Player Performance Trend</h2>
-                <div class="chart-placeholder">Chart Placeholder</div>
-                <p style="margin-top:10px;font-size:0.9rem;color:#ccc;text-align:center;">
+                <!-- Bar Chart Container -->
+                <div class="bar-chart" id="barChart">
+                    <!-- Bars will be dynamically inserted here via JavaScript -->
+                </div>
+                <p class="chart-note">
                     *Data represents average quiz completion rates over the past weeks.
                 </p>
             </div>
@@ -225,6 +293,70 @@
             </div>
         </div>
     </div>
+
+    <!-- Initialize the Vanilla Bar Chart -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Define demo data
+            const chartData = {
+                labels: ['Week1', 'Week2', 'Week3', 'Week4', 'Week5', 'Week6'],
+                values: [75, 68, 80, 85, 90, 78] // Random demo data (percentages)
+            };
+
+            // Reference to the bar chart container
+            const barChartContainer = document.getElementById('barChart');
+
+            // Determine the maximum value for scaling
+            const maxValue = Math.max(...chartData.values);
+
+            // Function to create a single bar
+            function createBar(label, value) {
+                // Create bar element
+                const bar = document.createElement('div');
+                bar.classList.add('bar');
+
+                // Set initial height to 0 for animation
+                bar.style.height = '0%';
+
+                // Create bar label
+                const barLabel = document.createElement('div');
+                barLabel.classList.add('bar-label');
+                barLabel.textContent = label;
+
+                // Create bar value tooltip
+                const barValue = document.createElement('div');
+                barValue.classList.add('bar-value');
+                barValue.textContent = `${value}%`;
+
+                // Append label and value to bar
+                bar.appendChild(barValue);
+                bar.appendChild(barLabel);
+
+                return { bar, value };
+            }
+
+            // Array to hold bar elements and their target heights
+            const bars = [];
+
+            // Create bars based on chart data
+            chartData.labels.forEach((label, index) => {
+                const { bar, value } = createBar(label, chartData.values[index]);
+                barChartContainer.appendChild(bar);
+                bars.push({ bar, value });
+            });
+
+            // Animate bars after a short delay to ensure rendering
+            setTimeout(() => {
+                bars.forEach(({ bar, value }) => {
+                    // Calculate height percentage based on max value
+                    const heightPercent = (value / maxValue) * 100;
+                    bar.style.height = `${heightPercent}%`;
+                });
+            }, 100); // 100ms delay
+
+            // Optional: Add dynamic updates or interactivity as needed
+        });
+    </script>
 </body>
 
 </html>

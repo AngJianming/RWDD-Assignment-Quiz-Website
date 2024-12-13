@@ -1,14 +1,11 @@
 html,
 body {
-    margin: 0;
-    padding: 0;
-    overflow: auto;
+    overflow: scroll;
     font-family: 'Inter', sans-serif;
     color: #fff;
 }
 
 body {
-    padding-top: 100px;
     margin-bottom: 100px;
     display: flex;
     flex-direction: column;
@@ -16,7 +13,7 @@ body {
 
 h1 {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
     font-weight: 600;
     color: #fff;
     font-size: 32px;

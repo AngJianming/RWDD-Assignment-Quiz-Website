@@ -400,7 +400,7 @@
             background-color: #2d0d3f;
             color: white;
             padding: 32px 0;
-            position: fixed;
+            position: absolute;
             bottom: 0;
             width: 100%;
         }
