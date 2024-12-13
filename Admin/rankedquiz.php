@@ -10,7 +10,7 @@
 </head>
 <body>
     <div class="container">
-        <h1 class="page-title">Quizzes</h1>
+        <h1 class="page-title">Ranked Quizzes</h1>
         <div class="content">
             <div class="levels" id="levels-container">
                 <!-- Existing levels will be loaded here -->

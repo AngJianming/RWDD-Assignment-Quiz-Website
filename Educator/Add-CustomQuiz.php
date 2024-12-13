@@ -1,25 +1,17 @@
-<?php
-// Capture the 'level' parameter from the URL
-$level = isset($_GET['level']) ? htmlspecialchars($_GET['level']) : 'Level';
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Ranked Levels</title>
-    <link rel="stylesheet" href="addranked.css">
-    <!-- <?php //include '../Constants/Combine-admin.php'; 
-            ?> -->
-    <?php include '../Constants/Combine-admin.php'; ?>
+    <title>Add New Quiz</title>
+    <link rel="stylesheet" href="Add-CustomQuiz.css">
+    <script src="Add-CustomQuiz.js" defer></script>
+    <?php include '../Constants/Combine-educator.php' ?>
 </head>
 
 <body>
     <div class="container">
-        <h1>Create a Ranked Quiz Level</h1>
+        <h1>Create a New Quiz</h1>
 
         <?php if (!empty($error)): ?>
             <div class="alert error"><?php echo htmlspecialchars($error); ?></div>
@@ -29,7 +21,7 @@ $level = isset($_GET['level']) ? htmlspecialchars($_GET['level']) : 'Level';
             <div class="alert success"><?php echo htmlspecialchars($success); ?></div>
         <?php endif; ?>
 
-        <form action="addranked.php" method="POST" id="quizForm">
+        <form action="add_quiz.php" method="POST" id="quizForm">
             <div class="form-group">
                 <label for="quiz_name">Quiz Name:</label>
                 <input type="text" id="quiz_name" name="quiz_name" required value="<?php echo isset($_POST['quiz_name']) ? htmlspecialchars($_POST['quiz_name']) : ''; ?>">
@@ -147,31 +139,6 @@ $level = isset($_GET['level']) ? htmlspecialchars($_GET['level']) : 'Level';
             </div>
         </form>
     </div>
-    <script>
-        document.getElementById('return-btn').addEventListener('click', function() {
-            event.preventDefault();
-            const userConfirmed = confirm('Are you sure you want to return without saving the details?');
-            if (userConfirmed) {
-                window.location.href = 'rankedquiz.php';
-            }
-        });
-
-        document.getElementById('save-btn').addEventListener('click', function(event) {
-            event.preventDefault(); // Prevent the form's default submission behavior
-
-            const userConfirmed = confirm('Are you sure you want to save the details?');
-            if (userConfirmed) {
-                const level = '<?php echo $level; ?>';
-                window.location.href = 'editquizsuccessful.php?level=' + encodeURIComponent(level);
-            }
-        });
-    </script>
 </body>
 
 </html>
-<!-- <?php
-        if ($level) {
-            header("Location: editquizsuccessful.php?level=" . urlencode($level));
-            exit();
-        }
-        ?> -->

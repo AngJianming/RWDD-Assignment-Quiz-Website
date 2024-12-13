@@ -41,8 +41,10 @@
         header {
             background-color: #020104;
             color: white;
+            position: relative;
             width: 100%;
             top: 0;
+            z-index: 100;
         }
 
         .header-container {
@@ -418,8 +420,8 @@
         footer {
             background-color: #020104;
             color: white;
-            padding: 32px 0;
-            position: fixed;
+            padding: 2rem 0;
+            position: absolute;
             bottom: 0;
             width: 100%;
         }
@@ -628,25 +630,25 @@
         </div>
         <ul class="nav_list">
             <li>
-                <a href="#">
+                <a href="/Educator/dashboard.php">
                     <i class="ms-Icon ms-Icon--WaffleOffice365"></i>
                     <span class="links_name">Dashboard</span>
                 </a>
                 <span class="tooltip">Dashboard</span>
             </li>
             <li>
-                <a href="#">
-                    <i class="ms-Icon ms-Icon--Contact"></i>
-                    <span class="links_name">User Board</span>
+                <a href="/Educator/">
+                    <i class="fa fa-tasks"></i>
+                    <span class="links_name">Progress</span>
                 </a>
-                <span class="tooltip">User Board</span>
+                <span class="tooltip">Progress</span>
             </li>
             <li>
                 <a href="#">
-                    <i class="ms-Icon ms-Icon--PieDouble"></i>
-                    <span class="links_name">Analytics</span>
+                    <i class="fa fa-books"></i>
+                    <span class="links_name">My Library</span>
                 </a>
-                <span class="tooltip">Analytics</span>
+                <span class="tooltip">My Library</span>
             </li>
             <li>
                 <a href="#">

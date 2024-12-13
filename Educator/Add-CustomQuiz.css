@@ -18,15 +18,6 @@ body {
     padding: 0;
 }
 
-/* Header */
-header {
-    color: white;
-    position: relative;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-}
-
 .container {
     max-width: 800px;
     margin: 40px auto 80px;
@@ -41,11 +32,6 @@ h1 {
     margin-bottom: 20px;
     color: #bb86fc;
     font-size: 2rem;
-}
-
-h2 {
-    margin-bottom: 10px;
-    color: white;
 }
 
 .form-group {
@@ -139,14 +125,6 @@ hr {
     height: 1px;
     background-color: #333333;
     margin-top: 20px;
-}
-
-footer {
-    color: white;
-    position: absolute;
-    padding: 2em 0;
-    bottom: 0;
-    width: 100%;
 }
 
 textarea {

@@ -40,7 +40,7 @@
         }
 
         header {
-            position: fixed;
+            position: relative;
             top:0;
             left:0;
             width: 100%;
@@ -414,7 +414,7 @@
             background-color: #020104;
             color: white;
             padding: 32px 0;
-            position: fixed;
+            position: absolute;
             bottom: 0;
             width: 100%;
         }
@@ -637,18 +637,18 @@
                 <span class="tooltip">Manage User</span>
             </li>
             <li>
-                <a href="userperformance.php">
-                    <i class="ms-Icon ms-Icon--PieDouble"></i>
-                    <span class="links_name">Performance</span>
-                </a>
-                <span class="tooltip">Performance</span>
-            </li>
-            <li>
                 <a href="eduaccount.php">
                     <i class="ms-Icon ms-Icon--Chat"></i>
                     <span class="links_name">Manage Educator</span>
                 </a>
                 <span class="tooltip">Manage Educator</span>
+            </li>
+            <li>
+                <a href="userperformance.php">
+                    <i class="ms-Icon ms-Icon--PieDouble"></i>
+                    <span class="links_name">Performance</span>
+                </a>
+                <span class="tooltip">Performance</span>
             </li>
             <li>
                 <a href="FilesPg.php">
