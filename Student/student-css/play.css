@@ -1,0 +1,587 @@
+/* =========================================================
+        Minimalist Black-Themed CSS for Library Page
+   ========================================================= */
+
+/* =========================================================
+            CSS Variables for Consistent Theming
+   ========================================================= */
+   :root {
+    /* Background Colors */
+    --background-color: #121212;
+    --container-bg: #1e1e1e;
+    --card-bg: #1e1e1e;
+    --text-color: #ffffff;
+    --secondary-text: #cccccc;
+    --accent-color: #f424ff;
+    /* Accent for buttons and highlights */
+
+    /* Border and Divider Colors */
+    --border-color: #333333;
+    --divider-color: #444444;
+
+    /* Input Colors */
+    --input-bg: #2c2c2c;
+    --input-border: #444444;
+    --input-text: #ffffff;
+
+    /* Button Colors */
+    --button-bg: var(--accent-color);
+    --button-hover-bg: #f424ff;
+    --view-button-bg: #333333;
+    --view-button-hover-bg: #444444;
+
+    /* Additional Colors from User's CSS */
+    --primary: #ec994b;
+    --white: #ffffff;
+    --bg: #f5f5f5;
+}
+
+/* =========================================================
+            General Reset and Basic Styles
+   ========================================================= */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style-type: none;
+    text-decoration: none;
+}
+
+html {
+    font-size: 62.5%; /* 1rem = 10px */
+    font-family: "Montserrat", sans-serif;
+    scroll-behavior: smooth;
+}
+
+/* Body styles */
+body {
+    font-size: 1.6rem; /* Default font size */
+    background: var(--background-color);
+    margin: 0;
+    padding: 0;
+    /* Center content vertically */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensure full viewport height */
+}
+
+/* =========================================================
+            Container for the Library Page
+   ========================================================= */
+.library-container {
+    position: relative; /* Changed from fixed to relative for better responsiveness */
+    max-width: 900px;
+    /* Center horizontally with top margin */
+    background-color: var(--container-bg);
+    padding: 30px;
+    margin: 50px auto; /* Added margin for spacing from top */
+    width: 90%;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); 
+}
+
+/* =========================================================
+            Header Section
+   ========================================================= */
+.library-header {
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 30px;
+    color: var(--text-color);
+    text-align: center;
+}
+
+/* =========================================================
+                Search Bar
+   ========================================================= */
+.search-bar {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.search-bar img {
+    position: absolute;
+    left: 15px;
+    width: 25px;
+    height: 25px;
+    filter: brightness(0) invert(1);
+    /* Invert icon color for visibility */
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 10px 10px 10px 45px;
+    border-radius: 25px;
+    border: 1px solid var(--input-border);
+    background-color: var(--input-bg);
+    color: var(--input-text);
+    outline: none;
+    font-size: 1em;
+    transition: border-color 0.3s;
+}
+
+.search-bar input::placeholder {
+    color: var(--secondary-text);
+}
+
+.search-bar input:focus {
+    border-color: var(--accent-color);
+}
+
+/* =========================================================
+            Quiz List Items
+   ========================================================= */
+.quiz-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    margin-bottom: 15px;
+    background-color: var(--card-bg);
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.quiz-item:hover {
+    background-color: #2a2a2a;
+    border-color: var(--accent-color);
+}
+
+.quiz-info {
+    flex-grow: 1;
+}
+
+.quiz-title {
+    font-weight: bold;
+    font-size: 1.2em;
+    color: var(--text-color);
+}
+
+.quiz-meta {
+    font-size: 0.9em;
+    color: var(--secondary-text);
+    margin-top: 5px;
+}
+
+.view-button {
+    padding: 8px 20px;
+    font-size: 0.9em;
+    border: none;
+    border-radius: 15px;
+    background-color: var(--view-button-bg);
+    color: var(--text-color);
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+}
+
+.view-button:hover {
+    background-color: white;
+    color: var(--card-bg);
+    box-shadow: 0 0 15px #f424ff, 0 0 45px #f424ff, 0 0 60px #f424ff, 0 0 80px #f424ff;
+}
+
+/* =========================================================
+            Modal Styling
+   ========================================================= */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.5); /* Black w/ opacity */
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.3s;
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: var(--container-bg); /* Consistent with container-bg */
+    margin: auto;
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 600px;
+    position: relative;
+    animation: slideIn 0.3s;
+    color: var(--text-color);
+}
+
+/* Close Button */
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+    transition: color 0.3s, transform 0.2s;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: #ffffff;
+    transform: scale(1.2);
+}
+
+/* User List Styling */
+.user-list {
+    margin-top: 20px;
+}
+
+.user-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.user-item img {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    margin-right: 15px;
+}
+
+.user-name {
+    font-size: 16px;
+    color: var(--text-color);
+}
+
+/* =========================================================
+            Animations
+   ========================================================= */
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes slideIn {
+    from {transform: translateY(-50px); opacity: 0;}
+    to {transform: translateY(0); opacity: 1;}
+}
+
+/* =========================================================
+            Responsive Design
+   ========================================================= */
+@media (max-width: 915px) {
+    .library-container {
+        padding: 20px;
+    }
+
+    .library-header {
+        font-size: 1.8em;
+    }
+
+    .quiz-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .view-button {
+        margin-top: 10px;
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media (max-width: 600px) {
+    .modal-content {
+        width: 95%;
+    }
+
+    .user-item img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .user-name {
+        font-size: 14px;
+    }
+
+    .quiz-title {
+        font-size: 1em;
+    }
+
+    .quiz-meta {
+        font-size: 0.8em;
+    }
+
+    .view-button {
+        padding: 6px 15px;
+        font-size: 0.8em;
+    }
+
+    /* Additional responsive styles from user-provided CSS */
+    /* Ensure that the slider content doesn't overlap with the arrows on small screens */
+    .tranding-slider-control .swiper-button-prev,
+    .tranding-slider-control .swiper-button-next {
+        width: 3rem;
+        height: 3rem;
+    }
+
+    /* Adjust arrow icon sizes */
+    .tranding-slider-control .swiper-button-prev ion-icon,
+    .tranding-slider-control .swiper-button-next ion-icon {
+        font-size: 1.6rem;
+    }
+
+    /* Reduce margin on arrows */
+    .tranding-slider-control .swiper-button-prev {
+        margin-left: 0.5rem;
+    }
+    .tranding-slider-control .swiper-button-next {
+        margin-right: 0.5rem;
+    }
+
+    /* Adjust heading font sizes on mobile */
+    .section-heading {
+        font-size: 2.5rem;
+    }
+}
+
+/* =========================================================
+            Tranding Section Styles (from user-provided CSS)
+   ========================================================= */
+#tranding {
+    /* Center content vertically and horizontally */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+#tranding .tranding-slider {
+    width: 100%;
+    position: relative;
+    padding: 2rem 0;
+}
+
+/* Center the slides */
+.swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Slide styles */
+.tranding-slide {
+    position: relative;
+    width: 100%;
+    max-width: 40rem; /* Similar size as original */
+    /* Adjust height to maintain aspect ratio */
+    aspect-ratio: 1/1.2; /* Approximate ratio */
+}
+
+/* Image styles */
+.tranding-slide .tranding-slide-img img {
+    width: 35rem;
+    height: 40rem;
+    border-radius: 2rem;
+    object-fit: cover;
+}
+
+/* Responsive adjustments */
+@media (max-width: 500px) {
+    .tranding-slide {
+        max-width: 28rem; /* Smaller on mobile */
+    }
+}
+
+/* Slider controls (navigation arrows and pagination dots) */
+.tranding-slider-control {
+    position: absolute; /* Position relative to the slider */
+    top: 0;
+    left: 10%;
+    width: 80%;
+    height: 100%;
+    /* Use flexbox to position arrows and pagination */
+    display: flex;
+    justify-content: space-around; /* Space arrows evenly */
+    align-items: center; /* Vertically center arrows */
+    pointer-events: none; /* Allow clicks to pass through */
+}
+
+/* Navigation arrows */
+.tranding-slider-control .swiper-button-prev,
+.tranding-slider-control .swiper-button-next {
+    background: var(--white);
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    filter: drop-shadow(0px 8px 24px rgba(18, 28, 53, 0.1));
+    pointer-events: all; /* Enable clicks on arrows */
+    z-index: 10; /* Ensure arrows are above the slider content */
+}
+
+/* Left arrow positioned on the left side */
+.tranding-slider-control .swiper-button-prev {
+    margin-left: 1rem;
+}
+
+/* Right arrow positioned on the right side */
+.tranding-slider-control .swiper-button-next {
+    margin-right: 1rem;
+}
+
+/* Arrow icons */
+.tranding-slider-control .swiper-button-prev ion-icon,
+.tranding-slider-control .swiper-button-next ion-icon {
+    font-size: 2rem;
+    color: #222224;
+}
+
+/* Remove default arrow styles */
+.tranding-slider-control .swiper-button-prev::after,
+.tranding-slider-control .swiper-button-next::after {
+    display: none;
+}
+
+/* Pagination dots centered at the bottom */
+.tranding-slider-control .swiper-pagination {
+    position: absolute;
+    bottom: 36rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center the pagination dots */
+    pointer-events: all; /* Enable clicks on pagination dots */
+}
+
+/* Pagination bullet styles */
+.tranding-slider-control .swiper-pagination .swiper-pagination-bullet {
+    width: 1rem;
+    height: 1rem;
+    background: #ccc;
+    opacity: 1;
+    margin: 0 0.3rem;
+    border-radius: 50%;
+    filter: drop-shadow(0px 8px 24px rgba(18, 28, 53, 0.1));
+}
+
+/* Active pagination bullet */
+.tranding-slider-control .swiper-pagination .swiper-pagination-bullet-active {
+    background: var(--primary);
+}
+
+/* Hide default shadows on slides */
+.swiper-slide-shadow-left,
+.swiper-slide-shadow-right {
+    display: none;
+}
+
+/* Adjust heading positions */
+#tranding .container {
+    /* Override the container styling within #tranding */
+    width: 100%;
+    text-align: center;
+}
+
+/* Adjust the headings to be above the slider */
+#tranding h3.section-subheading,
+#tranding h1.section-heading {
+    margin-bottom: 2rem;
+    color: navajowhite;
+    pointer-events: all;
+}
+
+/* got problem with cursor fix it later */
+.btn {
+    width: 100px;
+    height: 40px;
+    color: #ccc;
+    pointer-events: all;
+}
+
+/* Ensure that the slider content doesn't overlap with the arrows on small screens */
+@media (max-width: 768px) {
+    /* Adjust arrow sizes on mobile */
+    .tranding-slider-control .swiper-button-prev,
+    .tranding-slider-control .swiper-button-next {
+        width: 3rem;
+        height: 3rem;
+    }
+
+    /* Adjust arrow icon sizes */
+    .tranding-slider-control .swiper-button-prev ion-icon,
+    .tranding-slider-control .swiper-button-next ion-icon {
+        font-size: 1.6rem;
+    }
+
+    /* Reduce margin on arrows */
+    .tranding-slider-control .swiper-button-prev {
+        margin-left: 0.5rem;
+    }
+    .tranding-slider-control .swiper-button-next {
+        margin-right: 0.5rem;
+    }
+
+    /* Adjust heading font sizes on mobile */
+    .section-heading {
+        font-size: 2.5rem;
+    }
+}
+
+/* =========================================================
+        Interactive Elements Enhancements
+   ========================================================= */
+
+/* Hover effect for view buttons */
+.view-button {
+    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+}
+
+/* Cursor pointer for quiz items */
+.quiz-item {
+    cursor: pointer;
+}
+
+/* Hover effect for quiz items */
+.quiz-item:hover {
+    background-color: #2a2a2a;
+    border-color: var(--accent-color);
+}
+
+/* Hover effect for close button */
+.close-btn:hover {
+    color: #ffffff;
+    transform: scale(1.2);
+    transition: color 0.3s, transform 0.2s;
+}
+
+/* =========================================================
+        Highlighted Text in Search
+   ========================================================= */
+.highlight {
+    background-color: var(--accent-color);
+    color: var(--card-bg);
+    border-radius: 3px;
+}
+
+/* =========================================================
+        Responsive Design for Search Highlight
+   ========================================================= */
+@media (max-width: 600px) {
+    .share-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .copied-message {
+        margin-left: 0;
+        margin-top: 5px;
+    }
+}
