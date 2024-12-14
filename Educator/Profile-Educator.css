@@ -1,101 +1,289 @@
-
-/* General Reset and Basic Styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* variables */
+:root {
+    --background-color: #121212;
+    --container-bg: #1e1e1e;
+    --text-color: #ffffff;
+    --secondary-text: #bbb;
+    --primary-color: #f712ff;
+    --button-bg: #4CAF50;
+    --button-hover-bg: #45a049;
+    --input-bg: #2c2c2c;
+    --input-border: #444;
+    --error-color: #ff4d4d;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
+[data-theme="light"] {
+    --background-color: #f0f0f0;
+    --container-bg: #ffffff;
+    --text-color: #000000;
+    --secondary-text: #555;
+    --primary-color: #f712ff;
+    --button-bg: #4CAF50;
+    --button-hover-bg: #45a049;
+    --input-bg: #ffffff;
+    --input-border: #ccc;
+    --error-color: #ff4d4d;
+}
+
+/* Global Styles */
+* {
+    box-sizing: border-box;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+.profile-body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: background-color 0.3s, color 0.3s;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+}
+
+.home_ct {
+    margin-top: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Container */
+.profile-container {
+    background-color: var(--container-bg);
+    padding: 30px 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    width: 500px;
+    max-width: 90%;
+    display: grid;
+    grid-template-rows: auto 1fr auto;  
+    gap: 20px;
+}
+
+/* Header */
+.profile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.profile-header h2 {
     margin: 0;
+    font-size: 24px;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 5px;
+    color: #bbb;
 }
 
-/* Pop-up Container */
-.popup-container {
-    width: 450px;
-    background-color: #e7e7e7;
-    padding: 25px 30px;
-    border-radius: 15px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    position: relative;
-}
-
-/* Header Section */
-.popup-header {
-    display: flex;
-    align-items: center;
-    font-size: 1.5em;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
-.popup-header img {
-    width: 24px;
-    height: 24px;
-    margin-right: 10px;
-}
-
-/* Divider Line */
-.divider {
-    height: 1px;
-    background-color: #ccc;
-    margin: 10px 0;
-}
-
-/* Instruction Text */
-.instruction-text {
-    font-size: 1em;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-/* Input Field */
-.input-field-container {
-    display: flex;
-    align-items: center;
-    border: 1px solid #ddd;
-    border-radius: 15px;
-    padding: 5px 10px;
-    background-color: #fff;
-    margin-bottom: 15px;
-}
-
-.input-field {
+/* Theme Toggle */
+.theme-toggle {
+    cursor: pointer;
+    font-size: 18px;
+    background: none;
     border: none;
+    color: var(--text-color);
+    transition: color 0.3s;
+}
+
+.theme-toggle:focus {
     outline: none;
-    flex-grow: 1;
+}
+
+/* Profile Picture */
+.profile-picture {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid var(--primary-color);
+}
+
+.profile-picture img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-picture input[type="file"] {
+    display: none;
+}
+
+.profile-picture label {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+/* Profile Form */
+.profile-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.profile-form .form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-form label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: var(--secondary-text);
+}
+
+.profile-form input {
+    padding: 10px;
+    border: 1px solid var(--input-border);
+    border-radius: 5px;
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    transition: border-color 0.3s;
+}
+
+.profile-form input:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+/* Buttons */
+.btn {
+    padding: 10px 15px;
+    background-color: var(--button-bg);
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 16px;
+}
+
+.btn:hover {
+    background-color: var(--button-hover-bg);
+}
+
+.btn:focus {
+    outline: none;
+}
+
+/* Logout Button */
+.logout-btn {
+    background-color: #ff4d4d;
+}
+
+.logout-btn:hover {
+    background-color: #ff1a1a;
+}
+
+/* Error Message */
+.error {
+    color: var(--error-color);
+    font-size: 14px;
+}
+
+/* Footer */
+.profile-footer {
+    text-align: center;
+    font-size: 14px;
+    color: var(--secondary-text);
+}
+
+#btn {
+    margin: 0;
+    cursor: pointer;
+}
+
+#log_out {
+    margin: 0;
+    cursor: pointer;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     padding: 8px;
 }
 
-.eye-icon {
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
+.logo {
+    max-width: 96px;
+    max-height: 96px;
+    margin: 0 auto;
 }
 
-/* Button Container */
-.button-container {
+nav ul {
     display: flex;
-    justify-content: space-around;
-    margin-top: 20px;
+    list-style: none;
+    gap: 24px;
 }
 
-.button {
-    padding: 8px 20px;
-    font-size: 0.9em;
-    border: 1px solid #333;
-    border-radius: 15px;
-    background-color: #fff;
-    cursor: pointer;
-    transition: 0.3s;
+nav ul li a {
+    color: white;
+    text-decoration: none;
 }
 
-.button:hover {
-    background-color: #eee;
+.search-signup {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.search-signup input {
+    padding: 8px;
+    border-radius: 4px;
+    border: none;
+}
+
+.sign-in,
+.sign-up {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+}
+
+.sign-in {
+    background-color: #dadada;
+    color: #333;
+}
+
+.sign-up {
+    background-color: #6e30a8;
+    color: white;
+}
+
+.sign-in:hover {
+    background-color: #ffffff;
+    color: #333;
+}
+
+.sign-up:hover {
+    background-color: #a94dff;
+    color: white;
+}
+
+img {
+    width: 144px;
+    height: 48px;
 }

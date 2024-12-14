@@ -1,4 +1,4 @@
-// add_quiz.js
+// Add-CustomQuiz.js
 
 document.addEventListener('DOMContentLoaded', () => {
     const addQuestionBtn = document.getElementById('addQuestionBtn');

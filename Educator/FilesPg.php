@@ -8,12 +8,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="FilesPg.css">
     <title>Upload file sketch design</title>
-    <?php include 'Combine-admin.php' ?>
+    <?php include '../Constants/Combine-educator.php' ?>
 </head>
 
 <body>
     <?php
     // Combine-admin.php
+    
 
     // header('Content-Type: application/json');
 

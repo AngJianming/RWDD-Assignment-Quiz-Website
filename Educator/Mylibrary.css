@@ -1,71 +1,131 @@
+/* =========================================================
+        Minimalist Black-Themed CSS for Library Page
+   ========================================================= */
 
-/* General Reset and Basic Styles */
+/* =========================================================
+            CSS Variables for Consistent Theming
+   ========================================================= */
+:root {
+    /* Background Colors */
+    --background-color: #121212;
+    --container-bg: #1e1e1e;
+    --card-bg: #1e1e1e;
+    --text-color: #ffffff;
+    --secondary-text: #cccccc;
+    --accent-color: #f424ff;
+    /* Accent for buttons and highlights */
+
+    /* Border and Divider Colors */
+    --border-color: #333333;
+    --divider-color: #444444;
+
+    /* Input Colors */
+    --input-bg: #2c2c2c;
+    --input-border: #444444;
+    --input-text: #ffffff;
+
+    /* Button Colors */
+    --button-bg: var(--accent-color);
+    --button-hover-bg: #f424ff;
+    --view-button-bg: #333333;
+    --view-button-hover-bg: #444444;
+}
+
+/* =========================================================
+                General Reset and Basic Styles
+   ========================================================= */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
-    color: #333;
-    margin: 0;
-    padding: 20px;
-}
-
-/* Container for the Library Page */
+/* =========================================================
+                Container for the Library Page
+   ========================================================= */
 .library-container {
+    position: fixed; /* Ensure it's positioned relative to the viewport */
     max-width: 900px;
-    margin: 120px auto;
-    margin-top: 200px;
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Center horizontally with top margin */
+    background-color: var(--container-bg);
+    padding: 30px;
+    top: 48%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 500px;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); 
 }
 
-/* Header Section */
+/* =========================================================
+                        Header Section
+   ========================================================= */
 .library-header {
-    font-size: 1.8em;
+    font-size: 2em;
     font-weight: bold;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+    color: var(--text-color);
+    text-align: center;
 }
 
-/* Search Bar */
+/* =========================================================
+                            Search Bar
+   ========================================================= */
 .search-bar {
     position: relative;
     display: flex;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
 .search-bar img {
     position: absolute;
-    left: 10px;
-    width: 35px;
-    height: 35px;
+    left: 15px;
+    width: 25px;
+    height: 25px;
+    filter: brightness(0) invert(1);
+    /* Invert icon color for visibility */
 }
 
 .search-bar input {
-    width: 110%;
-    padding: 10px 10px 10px 40px; 
-    border-radius: 20px;
-    border: 1px solid #ddd;
+    width: 100%;
+    padding: 10px 10px 10px 45px;
+    border-radius: 25px;
+    border: 1px solid var(--input-border);
+    background-color: var(--input-bg);
+    color: var(--input-text);
     outline: none;
-    text-align: left; /
+    font-size: 1em;
+    transition: border-color 0.3s;
 }
 
-/* Quiz List Items */
+.search-bar input::placeholder {
+    color: var(--secondary-text);
+}
+
+.search-bar input:focus {
+    border-color: var(--accent-color);
+}
+
+/* =========================================================
+                        Quiz List Items
+   ========================================================= */
 .quiz-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px;
-    border: 1px solid #ddd;
+    padding: 15px 20px;
+    border: 1px solid var(--border-color);
     border-radius: 5px;
-    margin-bottom: 10px;
-    background-color: #f9f9f9;
+    margin-bottom: 15px;
+    background-color: var(--card-bg);
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.quiz-item:hover {
+    background-color: #2a2a2a;
+    border-color: var(--accent-color);
 }
 
 .quiz-info {
@@ -74,25 +134,88 @@ body {
 
 .quiz-title {
     font-weight: bold;
-    font-size: 1.1em;
+    font-size: 1.2em;
+    color: var(--text-color);
 }
 
 .quiz-meta {
     font-size: 0.9em;
-    color: #666;
+    color: var(--secondary-text);
     margin-top: 5px;
 }
 
 .view-button {
-    padding: 8px 15px;
+    padding: 8px 20px;
     font-size: 0.9em;
-    border: 1px solid #333;
+    border: none;
     border-radius: 15px;
-    background-color: #fff;
+    background-color: var(--view-button-bg);
+    color: var(--text-color);
     cursor: pointer;
-    transition: 0.3s;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .view-button:hover {
-    background-color: #eee;
+    background-color: white;
+    color: var(--card-bg);
+    box-shadow: 0 0 15px #f424ff, 0 0 45px #f424ff, 0 0 60px #f424ff, 0 0 80px #f424ff;
+}
+
+/* =========================================================
+                        Responsive Design
+   ========================================================= */
+@media (max-width: 915px) {
+    .library-container {
+        padding: 20px;
+    }
+
+    .library-header {
+        font-size: 1.8em;
+    }
+
+    .quiz-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .view-button {
+        margin-top: 10px;
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .library-container {
+        margin: auto -1px auto 20px;
+        padding: 0.5rem;
+    }
+
+    .library-header {
+        font-size: 1.5em;
+    }
+
+    .search-bar img {
+        width: 20px;
+        height: 20px;
+        left: 10px;
+    }
+
+    .search-bar input {
+        padding: 8px 8px 8px 35px;
+        font-size: 0.9em;
+    }
+
+    .quiz-title {
+        font-size: 1em;
+    }
+
+    .quiz-meta {
+        font-size: 0.8em;
+    }
+
+    .view-button {
+        padding: 6px 15px;
+        font-size: 0.8em;
+    }
 }

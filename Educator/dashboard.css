@@ -203,5 +203,8 @@ body {
 
 .start-now-button:hover {
     background-color: #dd00ff;
+    transition: background 0.3s;
+    box-shadow: 0 0 15px #dd00ff, 0 0 45px #dd00ff, 0 0 60px #dd00ff, 0 0 80px #dd00ff;
+
     /* Darker shade for hover effect */
 }
