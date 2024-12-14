@@ -1,41 +1,221 @@
 <?php
-// Profile-Admin.php
+// // Profile-Admin.php
 
-// Start the session and include necessary authentication checks
-session_start();
+// // Start the session and include necessary authentication checks
+// session_start();
 
-// Placeholder variables. Replace these with actual data retrieval logic.
-$username = "adminUser";
-$email = "admin@example.com";
-$doj = "2023-01-15";
-$profilePic = "default-profile.png"; // Path to default profile picture
+// // Include the database connection
+// require '../Database/connection.php';
 
-// Handle form submissions (e.g., logout, update profile, change password)
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($_POST['logout'])) {
-        // Handle logout logic
-        session_destroy();
-        header("Location: login.php");
-        exit();
-    }
+// // Check if the admin is logged in
+// if (!isset($_SESSION['admin_id'])) {
+//     // If not logged in, redirect to the login page
+//     header("Location: ../Login/login.php");
+//     exit();
+// }
 
-    if (isset($_POST['update_profile'])) {
-        // Handle profile update logic
-        // Validate and sanitize input data
-        // Update user information in the database
-    }
+// // Fetch the admin's data from the database
+// $admin_id = $_SESSION['admin_id'];
+// $username = $email = $doj = $profilePic = "";
 
-    if (isset($_POST['change_password'])) {
-        // Handle password change logic
-        // Validate current password, new password, and confirmation
-        // Update password in the database
-    }
+// // Initialize error messages
+// $errors = [
+//     'username' => '',
+//     'email' => '',
+//     'current_password' => '',
+//     'new_password' => '',
+//     'confirm_password' => '',
+//     'profile_pic' => ''
+// ];
 
-    if (isset($_FILES['profile_pic'])) {
-        // Handle profile picture upload
-        // Validate and save the uploaded file
-    }
-}
+// // Fetch admin details
+// $stmt = $conn->prepare("SELECT admin_username, admin_email, admin_DOJ, admin_password FROM admin WHERE admin_id = ?");
+// $stmt->bind_param("i", $admin_id);
+// $stmt->execute();
+// $stmt->bind_result($db_username, $db_email, $db_doj, $db_password);
+// if ($stmt->fetch()) {
+//     $username = htmlspecialchars($db_username);
+//     $email = htmlspecialchars($db_email);
+//     $doj = htmlspecialchars($db_doj);
+// } else {
+//     // If admin not found, destroy session and redirect to login
+//     session_destroy();
+//     header("Location: login.php");
+//     exit();
+// }
+// $stmt->close();
+
+// // Handle form submissions
+// if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+//     // Logout
+//     if (isset($_POST['logout'])) {
+//         session_destroy();
+//         header("Location: login.php");
+//         exit();
+//     }
+
+//     // Update Profile
+//     if (isset($_POST['update_profile'])) {
+//         // Validate and sanitize input data
+//         $new_username = trim($_POST['username']);
+//         $new_email = trim($_POST['email']);
+
+//         // Username validation
+//         if (strlen($new_username) < 3) {
+//             $errors['username'] = 'Username must be at least 3 characters.';
+//         }
+
+//         // Email validation
+//         if (!filter_var($new_email, FILTER_VALIDATE_EMAIL)) {
+//             $errors['email'] = 'Please enter a valid email address.';
+//         }
+
+//         // Check for existing email (unique)
+//         if ($new_email !== $email) {
+//             $stmt = $conn->prepare("SELECT admin_id FROM admin WHERE admin_email = ?");
+//             $stmt->bind_param("s", $new_email);
+//             $stmt->execute();
+//             $stmt->store_result();
+//             if ($stmt->num_rows > 0) {
+//                 $errors['email'] = 'This email is already taken.';
+//             }
+//             $stmt->close();
+//         }
+
+//         // If no errors, update the profile
+//         if (empty(array_filter($errors))) {
+//             $stmt = $conn->prepare("UPDATE admin SET admin_username = ?, admin_email = ? WHERE admin_id = ?");
+//             $stmt->bind_param("ssi", $new_username, $new_email, $admin_id);
+//             if ($stmt->execute()) {
+//                 $username = htmlspecialchars($new_username);
+//                 $email = htmlspecialchars($new_email);
+//                 echo "<script>alert('Profile updated successfully.');</script>";
+//             } else {
+//                 echo "<script>alert('Error updating profile. Please try again.');</script>";
+//             }
+//             $stmt->close();
+//         }
+//     }
+
+//     // Change Password
+//     if (isset($_POST['change_password'])) {
+//         // Retrieve and sanitize inputs
+//         $current_password = $_POST['current_password'];
+//         $new_password = $_POST['new_password'];
+//         $confirm_password = $_POST['confirm_password'];
+
+//         // Validate inputs
+//         if (empty($current_password)) {
+//             $errors['current_password'] = 'Please enter your current password.';
+//         }
+
+//         if (!empty($new_password) && strlen($new_password) < 6) {
+//             $errors['new_password'] = 'New password must be at least 6 characters.';
+//         }
+
+//         if ($new_password !== $confirm_password) {
+//             $errors['confirm_password'] = 'Passwords do not match.';
+//         }
+
+//         // If no errors, verify current password and update
+//         if (empty(array_filter($errors))) {
+//             // Verify current password
+//             if (password_verify($current_password, $db_password)) {
+//                 // Hash the new password
+//                 $hashed_new_password = password_hash($new_password, PASSWORD_BCRYPT);
+
+//                 // Update the password in the database
+//                 $stmt = $conn->prepare("UPDATE admin SET admin_password = ? WHERE admin_id = ?");
+//                 $stmt->bind_param("si", $hashed_new_password, $admin_id);
+//                 if ($stmt->execute()) {
+//                     echo "<script>alert('Password changed successfully.');</script>";
+//                 } else {
+//                     echo "<script>alert('Error changing password. Please try again.');</script>";
+//                 }
+//                 $stmt->close();
+//             } else {
+//                 $errors['current_password'] = 'Incorrect current password.';
+//             }
+//         }
+//     }
+
+//     // Handle Profile Picture Upload
+//     if (isset($_FILES['profile_pic'])) {
+//         $file = $_FILES['profile_pic'];
+//         if ($file['error'] === UPLOAD_ERR_OK) {
+//             $fileTmpPath = $file['tmp_name'];
+//             $fileName = basename($file['name']);
+//             $fileSize = $file['size'];
+//             $fileType = mime_content_type($fileTmpPath);
+
+//             // Validate file type (allow only images)
+//             $allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
+//             if (!in_array($fileType, $allowedTypes)) {
+//                 $errors['profile_pic'] = 'Please upload a valid image file (JPEG, PNG, GIF, WEBP).';
+//             }
+
+//             // Validate file size (max 2MB)
+//             if ($fileSize > 2 * 1024 * 1024) {
+//                 $errors['profile_pic'] = 'Image size should not exceed 2MB.';
+//             }
+
+//             // If no errors, move the uploaded file
+//             if (empty($errors['profile_pic'])) {
+//                 $uploadDir = 'uploads/profile_pics/';
+//                 // Ensure the upload directory exists
+//                 if (!is_dir($uploadDir)) {
+//                     mkdir($uploadDir, 0755, true);
+//                 }
+
+//                 // Generate a unique file name to prevent overwriting
+//                 $fileExtension = pathinfo($fileName, PATHINFO_EXTENSION);
+//                 $newFileName = 'admin_' . $admin_id . '_' . time() . '.' . $fileExtension;
+//                 $destPath = $uploadDir . $newFileName;
+
+//                 if (move_uploaded_file($fileTmpPath, $destPath)) {
+//                     // Optionally, delete the old profile picture if it's not the default
+//                     // Assuming the default profile picture is 'default-profile.png'
+//                     if ($profilePic !== 'default-profile.png' && file_exists($profilePic)) {
+//                         unlink($profilePic);
+//                     }
+
+//                     // Update the profile picture path in the database
+//                     $stmt = $conn->prepare("UPDATE admin SET admin_profile_pic = ? WHERE admin_id = ?");
+//                     $stmt->bind_param("si", $destPath, $admin_id);
+//                     if ($stmt->execute()) {
+//                         $profilePic = htmlspecialchars($destPath);
+//                         echo "<script>alert('Profile picture updated successfully.');</script>";
+//                     } else {
+//                         echo "<script>alert('Error updating profile picture. Please try again.');</script>";
+//                     }
+//                     $stmt->close();
+//                 } else {
+//                     $errors['profile_pic'] = 'There was an error uploading the file. Please try again.';
+//                 }
+//             }
+//         } elseif ($file['error'] !== UPLOAD_ERR_NO_FILE) {
+//             $errors['profile_pic'] = 'Error uploading file. Please try again.';
+//         }
+//     }
+// }
+
+// // Fetch the updated profile picture
+// $stmt = $conn->prepare("SELECT admin_profile_pic FROM admin WHERE admin_id = ?");
+// $stmt->bind_param("i", $admin_id);
+// $stmt->execute();
+// $stmt->bind_result($db_profile_pic);
+// if ($stmt->fetch()) {
+//     $profilePic = htmlspecialchars($db_profile_pic);
+//     if (empty($profilePic)) {
+//         $profilePic = "default-profile.png"; // Path to default profile picture
+//     }
+// } else {
+//     $profilePic = "default-profile.png";
+// }
+// $stmt->close();
+
+// // Close the database connection
+// $conn->close();
 ?>
 
 <!DOCTYPE html>
@@ -49,80 +229,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <?php include '../Constants/Combine-admin.php' ?>
 </head>
 
-<body data-theme="dark">
-    <header>
-        <div class="navbar">
-            <div class="logo">
-                <img src="../img/Code-Combat (trans) logo.png" alt="Logo" />
-            </div>
-        </div>
-    </header>
-
-    <div class="sidebar">
-        <div class="logo_content">
-            <div class="logo">
-            </div>
-            <i class="ms-Icon ms-Icon--CollapseMenu" id="btn"></i>
-        </div>
-        <ul class="nav_list">
-            <li>
-                <a href="dashboard.php">
-                    <i class="ms-Icon ms-Icon--WaffleOffice365"></i>
-                    <span class="links_name">Dashboard</span>
-                </a>
-                <span class="tooltip">Dashboard</span>
-            </li>
-            <li>
-                <a href="useraccount.php">
-                    <i class="ms-Icon ms-Icon--Contact"></i>
-                    <span class="links_name">Manage User</span>
-                </a>
-                <span class="tooltip">Manage User</span>
-            </li>
-            <li>
-                <a href="userperformance.php">
-                    <i class="ms-Icon ms-Icon--PieDouble"></i>
-                    <span class="links_name">Performance</span>
-                </a>
-                <span class="tooltip">Performance</span>
-            </li>
-            <li>
-                <a href="eduaccount.php">
-                    <i class="ms-Icon ms-Icon--Chat"></i>
-                    <span class="links_name">Manage Educator</span>
-                </a>
-                <span class="tooltip">Manage Educator</span>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="ms-Icon ms-Icon--FabricFolder"></i>
-                    <span class="links_name">Files</span>
-                </a>
-                <span class="tooltip">Files</span>
-            </li>
-            <li>
-                <a href="../Admin/rankedquiz.php">
-                    <i class="fa-solid fa-circle-plus"></i>
-                    <span class="links_name">Add Quiz</span>
-                </a>
-                <span class="tooltip">Add Quiz</span>
-            </li>
-        </ul>
-        <div class="profile_content">
-            <div class="profile">
-                <div class="profile_details">
-                    <img src="../img/Profile Pic.png" alt="Profile Picture">
-                    <div class="name_job">
-                        <div class="name">USER</div>
-                        <div class="job">Admin</div>
-                    </div>
-                </div>
-                <i class="ms-Icon ms-Icon--SignOut" id="log_out"></i>
-            </div>
-        </div>
-    </div>
-
-    <div class="home_content">
+<body class="profile-body" data-theme="dark">
+    <div class="home_ct">
         <div class="profile-container">
             <!-- Header with Title and Theme Toggle -->
             <div class="profile-header">
@@ -132,9 +240,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <!-- Profile Picture Section -->
             <div class="profile-picture">
-                <img src="<?php echo htmlspecialchars($profilePic); ?>" alt="Profile Picture">
+                <img src="<?php echo $profilePic; ?>" alt="Profile Picture">
                 <label for="profile-pic-input" title="Change Profile Picture">📷</label>
-                <input type="file" id="profile-pic-input" accept="image/*">
+                <input type="file" id="profile-pic-input" name="profile_pic" accept="image/*">
+                <?php if (!empty($errors['profile_pic'])): ?>
+                    <span class="error" id="profile-pic-error"><?php echo $errors['profile_pic']; ?></span>
+                <?php endif; ?>
             </div>
 
             <!-- Profile Form -->
@@ -142,40 +253,50 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <!-- Username -->
                 <div class="form-group">
                     <label for="username">Username</label>
-                    <input type="text" id="username" name="username" value="<?php echo htmlspecialchars($username); ?>" required>
-                    <span class="error" id="username-error"></span>
+                    <input type="text" id="username" name="username" value="<?php echo $username; ?>" required>
+                    <?php if (!empty($errors['username'])): ?>
+                        <span class="error" id="username-error"><?php echo $errors['username']; ?></span>
+                    <?php endif; ?>
                 </div>
 
                 <!-- Email -->
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($email); ?>" required>
-                    <span class="error" id="email-error"></span>
+                    <input type="email" id="email" name="email" value="<?php echo $email; ?>" required>
+                    <?php if (!empty($errors['email'])): ?>
+                        <span class="error" id="email-error"><?php echo $errors['email']; ?></span>
+                    <?php endif; ?>
                 </div>
 
                 <!-- Date of Joining -->
                 <div class="form-group">
                     <label for="doj">Date of Joining</label>
-                    <input type="text" id="doj" name="doj" value="<?php echo htmlspecialchars($doj); ?>" readonly>
+                    <input type="text" id="doj" name="doj" value="<?php echo $doj; ?>" readonly>
                 </div>
 
                 <!-- Password Change Section -->
                 <div class="form-group">
                     <label for="current-password">Current Password</label>
                     <input type="password" id="current-password" name="current_password" placeholder="Enter current password">
-                    <span class="error" id="current-password-error"></span>
+                    <?php if (!empty($errors['current_password'])): ?>
+                        <span class="error" id="current-password-error"><?php echo $errors['current_password']; ?></span>
+                    <?php endif; ?>
                 </div>
 
                 <div class="form-group">
                     <label for="new-password">New Password</label>
                     <input type="password" id="new-password" name="new_password" placeholder="Enter new password">
-                    <span class="error" id="new-password-error"></span>
+                    <?php if (!empty($errors['new_password'])): ?>
+                        <span class="error" id="new-password-error"><?php echo $errors['new_password']; ?></span>
+                    <?php endif; ?>
                 </div>
 
                 <div class="form-group">
                     <label for="confirm-password">Confirm New Password</label>
                     <input type="password" id="confirm-password" name="confirm_password" placeholder="Confirm new password">
-                    <span class="error" id="confirm-password-error"></span>
+                    <?php if (!empty($errors['confirm_password'])): ?>
+                        <span class="error" id="confirm-password-error"><?php echo $errors['confirm_password']; ?></span>
+                    <?php endif; ?>
                 </div>
 
                 <!-- Action Buttons -->
@@ -192,42 +313,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </div>
 
-    <footer>
-        <div class="copyright">
-            <h6>© 2024 BatttleCombat.com FAQ | Privacy Policy | Terms of Service | RWDD Assignment Quiz Website</h4>
-        </div>
-    </footer>
-
     <!-- JavaScript for Interactivity -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Sidebar Toggle
-            const btn = document.getElementById("btn");
-            const sidebar = document.querySelector(".sidebar");
-
-            if (btn && sidebar) {
-                btn.addEventListener('click', function(event) {
-                    sidebar.classList.toggle("active");
-                    // Toggle aria-expanded for accessibility
-                    const isActive = sidebar.classList.contains("active");
-                    btn.setAttribute('aria-expanded', isActive);
-                    event.stopPropagation();
-                });
-
-                // Prevent clicks inside the sidebar from closing it
-                sidebar.addEventListener('click', function(event) {
-                    event.stopPropagation();
-                });
-
-                // Close sidebar when clicking outside of it
-                document.addEventListener('click', function(event) {
-                    if (sidebar.classList.contains("active")) {
-                        sidebar.classList.remove("active");
-                        btn.setAttribute('aria-expanded', 'false');
-                    }
-                });
-            }
-
+            
             // Theme Toggle
             const themeToggle = document.getElementById('theme-toggle');
             const body = document.body;
@@ -273,7 +362,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 });
             }
 
-            // Form Validation
+            // Form Validation (Client-Side)
             const profileForm = document.querySelector('.profile-form');
 
             if (profileForm) {
