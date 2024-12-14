@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create Ranked Levels</title>
     <link rel="stylesheet" href="rankedquiz.css">
-    <!-- <?php include '../Constants/Combine-admin.php'; ?> -->
-    <?php include 'Combine-admin.php'; ?>
+    <?php include '../Constants/Combine-admin.php'; ?>
 </head>
 <body>
     <div class="container">

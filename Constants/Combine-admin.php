@@ -401,6 +401,10 @@
             rotate: (180deg);
         }
 
+        .profileAdmin {
+            cursor: pointer;
+        }
+
         /* When Sidebar is Active */
         .sidebar.active~.home_content {
             width: calc(100% - 320px);
@@ -460,6 +464,15 @@
             margin-top: 0px;
             margin-bottom: -4px;
             font-size: 20px;
+        }
+
+        .adminSignOut {
+            color: #f5f5f5;
+        }
+
+        .adminSignOut:hover, #log_out:hover {
+            color: #020104;
+            background: #ccc;
         }
 
         /* Responsive Adjustments */
@@ -675,13 +688,17 @@
         <div class="profile_content">
             <div class="profile">
                 <div class="profile_details">
-                    <img src="../img/Profile Pic.png" alt="Profile Picture">
+                    <a href="/Admin/Profile-Admin.php">
+                        <img class="profileAdmin" src="../img/Profile Pic.png" alt="Profile Picture">
+                    </a>
                     <div class="name_job">
                         <div class="name">USER</div>
                         <div class="job">Admin</div>
                     </div>
                 </div>
-                <i class="ms-Icon ms-Icon--SignOut" id="log_out"></i>
+                <a href="/landingPg.php" class="adminSignOut">
+                    <i class="ms-Icon ms-Icon--SignOut" id="log_out"></i>
+                </a>
             </div>
         </div>
     </div>

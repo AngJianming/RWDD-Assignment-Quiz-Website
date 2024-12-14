@@ -101,7 +101,7 @@ table tbody tr:hover {
 .edit-section {
     display: none;
     width: 80%;
-    margin: 20px auto;
+    margin: 20px auto 90px auto;
     background: #111;
     border: 1px solid #222;
     border-radius: 8px;
