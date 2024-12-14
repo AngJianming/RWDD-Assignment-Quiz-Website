@@ -636,7 +636,7 @@
         </div>
         <ul class="nav_list">
             <li>
-                <a href="/Admin/dashboard.php">
+                <a href="dashboard.php">
                     <i class="ms-Icon ms-Icon--WaffleOffice365"></i>
                     <span class="links_name">Dashboard</span>
                 </a>
