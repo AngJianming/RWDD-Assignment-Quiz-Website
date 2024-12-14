@@ -12,10 +12,12 @@
     <!-- External CSS and Swiper.js stylesheets -->
     <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
     <link rel="stylesheet" href="play.css">
+    
+    <!-- Include styles from Bg-Animation.php -->
+    <?php include '../Constants/Combine-student.php'; ?>
 </head>
 
 <body>
-
     <!-- Main Content -->
     <section id="tranding">
         <div class="container">
@@ -25,35 +27,35 @@
                     <!-- Slide-start -->
                     <div class="swiper-slide tranding-slide">
                         <div class="tranding-slide-img">
-                            <img src="" alt="Level 1">
+                            <img src="https://i.pinimg.com/736x/51/75/2a/51752a173cded2cb0a53baaf7a596d81.jpg" alt="Level 1">
                         </div>
                     </div>
                     <!-- Slide-end -->
                     <!-- Slide-start -->
                     <div class="swiper-slide tranding-slide">
                         <div class="tranding-slide-img">
-                            <img src="" alt="Level 2">
+                            <img src="https://images.hdqwalls.com/wallpapers/python-logo-4k-i6.jpg" alt="Level 2">
                         </div>
                     </div>
                     <!-- Slide-end -->
                     <!-- Slide-start -->
                     <div class="swiper-slide tranding-slide">
                         <div class="tranding-slide-img">
-                            <img src="" alt="Level 3">
+                            <img src="https://a.storyblok.com/f/168723/1640x900/6132fdbe9a/cover-14.png/m/640x0" alt="Level 3">
                         </div>
                     </div>
                     <!-- Slide-end -->
                     <!-- Slide-start -->
                     <div class="swiper-slide tranding-slide">
                         <div class="tranding-slide-img">
-                            <img src="" alt="Level 4">
+                            <img src="https://4kwallpapers.com/images/wallpapers/python-logo-purple-2560x1440-16084.jpg" alt="Level 4">
                         </div>
                     </div>
                     <!-- Slide-end -->
                     <!-- Slide-start -->
                     <div class="swiper-slide tranding-slide">
                         <div class="tranding-slide-img">
-                            <img src="" alt="Level 5">
+                            <img src="https://4kwallpapers.com/images/walls/thumbs_2t/16015.jpg" alt="Level 5">
                         </div>
                     </div>
                     <!-- Slide-end -->
@@ -74,11 +76,21 @@
 
         <div class="container">
             <h3 class="text-center section-subheading">-- Start Now --</h3>
-            <button class="btn"><h2>Play</h2></button>
+            <!-- Original Play Button -->
+            <div style="display:flex; gap:1rem; justify-content:center; align-items:center;">
+                <button class="btn"><h2>Play</h2></button>
+                <!-- New Buttons added at the side of the Play button -->
+                <button class="btn">View Leaderboard</button>
+                <button class="btn">View All Levels</button>
+            </div>
         </div>
     </section>
 
-    <script><link rel="stylesheet" href="play.js"></link></script>
+    <!-- External JS scripts -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+    <script src="play.js"></script>
 </body>
 
 </html>

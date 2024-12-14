@@ -657,13 +657,6 @@
                 <span class="tooltip">Custom Quiz</span>
             </li>
             <li>
-                <a href="user_nav">
-                    <i class="ms-Icon ms-Icon--Contact"></i>
-                    <span class="links_name">User</span>
-                </a>
-                <span class="tooltip">User</span>
-            </li>
-            <li>
                 <a href="leaderboard_nav">
                     <i class="fa-solid fa-trophy"></i>
                     <span class="links_name">Leaderboard</span>

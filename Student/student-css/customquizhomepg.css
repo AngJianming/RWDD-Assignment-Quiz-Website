@@ -1,0 +1,127 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #5c3d9a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background-color: white;
+    border-radius: 10px;
+    padding: 70px;
+    text-align: center;
+    width: 800px;
+    z-index: 900;
+    left: -2000px;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+.enterbutton {
+    margin-top: 50px;
+    padding: 20px 100px;
+    font-size: 20px;
+    background-color: #ffffff;
+    border: 1px solid #000;
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
+}
+
+.code-input {
+    display: flex;
+    gap: 40px; /* Space between the input fields */
+    background-color: #fff;
+    padding-left: 80px;
+}
+
+.code-input input {
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    font-size: 3em;
+    background-color: #ffffff;
+}
+
+.no-spinner::-webkit-inner-spin-button,
+.no-spinner::-webkit-outer-spin-button {
+    -webkit-appearance: none; /* Remove the default appearance */
+    margin: 0; /* Remove any default margin */
+}
+
+.enterbutton:hover {
+    box-shadow: 0 0 10px #8000ff, 0 0 20px #8000ff, 0 0 30px #8000ff, 0 0 40px #8000ff;
+    letter-spacing: .25rem;
+}
+
+.enterbutton::before {
+    content: "";
+    position: absolute;
+    left: 100%;
+    top: -6px;
+    transform: translateX(-50%);
+    width: 12px;
+    height: 12px;
+    border: 2px solid var(--clr);
+    transition: all 0.8s;
+}
+
+    /* make sure main content is resposive towards sidebar
+.container {
+    left: 60px;
+}
+    
+.header {
+    padding: 15px;
+} */
+
+@media (max-width: 550px) {
+    body {
+        flex-direction: column; /* Adjust layout for smaller screens */
+        padding: 10px;
+    }
+
+    .container {
+        width: 90%; /* Make the container width flexible */
+        padding: 20px; /* Reduce padding */
+        position: relative;
+        text-align: center;
+        left: 25px;
+    }
+
+    h1 {
+        font-size: 1.5em; /* Reduce font size */
+        margin-bottom: 10px;
+    }
+
+    .code-input {
+        gap: 20px; /* Reduce the gap between inputs */
+        padding-left: 50px; /* Reduce padding */
+    }
+
+    .code-input input {
+        width: 60px; /* Reduce input size */
+        height: 60px; /* Reduce input size */
+        font-size: 2em; /* Adjust font size */
+    }
+
+    .enterbutton {
+        margin-top: 20px;
+        padding: 15px 50px; /* Reduce button size */
+        font-size: 16px; /* Adjust font size */
+    }
+
+    .enterbutton:hover {
+        box-shadow: 0 0 8px #8000ff, 0 0 16px #8000ff, 0 0 24px #8000ff, 0 0 32px #8000ff;
+        letter-spacing: .1rem; /* Reduce spacing */
+    }
+}
