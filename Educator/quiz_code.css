@@ -1,132 +1,236 @@
+/* =========================================================
+   Minimalist Black-Themed CSS for Quiz Modal
+   ========================================================= */
 
-        /* General Reset and Basic Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+/* =========================================================
+   CSS Variables for Consistent Theming
+   ========================================================= */
+:root {
+    /* Background Colors */
+    --background-overlay: rgba(0, 0, 0, 0.7);
+    --modal-bg: #1e1e1e;
 
-        body {
-            font-family: Arial, sans-serif;
-            background-color: rgba(0, 0, 0, 0.5); 
-            color: #333;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            overflow: hidden;
-        }
+    /* Text Colors */
+    --text-color: #ffffff;
+    --secondary-text: #cccccc;
+    --accent-color: #bb86fc;
+    /* Accent for buttons and highlights */
 
-        /* Modal Container */
-        .modal {
-            width: 400px;
-            background-color: #EDEDED;
-            border-radius: 25px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            padding: 30px;
-            text-align: center;
-            position: relative;
-        }
+    /* Border and Divider Colors */
+    --border-color: #333333;
+    --divider-color: #444444;
 
-        /* Header Section */
-        .congrats-icon {
-            font-size: 1.8em;
-            font-family: 'Cursive', sans-serif;
-            margin-bottom: 5px;
-        }
+    /* Button Colors */
+    --button-bg: var(--accent-color);
+    --button-hover-bg: #bb86fc;
+    --button-danger-bg: #ff4d4d;
+    --button-danger-hover-bg: #ff1a1a;
 
-        .modal-header {
-            font-size: 1.5em;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
+    /* Icon Colors */
+    --icon-color: #cccccc;
+    --icon-hover-color: var(--accent-color);
+}
 
-        /* Divider Line */
-        .divider {
-            height: 1px;
-            background-color: #ddd;
-            margin: 20px 0;
-        }
+/* =========================================================
+                General Reset and Basic Styles
+   ========================================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        /* Info Text */
-        .info-text {
-            font-size: 1em;
-            color: #666;
-            margin-bottom: 20px;
-        }
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--background-overlay);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
 
-        /* Share Labels */
-        .share-label {
-            font-weight: bold;
-            font-size: 0.9em;
-            margin-bottom: 5px;
-            color: #333;
-            text-align: center;
-        }
+/* =========================================================
+                        Modal Container
+   ========================================================= */
+.modal {
+    width: 400px;
+    background-color: var(--modal-bg);
+    border-radius: 20px;
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.5);
+    padding: 30px;
+    text-align: center;
+    position: relative;
+}
 
-        /* Share Links */
-        .share-section {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 30px;
-        }
+/* =========================================================
+                        Header Section
+   ========================================================= */
+.congrats-icon {
+    font-size: 2em;
+    font-family: 'Cursive', sans-serif;
+    margin-bottom: 10px;
+    color: var(--accent-color);
+}
 
-        .share-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border: 1px solid #ddd;
-            border-radius: 50px;
-            padding: 10px;
-            background-color: #f9f9f9;
-            width: 100%;
-        }
+.modal-header {
+    font-size: 1.6em;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: var(--text-color);
+}
 
-        .share-text {
-            font-size: 0.9em;
-            color: #333;
-            text-align: center;
-            flex-grow: 1;
-        }
+/* =========================================================
+                        Divider Line
+   ========================================================= */
+.divider {
+    height: 1px;
+    background-color: var(--divider-color);
+    margin: 20px 0;
+}
 
-        .copy-icon {
-            cursor: pointer;
-            font-size: 1.2em;
-            color: #666;
-            margin-left: 10px;
-        }
+/* =========================================================
+                        Info Text
+   ========================================================= */
+.info-text {
+    font-size: 1em;
+    color: var(--secondary-text);
+    margin-bottom: 20px;
+}
 
-        /* Buttons Section */
-        .buttons {
-            display: flex;
-            justify-content: space-around;
-        }
+/* =========================================================
+                        Share Labels
+   ========================================================= */
+.share-label {
+    font-weight: bold;
+    font-size: 0.95em;
+    margin-bottom: 10px;
+    color: var(--text-color);
+    text-align: center;
+}
 
-        .buttons button {
-            padding: 10px 20px;
-            font-size: 0.9em;
-            color: #fff;
-            border: none;
-            border-radius: 15px;
-            cursor: pointer;
-            width: 120px;
-        }
+/* =========================================================
+                        Share Links
+   ========================================================= */
+.share-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
 
-        .add-quiz-button {
-            background-color: #28a745;
-        }
+.share-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid var(--border-color);
+    border-radius: 30px;
+    padding: 10px 20px;
+    background-color: #2e2e2e;
+    width: 100%;
+}
 
-        .return-button {
-            background-color: #007BFF;
-        }
+.share-text {
+    font-size: 0.95em;
+    color: var(--text-color);
+    text-align: left;
+    flex-grow: 1;
+    margin-right: 10px;
+}
 
-        .add-quiz-button:hover {
-            background-color: #218838;
-        }
+.copy-icon {
+    cursor: pointer;
+    font-size: 1.2em;
+    color: var(--icon-color);
+    transition: color 0.3s;
+}
 
-        .return-button:hover {
-            background-color: #0056b3;
-        }
-  
+.copy-icon:hover {
+    color: var(--icon-hover-color);
+}
+
+/* =========================================================
+                        Buttons Section
+   ========================================================= */
+.buttons {
+    display: flex;
+    justify-content: space-around;
+}
+
+.buttons button {
+    padding: 10px 20px;
+    font-size: 0.95em;
+    color: #ffffff;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    width: 120px;
+    transition: background-color 0.3s;
+}
+
+.add-quiz-button {
+    background-color: var(--button-bg);
+}
+
+.add-quiz-button:hover {
+    background-color: var(--button-hover-bg);
+}
+
+.return-button {
+    background-color: var(--button-bg);
+}
+
+.return-button:hover {
+    background-color: var(--button-hover-bg);
+}
+
+.logout-button {
+    background-color: var(--button-danger-bg);
+}
+
+.logout-button:hover {
+    background-color: var(--button-danger-hover-bg);
+}
+
+/* =========================================================
+   Responsive Design
+   ========================================================= */
+@media (max-width: 500px) {
+    .modal {
+        width: 90%;
+        padding: 20px;
+    }
+
+    .share-item {
+        padding: 8px 15px;
+    }
+
+    .buttons button {
+        width: 100px;
+        padding: 8px 15px;
+        font-size: 0.85em;
+    }
+
+    .congrats-icon {
+        font-size: 1.5em;
+    }
+
+    .modal-header {
+        font-size: 1.4em;
+    }
+
+    .info-text,
+    .share-label {
+        font-size: 0.9em;
+    }
+
+    .share-text {
+        font-size: 0.85em;
+    }
+
+    .copy-icon {
+        font-size: 1em;
+    }
+}

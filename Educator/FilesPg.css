@@ -36,14 +36,19 @@ input, button, select, textarea {
 
 /* Modal Styling */
 .modal {
+    position: fixed; /* Ensure it's positioned relative to the viewport */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2000; /* Higher than the sidebar's z-index */
     width: 90%;
     max-width: 500px;
-    margin: 10vh auto;
-    background-color: rgba(42, 42, 42, 0.7);
+    background-color: rgba(42, 42, 42, 0.9); /* Increased opacity for better visibility */
     border-radius: 0.5rem;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); 
     color: var(--c-text-primary);
 }
+
 
 .modal-header {
     display: flex;

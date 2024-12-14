@@ -41,10 +41,8 @@
         header {
             background-color: #020104;
             color: white;
-            position: relative;
             width: 100%;
             top: 0;
-            z-index: 100;
         }
 
         .header-container {
@@ -107,7 +105,7 @@
             background-color: #6e30a8;
             color: white;
         }
-
+        
         .sign-in:hover {
             background-color: #ffffff;
             color: #333;
@@ -397,10 +395,6 @@
             rotate: (180deg);
         }
 
-        .profileAdmin {
-            cursor: pointer;
-        }
-
         /* Home Content */
         .home_content {
             position: absolute;
@@ -424,8 +418,8 @@
         footer {
             background-color: #020104;
             color: white;
-            padding: 2em 0;
-            position: absolute;
+            padding: 32px 0;
+            position: fixed;
             bottom: 0;
             width: 100%;
         }
@@ -463,7 +457,7 @@
         .social-icons a:hover {
             color: #ff005c;
         }
-
+        
         .copyright {
             color: #f5f5f5;
             text-align: center;
@@ -472,17 +466,6 @@
             margin-bottom: -4px;
             font-size: 20px;
         }
-
-        .adminSignOut {
-            color: #f5f5f5;
-        }
-
-        .adminSignOut:hover,
-        #log_out:hover {
-            color: #020104;
-            background: #ccc;
-        }
-
 
         /* Responsive Adjustments */
         @media (max-width: 932px) {
@@ -619,7 +602,7 @@
         /* for footer */
         @media (max-width: 932px) {
             /* Collapse move lower by width */
-
+            
         }
     </style>
 </head>
@@ -635,52 +618,60 @@
                 <button class="sign-up">Sign up</button>
             </div> -->
         </div>
-    </header>
+    </header>   
 
     <div class="sidebar">
         <div class="logo_content">
             <div class="logo">
+                <!-- Logo can be placed here if needed -->
             </div>
             <i class="ms-Icon ms-Icon--CollapseMenu" id="btn"></i>
         </div>
         <ul class="nav_list">
             <li>
-                <a href="/Educator/dashboard.php">
+                <a href="dashboard_nav">
                     <i class="ms-Icon ms-Icon--WaffleOffice365"></i>
                     <span class="links_name">Dashboard</span>
                 </a>
                 <span class="tooltip">Dashboard</span>
             </li>
             <li>
-                <a href="/Educator/Progress.php">
-                    <i class="fa fa-tasks"></i>
-                    <span class="links_name">Progress</span>
+                <a href="play_nav">
+                    <i class="fa-solid fa-gamepad-modern"></i>
+                    <span class="links_name">Play</span>
                 </a>
-                <span class="tooltip">Progress</span>
+                <span class="tooltip">Play</span>
             </li>
             <li>
-                <a href="../Educator/Mylibrary.php">
-                    <i class="fa fa-books"></i>
-                    <span class="links_name">My Library</span>
+                <a href="custom_quiz_nav">
+                    <i class="fa-light fa-pen-field"></i>
+                    <span class="links_name">Custom Quiz</span>
                 </a>
-                <span class="tooltip">My Library</span>
+                <span class="tooltip">Custom Quiz</span>
             </li>
             <li>
-                <a href="../Educator/FilesPg.php">
-                    <i class="ms-Icon ms-Icon--FabricFolder"></i>
-                    <span class="links_name">Files</span>
+                <a href="user_nav">
+                    <i class="ms-Icon ms-Icon--Contact"></i>
+                    <span class="links_name">User</span>
                 </a>
-                <span class="tooltip">Files</span>
+                <span class="tooltip">User</span>
             </li>
             <li>
-                <a href="../Educator/Add-CustomQuiz.php">
-                    <i class="fa-solid fa-circle-plus"></i>
-                    <span class="links_name">Add Quiz</span>
+                <a href="leaderboard_nav">
+                    <i class="fa-solid fa-trophy"></i>
+                    <span class="links_name">Leaderboard</span>
                 </a>
-                <span class="tooltip">Add Quiz</span>
+                <span class="tooltip">Leaderboard</span>
+            </li>
+            <li>
+                <a href="history_nav">
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+                    <span class="links_name">History</span>
+                </a>
+                <span class="tooltip">History</span>
             </li>
             <!-- <li>
-                <a href="#">
+                <a href="setting_nav">
                     <i class="ms-Icon ms-Icon--Settings"></i>
                     <span class="links_name">Settings</span>
                 </a>
@@ -690,21 +681,16 @@
         <div class="profile_content">
             <div class="profile">
                 <div class="profile_details">
-                    <a href="/Educator/Profile-Educator.php">
-                        <img class="profileAdmin" src="../img/Profile Pic.png" alt="Profile Picture">
-                    </a>
+                    <img src="/img/Profile Pic.png" alt="Profile Picture" style="cursor: pointer;">
                     <div class="name_job">
                         <div class="name">USER</div>
-                        <div class="job">Educator</div>
+                        <div class="job">Student</div>
                     </div>
                 </div>
-                <a href="/landingPg.php" class="adminSignOut">
-                    <i class="ms-Icon ms-Icon--SignOut" id="log_out"></i>
-                </a>
+                <i class="ms-Icon ms-Icon--SignOut" id="log_out"></i>
             </div>
         </div>
     </div>
-
     <footer>
         <div class="copyright">
             <h6>© 2024 BatttleCombat.com FAQ | Privacy Policy | Terms of Service | RWDD Assignment Quiz Website</h4>
@@ -712,7 +698,7 @@
     </footer>
     <div class="home_content">
         <!-- Main content goes here -->
-
+        
     </div>
 
     <script>

@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create a Quiz - Upload</title>
+    <style>
+        /* General Reset and Basic Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body Styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        /* Main Content Container */
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            text-align: center;
+            box-sizing: border-box;
+            transform: translateX(30px);
+        }
+
+        /* Header Section */
+        .header {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        /* Drag-and-Drop Box */
+        .drop-area {
+            border: 2px dashed #aaa;
+            border-radius: 8px;
+            padding: 40px;
+            background-color: #f9f9f9;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 30px;
+            cursor: pointer;
+        }
+
+        .drop-area p {
+            font-size: 1.2em;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .drop-area img {
+            width: 60px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .drop-area.dragover {
+            background-color: #d9f0ff;
+            border-color: #007BFF;
+        }
+
+        /* Buttons Section */
+        .buttons {
+            display: flex;
+            justify-content: space-evenly;
+            width: 100%;
+        }
+
+        .buttons button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 45%;
+        }
+
+        .cancel-button {
+            background-color: #c4c0c2;
+        }
+
+        .save-button {
+            background-color: #007BFF;
+        }
+
+        .cancel-button:hover {
+            background-color: #acaaac;
+        }
+
+        .save-button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Quiz Preview */
+        .quiz-preview {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: none;
+            text-align: left;
+            white-space: pre-wrap;
+            font-size: 1em;
+            color: #333;
+        }
+
+        /* Modal Styling */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background-color: #EDEDED;
+            border-radius: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            padding: 30px;
+            text-align: center;
+            position: relative;
+            width: 400px;
+        }
+
+        /* Header Section for Modal */
+        .congrats-icon {
+            font-size: 1.8em;
+            font-family: 'Cursive', sans-serif;
+            margin-bottom: 5px;
+        }
+
+        .modal-header {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        /* Divider Line */
+        .divider {
+            height: 1px;
+            background-color: #ddd;
+            margin: 20px 0;
+        }
+
+        /* Info Text */
+        .info-text {
+            font-size: 1em;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        /* Share Labels */
+        .share-label {
+            font-weight: bold;
+            font-size: 0.9em;
+            margin-bottom: 5px;
+            color: #333;
+            text-align: center;
+        }
+
+        /* Share Links */
+        .share-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .share-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid #ddd;
+            border-radius: 50px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            width: 100%;
+        }
+
+        .share-text {
+            font-size: 0.9em;
+            color: #333;
+            text-align: center;
+            flex-grow: 1;
+        }
+
+        .copy-icon {
+            cursor: pointer;
+            font-size: 1.2em;
+            color: #666;
+            margin-left: 10px;
+        }
+
+        /* Buttons Section for Modal */
+        .buttons {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .buttons button {
+            padding: 10px 20px;
+            font-size: 0.9em;
+            color: #fff;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            width: 120px;
+        }
+
+        .add-quiz-button {
+            background-color: #28a745;
+        }
+
+        .return-button {
+            background-color: #007BFF;
+        }
+
+        .add-quiz-button:hover {
+            background-color: #218838;
+        }
+
+        .return-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Main Content Container -->
+    <div class="container">
+        <!-- Header Section -->
+        <div class="header">
+            <b>Import Your Quiz</b>
+        </div>
+
+        <!-- Drag-and-Drop Box -->
+        <div class="drop-area" id="dropArea">
+            <img src="images/import.png" alt="Arrow Icon">
+            <p>Drag & Drop Your Quiz File Here</p>
+            <p>or</p>
+            <p>Click to Select File</p>
+            <input type="file" id="quizFile" accept=".txt" style="display: none;">
+        </div>
+
+        <!-- Buttons Section -->
+        <div class="buttons">
+            <button class="cancel-button" onclick="cancelUpload()">Cancel</button>
+            <button class="save-button" onclick="saveQuiz()">Save</button>
+        </div>
+
+        <!-- Quiz Preview Section -->
+        <div class="quiz-preview" id="quizPreview">
+            <h3>Preview of Your Quiz:</h3>
+            <pre id="quizContent">No quiz loaded yet.</pre>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="modal" id="successModal">
+        <div class="modal-content">
+            <!-- Header Section -->
+            <div class="congrats-icon">🎉 Congrats!</div>
+            <div class="modal-header">Your quiz is saved!</div>
+
+            <!-- Divider Line -->
+            <div class="divider"></div>
+
+            <!-- Info Text -->
+            <div class="info-text">You published Quiz_Name<br>Want to share it with your students?</div>
+
+            <!-- Share Links -->
+            <div class="share-section">
+                <div class="share-label">Share Link</div>
+                <div class="share-item">
+                    <span class="share-text">www.1234.com</span>
+                    <img src="images/copyicon.png" style="width: 20px; height: auto;">
+                </div>
+
+                <div class="share-label">Share Code</div>
+                <div class="share-item">
+                    <span class="share-text">01234</span>
+                    <img src="images/copyicon.png" style="width: 20px; height: auto;">
+                </div>
+            </div>
+
+            <!-- Buttons Section -->
+            <div class="buttons">
+                <button class="add-quiz-button" onclick="addQuiz()">Add Quiz</button>
+                <button class="return-button" onclick="returnToHome()">Return</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const dropArea = document.getElementById("dropArea");
+        const fileInput = document.getElementById("quizFile");
+        const quizPreview = document.getElementById("quizPreview");
+        const quizContent = document.getElementById("quizContent");
+        const successModal = document.getElementById("successModal");
+        let quizData = null;
+
+        dropArea.addEventListener("dragover", (event) => {
+            event.preventDefault();
+            dropArea.classList.add("dragover");
+        });
+
+        dropArea.addEventListener("dragleave", () => {
+            dropArea.classList.remove("dragover");
+        });
+
+        dropArea.addEventListener("drop", (event) => {
+            event.preventDefault();
+            dropArea.classList.remove("dragover");
+
+            const file = event.dataTransfer.files[0];
+            if (file) {
+                handleFileUpload(file);
+            }
+        });
+
+        dropArea.addEventListener("click", () => {
+            fileInput.click();
+        });
+
+        fileInput.addEventListener("change", () => {
+            const file = fileInput.files[0];
+            if (file) {
+                handleFileUpload(file);
+            }
+        });
+
+        function handleFileUpload(file) {
+            if (file.type !== "text/plain") {
+                alert("Only .txt files are allowed.");
+                return;
+            }
+
+            const reader = new FileReader();
+
+            reader.onload = function (event) {
+                quizData = event.target.result;
+
+                // Show preview of the quiz
+                quizContent.textContent = quizData;
+                quizPreview.style.display = "block";
+            };
+
+            reader.readAsText(file);
+        }
+
+        function cancelUpload() {
+            fileInput.value = "";
+            quizPreview.style.display = "none";
+            quizData = null;
+        }
+
+        function saveQuiz() {
+            if (!quizData) {
+                alert("Please upload a quiz file first.");
+                return;
+            }
+
+            // Simulate saving to the database (replace with an actual API call)
+            console.log("Saving quiz to database...");
+
+            // Show success modal
+            successModal.style.display = "flex";
+        }
+
+        function addQuiz() {
+            // Hide success modal
+            successModal.style.display = "none";
+
+            // Reset and show the upload quiz page again
+            fileInput.value = "";
+            quizPreview.style.display = "none";
+            quizData = null;
+        }
+
+        function returnToHome() {
+            // Optionally, you can redirect the user or show a homepage
+            alert("Returning home...");
+        }
+    </script>
+
+</body>
+
+</html>

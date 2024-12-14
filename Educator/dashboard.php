@@ -38,7 +38,7 @@
 
         <!-- Description Section -->
         <div class="description">
-            <p>Create engaging and effective quizzes effortlessly! Designed also for educators, our intuitive quiz page helps you craft interactive assessments that captivate students and track their progress. Perfect for enhancing classroom learning or online teaching.</h2>
+            <p style="text-align: justify;">Create engaging and effective quizzes effortlessly! Designed also for educators, our intuitive quiz page helps you craft interactive assessments that captivate students and track their progress. Perfect for enhancing classroom learning or online teaching.</h2>
             </p>
         </div>
 
@@ -66,7 +66,9 @@
             </div>
         </div>
         <p class="starting-text">Ready to have a fun and engaging session with your students?</p>
-        <button class="start-now-button">Start Now</button>
+        <a href="../Educator/Add-CustomQuiz.php" style='text-decoration: none;'>
+            <button class="start-now-button">Start Now</button>
+        </a>
     </div>
 
 

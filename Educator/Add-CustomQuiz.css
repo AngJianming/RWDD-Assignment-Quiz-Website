@@ -11,20 +11,15 @@ html {
     overflow: scroll;
 }
 
-body {
-    color: #e0e0e0;
-    font-family: 'Roboto', sans-serif;
-    margin: 0;
-    padding: 0;
-}
-
 .container {
     max-width: 800px;
     margin: 40px auto 80px;
     padding: 20px;
     background-color: #1e1e1e;
+    z-index: 2000; /* Higher than the sidebar's z-index */
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+    transform: translate(6%, 0%);
 }
 
 h1 {
@@ -32,6 +27,12 @@ h1 {
     margin-bottom: 20px;
     color: #bb86fc;
     font-size: 2rem;
+}
+
+h2 {
+    text-align: center;
+    margin: 10px;
+    color: #f0f0f0;
 }
 
 .form-group {
@@ -50,9 +51,9 @@ textarea,
 select {
     width: 100%;
     padding: 10px 12px;
-    border: 1px solid #333333;
+    border: 1.5px solid #333333;
     border-radius: 4px;
-    background-color: #2c2c2c;
+    background-color: #131313;
     color: #e0e0e0;
     font-size: 16px;
     transition: border 0.3s;

@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Add New Quiz</title>
+    <title>Add New Custom Quiz</title>
     <link rel="stylesheet" href="Add-CustomQuiz.css">
     <script src="Add-CustomQuiz.js" defer></script>
     <?php include '../Constants/Combine-educator.php' ?>
@@ -11,7 +11,7 @@
 
 <body>
     <div class="container">
-        <h1>Create a New Quiz</h1>
+        <h1>Create a New Custom Quiz</h1>
 
         <?php if (!empty($error)): ?>
             <div class="alert error"><?php echo htmlspecialchars($error); ?></div>
@@ -21,7 +21,7 @@
             <div class="alert success"><?php echo htmlspecialchars($success); ?></div>
         <?php endif; ?>
 
-        <form action="add_quiz.php" method="POST" id="quizForm">
+        <form action="quiz_code.php" method="POST" id="quizForm">
             <div class="form-group">
                 <label for="quiz_name">Quiz Name:</label>
                 <input type="text" id="quiz_name" name="quiz_name" required value="<?php echo isset($_POST['quiz_name']) ? htmlspecialchars($_POST['quiz_name']) : ''; ?>">
@@ -30,18 +30,6 @@
             <div class="form-group">
                 <label for="quiz_description">Quiz Description:</label>
                 <textarea id="quiz_description" name="quiz_description" rows="4" required><?php echo isset($_POST['quiz_description']) ? htmlspecialchars($_POST['quiz_description']) : ''; ?></textarea>
-            </div>
-
-            <div class="form-group">
-                <label for="ranked_quiz_id">Quiz Level:</label>
-                <select id="ranked_quiz_id" name="ranked_quiz_id" required>
-                    <option value="">--Select Level--</option>
-                    <?php foreach ($levels as $level): ?>
-                        <option value="<?php echo htmlspecialchars($level['ranked_quiz_id']); ?>" <?php if (isset($_POST['ranked_quiz_id']) && $_POST['ranked_quiz_id'] == $level['ranked_quiz_id']) echo 'selected'; ?>>
-                            <?php echo htmlspecialchars($level['ranked_quiz_level'] . " - " . $level['ranked_quiz_name']); ?>
-                        </option>
-                    <?php endforeach; ?>
-                </select>
             </div>
 
             <h2>Questions</h2>

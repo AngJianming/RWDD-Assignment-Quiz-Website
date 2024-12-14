@@ -35,14 +35,20 @@
             min-height: 100vh;
             width: 100%;
             overflow: hidden;
-            background: #444;
+            /* background: #444; */
+            /* background-color: #5c3d9a; */
         }
 
         header {
+            position: relative;
+            top:0;
+            left:0;
+            width: 100%;
             background-color: #020104;
             color: white;
             width: 100%;
             top: 0;
+
         }
 
         .header-container {
@@ -395,15 +401,8 @@
             rotate: (180deg);
         }
 
-        /* Home Content */
-        .home_content {
-            position: absolute;
-            height: 100%;
-            width: calc(100% - 80px);
-            /* Adjusted width */
-            left: 80px;
-            /* Adjusted left position */
-            transition: margin-left 0.5s ease;
+        .profileAdmin {
+            cursor: pointer;
         }
 
         /* When Sidebar is Active */
@@ -419,7 +418,7 @@
             background-color: #020104;
             color: white;
             padding: 32px 0;
-            position: fixed;
+            position: absolute;
             bottom: 0;
             width: 100%;
         }
@@ -465,6 +464,15 @@
             margin-top: 0px;
             margin-bottom: -4px;
             font-size: 20px;
+        }
+
+        .adminSignOut {
+            color: #f5f5f5;
+        }
+
+        .adminSignOut:hover, #log_out:hover {
+            color: #020104;
+            background: #ccc;
         }
 
         /* Responsive Adjustments */
@@ -611,7 +619,7 @@
     <header>
         <div class="navbar">
             <div class="logo">
-                <img src="/img/Code-Combat (trans) logo.png" alt="Logo" />
+                <img src="../img/Code-Combat (trans) logo.png" alt="Logo" />
             </div>
             <!-- <div class="search-signup">
                 <button class="sign-in">Sign in</button>
@@ -623,12 +631,11 @@
     <div class="sidebar">
         <div class="logo_content">
             <div class="logo">
-                <!-- Logo can be placed here if needed -->
             </div>
             <i class="ms-Icon ms-Icon--CollapseMenu" id="btn"></i>
         </div>
         <ul class="nav_list">
-            <li>
+        <li>
                 <a href="dashboard_nav">
                     <i class="ms-Icon ms-Icon--WaffleOffice365"></i>
                     <span class="links_name">Dashboard</span>
@@ -681,16 +688,21 @@
         <div class="profile_content">
             <div class="profile">
                 <div class="profile_details">
-                    <img src="/img/Profile Pic.png" alt="Profile Picture" style="cursor: pointer;">
+                    <a href="/Student/Profile-Student.php">
+                        <img class="profileAdmin" src="../img/Profile Pic.png" alt="Profile Picture">
+                    </a>
                     <div class="name_job">
                         <div class="name">USER</div>
                         <div class="job">Student</div>
                     </div>
                 </div>
-                <i class="ms-Icon ms-Icon--SignOut" id="log_out"></i>
+                <a href="/landingPg.php" class="adminSignOut">
+                    <i class="ms-Icon ms-Icon--SignOut" id="log_out"></i>
+                </a>
             </div>
         </div>
     </div>
+
     <footer>
         <div class="copyright">
             <h6>© 2024 BatttleCombat.com FAQ | Privacy Policy | Terms of Service | RWDD Assignment Quiz Website</h4>
@@ -698,7 +710,7 @@
     </footer>
     <div class="home_content">
         <!-- Main content goes here -->
-        
+
     </div>
 
     <script>
