@@ -636,35 +636,35 @@
         </div>
         <ul class="nav_list">
             <li>
-                <a href="/Admin/dashboard.php">
+                <a href="../Admin/dashboard.php">
                     <i class="ms-Icon ms-Icon--WaffleOffice365"></i>
                     <span class="links_name">Dashboard</span>
                 </a>
                 <span class="tooltip">Dashboard</span>
             </li>
             <li>
-                <a href="useraccount.php">
+                <a href="../Admin/useraccount.php">
                     <i class="ms-Icon ms-Icon--Contact"></i>
                     <span class="links_name">Manage User</span>
                 </a>
                 <span class="tooltip">Manage User</span>
             </li>
             <li>
-                <a href="eduaccount.php">
+                <a href="../Admin/eduaccount.php">
                     <i class="ms-Icon ms-Icon--Chat"></i>
                     <span class="links_name">Manage Educator</span>
                 </a>
                 <span class="tooltip">Manage Educator</span>
             </li>
             <li>
-                <a href="userperformance.php">
+                <a href="../Admin/userperformance.php">
                     <i class="ms-Icon ms-Icon--PieDouble"></i>
                     <span class="links_name">Performance</span>
                 </a>
                 <span class="tooltip">Performance</span>
             </li>
             <li>
-                <a href="FilesPg.php">
+                <a href="../Admin/FilesPg.php">
                     <i class="ms-Icon ms-Icon--FabricFolder"></i>
                     <span class="links_name">Files</span>
                 </a>

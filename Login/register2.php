@@ -167,11 +167,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="forget">
                 <label for=""><input type="checkbox" class="remember-me">Remember Me</label>
             </div>
-            <button 
-                type="sign-up" 
-                name="sign-up">
-                Sign up
-            </button>
+            <button>Sign up</button>
             <div class="register">
                 <p>Already have an account? <a href="login.php">Login</a></p>
             </div>
