@@ -1,6 +1,6 @@
 <?php
 /**
- * conn.php
+ * connection.php
  *
  * This file establishes a connection to the MySQL database `rwdd-assignment-quiz-website`
  * using PHP's mysqli extension. It includes error handling and sets the appropriate
@@ -13,7 +13,7 @@
  * **Example:**
  * ```php
  * <?php
- * require 'conn.php';
+ * require 'connection.php';
  *
  * // Your database operations here
  *
@@ -51,16 +51,16 @@ if (!$conn->set_charset("utf8mb4")) {
  */
 
 // Example Usage:
-// $result = $conn->query("SELECT * FROM admin");
-// if ($result->num_rows > 0) {
-//     while($row = $result->fetch_assoc()) {
-//         echo "ID: " . $row["admin_id"]. " - Username: " . $row["admin_username"]. "<br>";
-//     }
-// } else {
-//     echo "0 results";
-// }
+$result = $conn->query("SELECT * FROM admin");
+if ($result->num_rows > 0) {
+    while($row = $result->fetch_assoc()) {
+        echo "ID: " . $row["admin_id"]. " - Username: " . $row["admin_username"]. "<br>";
+    }
+} else {
+    echo "0 results";
+}
 
 // **5. Close Connection (Optional)**
 // It's a good practice to close the connection when it's no longer needed.
-// $conn->close();
+$conn->close();
 ?>

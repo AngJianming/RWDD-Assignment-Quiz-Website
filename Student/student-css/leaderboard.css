@@ -20,7 +20,7 @@ body {
     font-size: 2rem;
     font-weight: 600;
     margin: 0;
-    color: #fff;
+    color: #caa0f5;
 }
 
 .section-subtitle {
@@ -116,6 +116,6 @@ body {
 }
 
 .refresh-button:hover {
-    background: #555;
+    background: #940f90;
     transform: scale(1.05);
 }

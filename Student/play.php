@@ -12,7 +12,7 @@
     <!-- External CSS and Swiper.js stylesheets -->
     <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
     <link rel="stylesheet" href="../Student/student-css/play.css">
-    
+
     <!-- Include styles from Bg-Animation.php -->
     <?php include '../Constants/Combine-student.php'; ?>
 </head>
@@ -75,13 +75,30 @@
         </div>
 
         <div class="container">
-            <h3 class="text-center section-subheading">-- Start Now --</h3>
+            <h3 class="text-center section-subheading">
+                <svg viewBox="0 0 960 300">
+                    <symbol id="s-text">
+                        <text text-anchor="middle" x="50%" y="80%" style="letter-spacing: 15px">-- Start Now --</text>
+                    </symbol>
+
+                    <g class="g-ants">
+                        <use xlink:href="#s-text" class="text-copy"></use>
+                        <use xlink:href="#s-text" class="text-copy"></use>
+                        <use xlink:href="#s-text" class="text-copy"></use>
+                        <use xlink:href="#s-text" class="text-copy"></use>
+                        <use xlink:href="#s-text" class="text-copy"></use>
+                    </g>
+                </svg>
+            </h3>
             <!-- Original Play Button -->
             <div style="display:flex; gap:1rem; justify-content:center; align-items:center;">
-                <button class="btn"><h2>Play</h2></button>
+                <a href="../Student/game functions/game.php">
+                    <button class="btn" style="font-family: 'Courier New', monospace;"><strong>Play</strong></button>
+                </a>
                 <!-- New Buttons added at the side of the Play button -->
-                <button class="btn">View Leaderboard</button>
-                <button class="btn">View All Levels</button>
+                <a href="">
+                    <button class="btn" style="font-family: 'Courier New', monospace;"><strong>View All Levels</strong></button>
+                </a>
             </div>
         </div>
     </section>
@@ -90,7 +107,7 @@
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
-    <script src="../Student/student-js/play.js"></script>
+    <script src="../Student/student-js/Play.js"></script>
 </body>
 
 </html>

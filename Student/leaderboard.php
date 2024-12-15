@@ -4,11 +4,11 @@ include("/xampp/htdocs/RWDD-Assignment-Quiz-Website/Constants/Combine-student.ph
 
 // Sample data (replace with real data from your database)
 $players = [
-    ['name' => 'Triviaking99', 'score' => 4580],
-    ['name' => 'PythonMaster', 'score' => 4320],
-    ['name' => 'KnowItAll', 'score' => 4210],
-    ['name' => 'QuizHero', 'score' => 4000],
-    ['name' => 'Brainiac', 'score' => 3950],
+    ['name' => 'Triviaking99', 'score' => 458],
+    ['name' => 'PythonMaster', 'score' => 432],
+    ['name' => 'KnowItAll', 'score' => 421],
+    ['name' => 'QuizHero', 'score' => 400],
+    ['name' => 'Brainiac', 'score' => 395],
 ];
 ?>
 

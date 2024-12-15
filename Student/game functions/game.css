@@ -1,0 +1,232 @@
+/* =========================================================
+            Minimalist Black-Themed CSS for Game
+   ========================================================= */
+
+/* =========================================================
+           CSS Variables for Consistent Theming
+   ========================================================= */
+:root {
+  /* Background Colors */
+  --background-color: #121212;
+  /* Body background */
+  --container-bg: #1e1e1e;
+  /* Containers and cards background */
+  --card-bg: #1a1a1a;
+  /* Individual card backgrounds */
+
+  /* Text Colors */
+  --text-color: #ffffff;
+  /* Primary text color */
+  --secondary-text: #cccccc;
+  /* Secondary text color */
+
+  /* Accent Colors */
+  --secondary-color: #bb00ff;
+  /* Bright Purple */
+  --secondary-hover: #dd00ff;
+  /* Darker Bright Purple for hover states */
+
+  /* Border Colors */
+  --border-color: rgba(187, 0, 255, 0.25);
+  /* Bright purple borders */
+
+  /* Button Colors */
+  --button-bg: var(--secondary-color);
+  --button-hover-bg: var(--secondary-hover);
+  --button-text: #ffffff;
+
+  /* Shadow Colors */
+  --box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  --card-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* =========================================================
+                General Reset and Basic Styles
+   ========================================================= */
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* =========================================================
+                Choice Container Styles
+   ========================================================= */
+
+#game {
+  width: 80%;
+  margin: auto;
+}
+
+.choice-container {
+  display: flex;
+  margin-bottom: 0.5rem;
+  width: 100%;
+  font-size: 1.2rem;
+  /* Reduced font size for smaller screens */
+  border: 0.1rem solid var(--border-color);
+  /* Bright purple border */
+  background-color: var(--container-bg);
+  /* Dark background */
+  border-radius: 5px;
+  /* Rounded corners */
+  transition: box-shadow 0.3s, transform 0.1s ease;
+}
+
+.choice-container:hover {
+  cursor: pointer;
+  box-shadow: 0 0.4rem 1.4rem 0 rgba(187, 0, 255, 0.5);
+  /* Purple shadow */
+  transform: translateY(-0.1rem);
+}
+
+/* =========================================================
+                Choice Prefix Styles
+   ========================================================= */
+.choice-prefix {
+  padding: 1rem 1.5rem;
+  /* Adjusted padding for smaller screens */
+  background-color: var(--secondary-color);
+  /* Bright purple background */
+  color: var(--button-text);
+  /* White text */
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+/* =========================================================
+                Choice Text Styles
+   ========================================================= */
+.choice-text {
+  padding: 1rem;
+  width: 100%;
+  background-color: var(--container-bg);
+  /* Match container background */
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+/* =========================================================
+                Correct and Incorrect Choice Styles
+   ========================================================= */
+.correct {
+  background-color: #28a745;
+  /* Green for correct */
+  color: #ffffff;
+  border-radius: 5px;
+}
+
+.incorrect {
+  background-color: #dc3545;
+  /* Red for incorrect */
+  color: #ffffff;
+  border-radius: 5px;
+}
+
+/* =========================================================
+                HUD (Heads-Up Display) Styles
+   ========================================================= */
+#hud {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: var(--container-bg);
+  border-radius: 5px;
+  box-shadow: var(--card-shadow);
+  margin-bottom: 1rem;
+}
+
+.hud-prefix {
+  text-align: center;
+  font-size: 1.5rem;
+  /* Reduced font size */
+  color: var(--secondary-color);
+}
+
+.hud-main-text {
+  text-align: center;
+  font-size: 1rem;
+  /* Reduced font size */
+  color: var(--text-color);
+}
+
+/* =========================================================
+                Progress Bar Styles
+   ========================================================= */
+#progressBar {
+  width: 100%;
+  max-width: 300px;
+  /* Adjusted for smaller screens */
+  height: 2rem;
+  /* Reduced height */
+  border: 0.2rem solid var(--secondary-color);
+  border-radius: 5px;
+  margin-top: 1rem;
+  background-color: var(--container-bg);
+}
+
+#progressBarFull {
+  height: 100%;
+  background-color: var(--secondary-color);
+  width: 0%;
+  border-radius: 5px;
+  transition: width 0.5s ease-in-out;
+}
+
+/* =========================================================
+                Loader Styles
+   ========================================================= */
+#loader {
+  border: 2rem solid var(--container-bg);
+  /* Dark background */
+  border-top: 2rem solid var(--secondary-color);
+  /* Bright purple */
+  border-radius: 50%;
+  width: 6rem;
+  /* Reduced size */
+  height: 6rem;
+  animation: spin 2s linear infinite;
+  margin: 2rem auto;
+  /* Center the loader */
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* =========================================================
+                Choice Container Active State
+   ========================================================= */
+.choice-container:active {
+  transform: translateY(1px);
+  /* Slight press animation */
+  box-shadow: 0 1px 3px rgba(187, 0, 255, 0.3);
+  /* Subtle shadow for pressed effect */
+}
+
+/* =========================================================
+                Additional Styles (if needed)
+   ========================================================= */
+
+/* Example for Hover and Active States on Buttons */
+button {
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+  /* Smooth transitions */
+}
+
+button:active {
+  transform: translateY(1px);
+  /* Slight press animation */
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  /* Subtle shadow for pressed effect */
+}
