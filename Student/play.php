@@ -11,7 +11,7 @@
 
     <!-- External CSS and Swiper.js stylesheets -->
     <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="play.css">
+    <link rel="stylesheet" href="../Student/student-css/play.css">
     
     <!-- Include styles from Bg-Animation.php -->
     <?php include '../Constants/Combine-student.php'; ?>
@@ -90,7 +90,7 @@
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
-    <script src="play.js"></script>
+    <script src="../Student/student-js/play.js"></script>
 </body>
 
 </html>

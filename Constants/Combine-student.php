@@ -404,14 +404,14 @@
         .profileAdmin {
             cursor: pointer;
         }
-
-        /* When Sidebar is Active */
+        
+/* 
+        When Sidebar is Active
         .sidebar.active~.home_content {
             width: calc(100% - 320px);
-            /* Adjusted width */
             left: 320px;
-            /* Adjusted left position */
-        }
+        } 
+*/
 
         /* Footer */
         footer {
@@ -701,10 +701,6 @@
             <h6>© 2024 BatttleCombat.com FAQ | Privacy Policy | Terms of Service | RWDD Assignment Quiz Website</h4>
         </div>
     </footer>
-    <div class="home_content">
-        <!-- Main content goes here -->
-
-    </div>
 
     <script>
         const btn = document.querySelector("#btn");
