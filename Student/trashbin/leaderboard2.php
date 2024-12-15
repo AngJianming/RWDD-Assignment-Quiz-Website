@@ -5,8 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>History - CodeCombat</title>
-    <?php include '../Constants/Combine-student.php' ?>
+    <title>Leaderboard - CodeCombat</title>
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
     <style>
         body {
@@ -31,14 +30,6 @@
             color: #caa0f5;
             /* Light purple */
             font-size: 2.2rem;
-        }
-
-        p {
-            text-align: center;
-            color: #ccc;
-            margin-bottom: 30px;
-            font-size: 1.1rem;
-            line-height: 1.5;
         }
 
         table {
@@ -95,7 +86,7 @@
             /* Slightly lighter purple on hover */
         }
 
-        .note {
+        p.note {
             text-align: center;
             color: #777;
             font-size: 0.9rem;
@@ -120,41 +111,39 @@
 
 <body>
     <div class="container">
-        <h1>Your History Records</h1>
-        <p>Below is a record of your previously saved results from CodeCombat. Keep track of your progress and see how you've improved over time!</p>
+        <h1>Top Pythonistas</h1>
         <table>
             <thead>
                 <tr>
-                    <th>Date</th>
+                    <th>Rank</th>
+                    <th>Player</th>
                     <th>Score</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
-                // In a real scenario, you'd fetch these from a database.
-                // For demonstration, we'll use an example static array.
-                // This data would have been saved in 'end.php' when the user clicked 'Save'.
-                $history = [
-                    ['date' => '2024-12-15', 'score' => 700],
-                    ['date' => '2024-12-14', 'score' => 650],
-                    ['date' => '2024-12-13', 'score' => 600],
+                // Example leaderboard data
+                // In a real scenario, this data would come from a database query.
+                $players = [
+                    ['rank' => 1, 'name' => 'CodeNinja42', 'score' => 980],
+                    ['rank' => 2, 'name' => 'PyMaster', 'score' => 950],
+                    ['rank' => 3, 'name' => 'SnakeCharmer', 'score' => 920],
+                    ['rank' => 4, 'name' => 'DjangoDude', 'score' => 900],
+                    ['rank' => 5, 'name' => 'DataDragon', 'score' => 890],
                 ];
 
-                if (count($history) > 0) {
-                    foreach ($history as $entry) {
-                        echo "<tr>
-                      <td>{$entry['date']}</td>
-                      <td>{$entry['score']}</td>
-                    </tr>";
-                    }
-                } else {
-                    echo "<tr><td colspan='2' style='text-align:center;color:#777;'>No saved history found.</td></tr>";
+                foreach ($players as $player) {
+                    echo "<tr>
+                    <td>{$player['rank']}</td>
+                    <td>{$player['name']}</td>
+                    <td>{$player['score']}</td>
+                  </tr>";
                 }
                 ?>
             </tbody>
         </table>
         <a class="btn" href="/">Home</a>
-        <p class="note">Your history will be updated each time you save your result at the end of a game.</p>
+        <p class="note">Think you can top these scores? Keep practicing and come back to climb the ranks!</p>
     </div>
 </body>
 

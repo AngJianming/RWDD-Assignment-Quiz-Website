@@ -17,6 +17,9 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+
+        .ms-Fabric {
             font-family: "Poppins", sans-serif;
         }
 
@@ -636,35 +639,35 @@
         </div>
         <ul class="nav_list">
         <li>
-                <a href="dashboard_nav">
+                <a href="../Student/userDashboard.php">
                     <i class="ms-Icon ms-Icon--WaffleOffice365"></i>
                     <span class="links_name">Dashboard</span>
                 </a>
                 <span class="tooltip">Dashboard</span>
             </li>
             <li>
-                <a href="play_nav">
+                <a href="../Student/Play.php">
                     <i class="fa-solid fa-gamepad-modern"></i>
                     <span class="links_name">Play</span>
                 </a>
                 <span class="tooltip">Play</span>
             </li>
             <li>
-                <a href="custom_quiz_nav">
+                <a href="../Student/playCustomQuiz.php">
                     <i class="fa-light fa-pen-field"></i>
                     <span class="links_name">Custom Quiz</span>
                 </a>
                 <span class="tooltip">Custom Quiz</span>
             </li>
             <li>
-                <a href="leaderboard_nav">
+                <a href="../Student/Leaderboard.php">
                     <i class="fa-solid fa-trophy"></i>
                     <span class="links_name">Leaderboard</span>
                 </a>
                 <span class="tooltip">Leaderboard</span>
             </li>
             <li>
-                <a href="history_nav">
+                <a href="../Student/History.php">
                     <i class="fa-solid fa-clock-rotate-left"></i>
                     <span class="links_name">History</span>
                 </a>
