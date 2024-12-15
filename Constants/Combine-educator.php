@@ -645,14 +645,14 @@
         </div>
         <ul class="nav_list">
             <li>
-                <a href="/Educator/dashboard.php">
+                <a href="../Educator/dashboard.php">
                     <i class="ms-Icon ms-Icon--WaffleOffice365"></i>
                     <span class="links_name">Dashboard</span>
                 </a>
                 <span class="tooltip">Dashboard</span>
             </li>
             <li>
-                <a href="/Educator/Progress.php">
+                <a href="../Educator/Progress.php">
                     <i class="fa fa-tasks"></i>
                     <span class="links_name">Progress</span>
                 </a>

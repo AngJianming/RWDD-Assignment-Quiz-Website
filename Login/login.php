@@ -1,86 +1,60 @@
 <?php
-// $servername = "localhost";
-// $dbname = "rwdd-assignment-quiz-website";
-// $username = "root";
-// $password = "";
+try {
+    // Database connection
+    $conn = new PDO("mysql:host=localhost;dbname=testdb", "root", "");
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-// // Create connection
-// $conn = new mysqli($servername, $username, $password);
+    // Prepare statement
+    $stmt = $conn->prepare("SELECT * FROM users WHERE email = :email");
+    $email = "example@example.com"; // Variable must be defined
+    $stmt->bindParam(':email', $email);
+    $stmt->execute();
 
-// // Check connection
-// if ($conn->connect_error) {
-//     die("Connection failed: " . $conn->connect_error);
-// }
-// echo "Connected successfully";
+    // Fetch results
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+    if ($user) {
+        echo "User found: " . $user['name'];
+    } else {
+        echo "No user found with this email.";
+    }
+} catch (PDOException $e) {
+    echo "Error: " . $e->getMessage();
+}
+
+// Start session
+session_start();
 
 
-// ------------------------ START HERE ------------------------
-// session_start();
+// Handle Login Form Submission
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $email = $_POST['email'];
+    $password = $_POST['password'];
 
-// $link = mysqli_connect("localhost", "root", "", "rwdd-assignment-quiz-website");
+    // Check credentials in Admin table
+    $stmt = $conn->prepare("SELECT * FROM admin WHERE email = :email");
+    $stmt->bindParam(':email', $email);
+    $stmt->execute();
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-// // Check connection
-// if ($mysqli->connect_error) {
-//     // Log the error message internally
-//     error_log("Database connection error: " . $mysqli->connect_error);
-//     // Display a generic error message to the user
-//     die("Sorry, we're experiencing technical difficulties. Please try again later.");
-// }
-// echo "Connected successfully";
+    // Verify password
+    if ($user && password_verify($password, $user['password'])) {
+        // Start session and redirect to dashboard
+        session_start();
+        $_SESSION['user'] = $user;
+        header("Location: dashboard.php"); // Change to your target page
+        exit;
+    } else {
+        $error = "Invalid email or password.";
+    }
+}
 
-// // Initialize variables
-// $loginEmail = isset($_POST['LoginEmail']) ? trim($_POST['LoginEmail']) : '';
-// $loginPassword = isset($_POST['LoginPassword']) ? $_POST['LoginPassword'] : '';
+// If already logged in, redirect to dashboard
+session_start();
+if (isset($_SESSION['user'])) {
+    header("Location: dashboard.php");
+    exit;
+}
 
-// // Validate inputs
-// if (empty($loginEmail) || empty($loginPassword)) {
-//     $_SESSION['errMsg'] = "Please enter both email and password.";
-//     header("Location: login.php"); // Redirect back to login form
-//     exit();
-// }
-
-// // Prepare the SQL statement to prevent SQL injection
-// $stmt = $mysqli->prepare("SELECT student_id, student_password FROM student WHERE student_email = ?");
-// if (!$stmt) {
-//     error_log("Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error);
-//     die("Sorry, we're experiencing technical difficulties. Please try again later.");
-// }
-
-// $stmt->bind_param("s", $loginEmail);
-
-// // Execute the statement
-// if (!$stmt->execute()) {
-//     error_log("Execute failed: (" . $stmt->errno . ") " . $stmt->error);
-//     die("Sorry, we're experiencing technical difficulties. Please try again later.");
-// }
-
-// // Bind the result variables
-// $stmt->bind_result($student_id, $hashed_password);
-
-// // Fetch the result
-// if ($stmt->fetch()) {
-//     // Verify the password
-//     if (password_verify($loginPassword, $hashed_password)) {
-//         // Password is correct, regenerate session ID to prevent session fixation
-//         session_regenerate_id(true);
-//         $_SESSION['student_id'] = $student_id;
-//         exit();
-//     } else {
-//         // Invalid password
-//         $_SESSION['errMsg'] = "Invalid email or password.";
-//         header("Location: login.php");
-//         exit();
-//     }
-// } else {
-//     // No user found with that email
-//     $_SESSION['errMsg'] = "Invalid email or password.";
-//     header("Location: login.php");
-//     exit();
-// }
-
-// // Close the statement and connection
-// $stmt->close();
-// $mysqli->close();
 ?>
 
 <!DOCTYPE html>
@@ -89,110 +63,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <title>Login - RWDD Assignment Quiz</title>
     <link rel="stylesheet" href="login.css">
-    <title>Login form</title>
 </head>
 
 <body>
 
     <section>
-        <form>
-            <!-- Login Form -->
+        <form action="login.php" method="POST">
+            <!-- Display Error Message -->
+            <?php
+            if (!empty($error_msg)) {
+                echo '<div class="error-message">' . htmlspecialchars($error_msg) . '</div>';
+            }
+            ?>
+
             <h1>Login</h1>
 
+            <!-- Role Selection -->
             <div class="radio-group">
-                <input type="radio" id="student" name="role" value="Student">
+                <input type="radio" id="student" name="role" value="Student" required>
                 <label for="student">Student</label>
 
-                <input type="radio" id="educator" name="role" value="Educator">
+                <input type="radio" id="educator" name="role" value="Educator" required>
                 <label for="educator">Educator</label>
 
-                <input type="radio" id="admin" name="role" value="Admin">
+                <input type="radio" id="admin" name="role" value="Admin" required>
                 <label for="admin">Admin</label>
             </div>
 
+            <!-- Email Input -->
             <div class="inputbox">
                 <ion-icon name="mail-outline"></ion-icon>
-                <input type="email" required>
-                <label for="">Email</label>
+                <input type="email" id="LoginEmail" name="LoginEmail" required>
+                <label for="LoginEmail">Email</label>
             </div>
+
+            <!-- Password Input -->
             <div class="inputbox">
-                <ion-icon name="eye-off-outline" id="togglePassword1"></ion-icon>
-                <input type="password" id="password1" required>
-                <label for="password1">Password</label>
+                <ion-icon name="eye-off-outline" id="togglePassword1" style="cursor: pointer;"></ion-icon>
+                <input type="password" id="LoginPassword" name="LoginPassword" required>
+                <label for="LoginPassword">Password</label>
             </div>
+
+            <!-- Remember Me and Forgot Password -->
             <div class="forget">
-                <label for=""><input type="checkbox" class="remember-me">Remember Me</label>
-                <a href="#">Forget Password</a>
+                <label for="remember-me">
+                    <input type="checkbox" id="remember-me" name="remember_me">Remember Me
+                </label>
+                <a href="forgot_password.php">Forgot Password?</a>
             </div>
-            <button>Log in</button>
+
+            <!-- Submit Button -->
+            <button type="submit" name="submit" class="btn">Log in</button>
+
+
+            <!-- Register Link -->
             <div class="register">
                 <p>Don't have an account? <a href="register.php">Register</a></p>
             </div>
 
         </form>
     </section>
+
+    <!-- Ionicons for Icons -->
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    <script src="register.js"></script>
+
+    <!-- Password Toggle Script -->
+    <script>
+        const togglePassword1 = document.querySelector('#togglePassword1');
+        const password1 = document.querySelector('#LoginPassword');
+
+        togglePassword1.addEventListener('click', function() {
+            // Toggle the type attribute
+            const type = password1.getAttribute('type') === 'password' ? 'text' : 'password';
+            password1.setAttribute('type', type);
+            // Toggle the eye icon
+            this.setAttribute('name', type === 'password' ? 'eye-off-outline' : 'eye-outline');
+        });
+    </script>
+
 </body>
 
 </html>
-
-
-<?php
-// $servername = "localhost";
-// $dbname = "rwdd-assignment-quiz-website";
-// $username = "root";
-// $password = "";
-
-// // Create connection
-// $conn = new mysqli($servername, $username, $password);
-
-// // Check connection
-// if ($conn->connect_error) {
-//     die("Connection failed: " . $conn->connect_error);
-// }
-// echo "Connected successfully";
-
-// session_start();
-
-// require_once 'vendor/autoload.php';
-
-// // Google OAuth configuration
-// $clientID = 'YOUR_GOOGLE_CLIENT_ID';
-// $clientSecret = 'YOUR_GOOGLE_CLIENT_SECRET';
-// $redirectUri = 'http://yourdomain.com/login.php';
-
-// // Create Google Client
-// $client = new Google_Client();
-// $client->setClientId($clientID);
-// $client->setClientSecret($clientSecret);
-// $client->setRedirectUri($redirectUri);
-// $client->addScope('email');
-// $client->addScope('profile');
-
-// // If there is no authorization code, get it
-// if (!isset($_GET['code'])) {
-//     $authUrl = $client->createAuthUrl();
-//     echo "<a href='$authUrl'>Login with Google</a>";
-// } else {
-//     // Exchange authorization code for access token
-//     $token = $client->fetchAccessTokenWithAuthCode($_GET['code']);
-//     $client->setAccessToken($token);
-
-//     // Get user profile information
-//     $google_oauth = new Google_Service_Oauth2($client);
-//     $google_account_info = $google_oauth->userinfo->get();
-
-//     // Store user information in session
-//     $_SESSION['id'] = $google_account_info->id;
-//     $_SESSION['email'] = $google_account_info->email;
-//     $_SESSION['name'] = $google_account_info->name;
-
-//     // Redirect to another page or display user info
-//     header('Location: dashboard.php');
-//     exit();
-// }
-?>
