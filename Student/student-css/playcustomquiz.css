@@ -1,80 +1,252 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* playCustomQuiz.css */
+
+/* Root Variables for Theming */
+:root {
+    --background-color: #121212;
+    --container-bg: #1e1e1e;
+    --text-color: #ffffff;
+    --secondary-text: #bbb;
+    --primary-color: #4CAF50;
+    --button-bg: #4CAF50;
+    --button-hover-bg: #45a049;
+    --input-bg: #2c2c2c;
+    --input-border: #444;
+    --error-color: #ff4d4d;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    background-color: #5c3d9a;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+/* Light Theme (Optional) */
+[data-theme="light"] {
+    --background-color: #f0f0f0;
+    --container-bg: #ffffff;
+    --text-color: #000000;
+    --secondary-text: #555;
+    --primary-color: #4CAF50;
+    --button-bg: #4CAF50;
+    --button-hover-bg: #45a049;
+    --input-bg: #ffffff;
+    --input-border: #ccc;
+    --error-color: #ff4d4d;
 }
 
-.container {
-    background-color: white;
+/* Main Content */
+.home_content {
+    margin-top: 60px; /* Height of the header */
+    padding: 20px;
+    transition: margin-left 0.5s ease, width 0.5s ease;
+    /* width: calc(100% - 80px); Make the contents move aside when clicked sidebar*/
+    transform: translate(0%, 0%);
+}
+
+/* Quiz Container */
+.quiz-container {
+    background-color: var(--container-bg);
+    padding: 40px 60px;
     border-radius: 10px;
-    padding: 70px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    width: 400px;
+    max-width: 90%;
     text-align: center;
-    width: 800px;
-    z-index: 1000;
+    margin: auto;
 }
 
-h1 {
-    margin-bottom: 20px;
+.quiz-container h1 {
+    margin-bottom: 30px;
+    font-size: 28px;
+    color: var(--primary-color);
 }
 
-.enterbutton {
-    margin-top: 50px;
-    padding: 20px 100px;
-    font-size: 20px;
-    background-color: #ffffff;
-    border: 1px solid #000;
+/* Quiz Form */
+.quiz-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.form-group label {
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: var(--secondary-text);
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--input-border);
+    border-radius: 5px;
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+/* Error Message */
+.error {
+    color: var(--error-color);
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+/* Button Styles */
+.btn {
+    padding: 12px 20px;
+    background-color: var(--button-bg);
+    border: none;
+    border-radius: 5px;
+    color: #fff;
     cursor: pointer;
-    transition: all 0.5s ease-in-out;
+    font-size: 16px;
+    transition: background-color 0.3s;
 }
 
-@media (max-width: 550px) {
-    body {
-        flex-direction: column; /* Adjust layout for smaller screens */
-        padding: 10px;
+.btn:hover {
+    background-color: var(--button-hover-bg);
+}
+
+.btn:focus {
+    outline: none;
+}
+
+/* Footer */
+footer {
+    background-color: #020104;
+    color: white;
+    padding: 32px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+footer .copyright {
+    color: #f5f5f5;
+    text-align: center;
+    padding: 0px;
+    margin-top: 0px;
+    margin-bottom: -4px;
+    font-size: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 932px) {
+
+    /* Collapse the sidebar by default */
+    .sidebar {
+        width: 50px;
+        transition: all 0.5s ease;
     }
 
-    .container {
-        width: 90%; /* Make the container width flexible */
-        padding: 20px; /* Reduce padding */
-        position: relative;
-        text-align: center;
-        left: 25px;
-        max-width: 400px;
+    /* Hide the navigation list and profile content by default */
+    .sidebar .nav_list,
+    .sidebar .profile_content {
+        display: none;
     }
 
-    h1 {
-        font-size: 1.5em; /* Reduce font size */
-        margin-bottom: 10px;
+    /* Expand the sidebar and show contents when active */
+    .sidebar.active {
+        width: 200px;
     }
 
-    .code-input {
-        gap: 20px; /* Reduce the gap between inputs */
-        padding-left: 50px; /* Reduce padding */
+    .sidebar.active .nav_list,
+    .sidebar.active .profile_content {
+        display: block;
     }
 
-    .code-input input {
-        width: 60px; /* Reduce input size */
-        height: 60px; /* Reduce input size */
-        font-size: 2em; /* Adjust font size */
+    /* Adjust the home content width when sidebar is active */
+    .home_content {
+        margin-left: 50px;
+        width: calc(100% - 50px);
+        transition: margin-left 0.5s ease, width 0.5s ease;
     }
 
-    .enterbutton {
-        margin-top: 20px;
-        padding: 15px 50px; /* Reduce button size */
-        font-size: 16px; /* Adjust font size */
+    /* Center the menu button */
+    .sidebar #btn {
+        left: 50%;
+        transform: translateX(-50%);
     }
 
-    .enterbutton:hover {
-        box-shadow: 0 0 8px #8000ff, 0 0 16px #8000ff, 0 0 24px #8000ff, 0 0 32px #8000ff;
-        letter-spacing: .1rem; /* Reduce spacing */
+    /* Further reduce icon sizes in responsive mode */
+    .sidebar ul li i {
+        font-size: 1rem;
+    }
+
+    /* Further reduce tooltip sizes in responsive mode */
+    .sidebar ul li .tooltip {
+        width: 80px;
+        height: 25px;
+        line-height: 25px;
+        font-size: 12.8px;
+    }
+
+    /* Adjust Font Awesome icons in responsive mode */
+    .sidebar ul li a .fa-gamepad-modern,
+    .sidebar ul li a .fa-pen-field,
+    .sidebar ul li a .fa-trophy,
+    .sidebar ul li a .fa-clock-rotate-left {
+        font-size: 16px;
+    }
+
+    /* Adjust logout icon size in responsive mode */
+    .profile #log_out {
+        font-size: 20px;
+        min-width: 35px;
+        line-height: 35px;
+    }
+}
+
+/* Smaller Screens */
+@media (max-width: 480px) {
+    .quiz-container {
+        padding: 30px 40px;
+    }
+
+    .quiz-container h1 {
+        font-size: 24px;
+    }
+
+    .btn {
+        font-size: 14px;
+        padding: 10px 16px;
+    }
+
+    .form-group input {
+        padding: 10px 12px;
+        font-size: 14px;
+    }
+
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 8px;
+        margin-top: 8px;
+    }
+
+    .search-signup {
+        flex-direction: column;
+        width: 100%;
+        margin-top: 16px;
+    }
+
+    .search-signup input {
+        width: 100%;
+        margin-bottom: 8px;
+    }
+
+    footer .footer-container {
+        flex-direction: column;
+        gap: 16px;
     }
 }
