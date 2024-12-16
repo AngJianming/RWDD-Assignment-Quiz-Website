@@ -1,0 +1,222 @@
+/* All-Level.css for both All-Level.css and submit_quiz */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #121212; /* Dark background */
+    color: #e0e0e0; /* Light text for contrast */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+a {
+    color: #bb86fc; /* Soft purple for links */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #ffffff; /* White on hover */
+}
+
+.quiz-container {
+    background-color: #1e1e1e; /* Slightly lighter black for container */
+    padding: 40px;
+    border-radius: 8px;
+    max-width: 800px;
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.quiz-container h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2.5rem;
+    color: #ffffff; /* White for headings */
+}
+
+.quiz-container p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.question-block {
+    margin-bottom: 25px;
+    padding: 20px;
+    background-color: #2c2c2c; /* Dark grey for question blocks */
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+}
+
+.question-block:hover {
+    background-color: #3a3a3a; /* Slightly lighter on hover */
+}
+
+.question {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    color: #ffffff;
+}
+
+.answers {
+    display: flex;
+    flex-direction: column;
+}
+
+.answer-option {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #3a3a3a; /* Darker grey for options */
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.answer-option:hover {
+    background-color: #505050; /* Lighter grey on hover */
+}
+
+.answer-option input[type="radio"] {
+    margin-right: 15px;
+    accent-color: #bb86fc; /* Purple radio buttons */
+    transform: scale(1.2);
+}
+
+.answer-option:hover input[type="radio"] {
+    accent-color: #ffffff; /* Change color on hover */
+}
+
+.answer-option label {
+    flex: 1;
+    cursor: pointer;
+    color: #e0e0e0;
+}
+
+button.submit-btn,
+a.retry-btn {
+    display: inline-block;
+    padding: 15px 30px;
+    margin-top: 20px;
+    background-color: #bb86fc; /* Purple background */
+    color: #1e1e1e; /* Dark text */
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-decoration: none; /* For retry button */
+}
+
+button.submit-btn:hover,
+a.retry-btn:hover {
+    background-color: #985eff; /* Darker purple on hover */
+    transform: translateY(-2px);
+}
+
+button.submit-btn:active,
+a.retry-btn:active {
+    transform: translateY(0);
+    background-color: #7f56d9; /* Even darker on click */
+}
+
+@media (max-width: 768px) {
+    .quiz-container {
+        padding: 30px 20px;
+    }
+
+    .quiz-container h1 {
+        font-size: 2rem;
+    }
+
+    .question {
+        font-size: 1.2rem;
+    }
+
+    button.submit-btn,
+    a.retry-btn {
+        width: 100%;
+        padding: 15px;
+    }
+}
+
+
+/* Progress Indicator (if needed) */
+.progress-bar {
+    width: 100%;
+    background-color: #3a3a3a;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.progress {
+    height: 10px;
+    background-color: #bb86fc;
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+/* Timer (if implemented) */
+.timer {
+    font-size: 1.2rem;
+    text-align: right;
+    margin-bottom: 20px;
+    color: #ffcc00; /* Amber color for visibility */
+}
+
+
+/* Focus States for Better Accessibility */
+.answer-option input[type="radio"]:focus + label,
+button.submit-btn:focus,
+a.retry-btn:focus {
+    outline: 2px dashed #bb86fc;
+    outline-offset: 4px;
+}
+
+/* High Contrast for Visually Impaired */
+@media (prefers-contrast: high) {
+    body {
+        background-color: #000000;
+        color: #ffffff;
+    }
+
+    .quiz-container {
+        background-color: #1e1e1e;
+    }
+
+    .question-block {
+        background-color: #2c2c2c;
+    }
+
+    .answer-option {
+        background-color: #3a3a3a;
+    }
+
+    button.submit-btn,
+    a.retry-btn {
+        background-color: #ffffff;
+        color: #000000;
+    }
+
+    .answer-option input[type="radio"] {
+        accent-color: #ffffff;
+    }
+}
+
