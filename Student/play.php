@@ -96,7 +96,7 @@
                     <button class="btn" style="font-family: 'Courier New', monospace;"><strong>Play</strong></button>
                 </a>
                 <!-- New Buttons added at the side of the Play button -->
-                <a href="">
+                <a href="../Student/All-Level.php">
                     <button class="btn" style="font-family: 'Courier New', monospace;"><strong>View All Levels</strong></button>
                 </a>
             </div>

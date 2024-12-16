@@ -1,155 +1,76 @@
+<?php
+// Admin/rankedquiz.php
+
+session_start();
+
+// Include admin environment file if needed
+include '../Constants/Combine-admin.php';
+
+// Include DB connection
+require '../Database/connection.php';
+
+// Check if admin is logged in
+if (!isset($_SESSION['admin_username'])) {
+    header("Location: login.php");
+    exit();
+}
+
+// Fetch all quiz levels from the database
+$sql_levels = "SELECT * FROM ranked_quiz_levels ORDER BY ranked_quiz_id ASC";
+$result_levels = $conn->query($sql_levels);
+
+$levels = [];
+if ($result_levels && $result_levels->num_rows > 0) {
+    while ($row = $result_levels->fetch_assoc()) {
+        $levels[] = $row;
+    }
+}
+
+$conn->close();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Ranked Levels</title>
+    <title>Manage Ranked Quizzes</title>
     <link rel="stylesheet" href="rankedquiz.css">
-    <?php include '../Constants/Combine-admin.php'; ?>
+    <link rel="stylesheet" href="../css/admin_styles.css"> <!-- Assuming you have a global admin stylesheet -->
 </head>
 <body>
     <div class="container">
-        <h1 class="page-title">Ranked Quizzes</h1>
+        <h1 class="page-title">Manage Ranked Quizzes</h1>
         <div class="content">
             <div class="levels" id="levels-container">
                 <!-- Existing levels will be loaded here -->
+                <?php foreach ($levels as $level): ?>
+                    <div class="level-card <?php echo $level['is_published'] ? 'published' : ''; ?>">
+                        <h2><?php echo htmlspecialchars($level['ranked_quiz_level']); ?></h2>
+                        <p><?php echo htmlspecialchars($level['ranked_quiz_name']); ?></p>
+                        <p>Duration: <?php echo htmlspecialchars($level['ranked_quiz_duration']); ?> mins</p>
+                        <p>Total Score: <?php echo htmlspecialchars($level['ranked_score']); ?></p>
+                        <p>Status: <?php echo $level['is_published'] ? 'Published' : 'Unpublished'; ?></p>
+                        <div class="actions">
+                            <a href="addranked.php?edit=<?php echo $level['ranked_quiz_id']; ?>" class="btn edit-btn">Edit</a>
+                            <a href="delete_level.php?id=<?php echo $level['ranked_quiz_id']; ?>" class="btn delete-btn" onclick="return confirm('Are you sure you want to delete this quiz level? This will also delete all associated questions.')">Delete</a>
+                            <?php if (!$level['is_published']): ?>
+                                <a href="publish_level.php?id=<?php echo $level['ranked_quiz_id']; ?>" class="btn publish-btn" onclick="return confirm('Are you sure you want to publish this quiz level? It will be available to students.')">Publish</a>
+                            <?php else: ?>
+                                <span class="published-label">Published</span>
+                            <?php endif; ?>
+                            <a href="manage_questions.php?id=<?php echo $level['ranked_quiz_id']; ?>" class="btn manage-questions-btn">Manage Questions</a>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+                <?php if (empty($levels)): ?>
+                    <p>No quiz levels found. Please add a new quiz level.</p>
+                <?php endif; ?>
             </div>
             <div class="actions">
-                <button id="add-level-btn">Add New Level</button>
-                <button id ="delete-level-btn">Delete Level</button>
-                <button id="edit-level-btn">Edit Quiz</button>
-                <button id="publish-btn">Publish Quiz</button>
+                <a href="addranked.php" class="btn add-level-btn">Add New Level</a>
             </div>
         </div>
     </div>
-
-    <script>
-        // Function to save levels to localStorage
-        function saveLevels() {
-            const levelsContainer = document.getElementById('levels-container');
-            const levels = Array.from(levelsContainer.querySelectorAll('.level')).map(level => level.textContent.trim());
-            localStorage.setItem('levels', JSON.stringify(levels));
-        }
-
-        // Function to load levels from localStorage
-        function loadLevels() {
-            const levelsContainer = document.getElementById('levels-container');
-            const savedLevels = JSON.parse(localStorage.getItem('levels'));
-
-            if (savedLevels) {
-                levelsContainer.innerHTML = ''; // Clear existing levels
-                savedLevels.forEach(levelText => {
-                    const newLevel = document.createElement('button');
-                    newLevel.classList.add('level');
-                    newLevel.textContent = levelText;
-                    levelsContainer.appendChild(newLevel);
-
-                    // Add click event to mark as selected
-                    addLevelClickListener(newLevel);
-                });
-            }
-        }
-
-        // Add click listener to mark level as selected
-        function addLevelClickListener(level) {
-            level.addEventListener('click', function () {
-                // Remove 'selected' class from all levels
-                document.querySelectorAll('.level').forEach(level => level.classList.remove('selected'));
-                // Add 'selected' class to clicked level
-                this.classList.add('selected');
-            });
-        }
-
-        // Add New Level Button
-        document.getElementById('add-level-btn').addEventListener('click', function () {
-            const levelsContainer = document.getElementById('levels-container');
-            const levels = document.querySelectorAll('.level');
-            let lastLevelNumber = 0;
-
-            levels.forEach(level => {
-                const levelText = level.textContent.trim();
-                if (levelText.startsWith('Level')) {
-                    const number = parseInt(levelText.split(' ')[1]);
-                    if (number > lastLevelNumber) {
-                        lastLevelNumber = number;
-                    }
-                }
-            });
-
-            const confirmAdd = confirm(`Are you sure you want to add Level ${lastLevelNumber + 1}?`);
-
-            if (confirmAdd) {
-                const newLevel = document.createElement('button');
-                newLevel.classList.add('level');
-                newLevel.textContent = `Level ${lastLevelNumber + 1}`;
-                levelsContainer.appendChild(newLevel);
-
-                addLevelClickListener(newLevel); // Add click listener
-                saveLevels(); // Save levels
-            }
-        });
-
-        // Delete Level Button
-        document.getElementById('delete-level-btn').addEventListener('click', function () {
-            const levels = Array.from(document.querySelectorAll('.level'));
-            const selectedLevel = document.querySelector('.level.selected');
-
-            if (levels.length === 0) {
-                alert('No levels to delete.');
-                return;
-            }
-
-            const latestLevel = levels[levels.length - 1];
-
-            if (selectedLevel) {
-                const levelText = selectedLevel.textContent.trim();
-
-                if (selectedLevel !== latestLevel) {
-                    alert('You can only delete the latest level.');
-                    return;
-                }
-
-                const confirmDelete = confirm(`Are you sure you want to delete ${levelText}?`);
-
-                if (confirmDelete) {
-                    selectedLevel.remove();
-                    saveLevels();
-                }
-            } else {
-                alert('Please select a level to delete.');
-            }
-        });
-
-        // Edit Level Button
-        document.getElementById('edit-level-btn').addEventListener('click', function () {
-            const selectedLevel = document.querySelector('.level.selected');
-
-            if (selectedLevel) {
-                const levelText = selectedLevel.textContent.trim();
-                window.location.href = `addranked.php?level=${encodeURIComponent(levelText)}`;
-            } else {
-                alert('Please select a level to edit.');
-            }
-        });
-
-        // Publish Quiz Button
-        document.getElementById('publish-btn').addEventListener('click', function () {
-            const selectedLevel = document.querySelector('.level.selected');
-
-            if (selectedLevel) {
-                const levelText = selectedLevel.textContent.trim();
-                    //how to save to database
-            } else {
-                alert('Please select a level to publish.');
-            }
-        });
-
-
-        // Load levels on page load
-        window.addEventListener('load', function () {
-            loadLevels();
-        });
-
-    </script>
 </body>
 </html>

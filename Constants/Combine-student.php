@@ -143,7 +143,7 @@
             transition: all 0.5s ease;
             display: flex;
             flex-direction: column;
-            z-index: 1000;
+            z-index: 2000;
             /* z-index to ensure it will always be above other */
         }
 

@@ -1,3 +1,72 @@
+<?php
+// Enable error reporting for debugging (Remove in production)
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+// Start session if you need to track student sessions
+// session_start();
+
+include ('../../Database/connection.php');
+
+// Retrieve submitted answers
+$userAnswers = isset($_POST['answers']) ? $_POST['answers'] : [];
+$score = 0;
+$totalQuestions = count($userAnswers);
+
+// Fetch correct answers from the database
+if ($totalQuestions > 0) {
+    // Prepare an array of question IDs to prevent SQL injection
+    $questionIds = array_keys($userAnswers);
+    $placeholders = implode(',', array_fill(0, count($questionIds), '?'));
+
+    // Prepare the SQL statement
+    $stmt = $conn->prepare("SELECT question_id, correct_option FROM questions WHERE question_id IN ($placeholders)");
+    if ($stmt === false) {
+        die("Prepare failed: " . $conn->error);
+    }
+
+    // Bind parameters dynamically
+    $types = str_repeat('s', count($questionIds)); // Assuming question_id is VARCHAR
+    $stmt->bind_param($types, ...$questionIds);
+
+    // Execute the statement
+    $stmt->execute();
+
+    // Get the result
+    $result = $stmt->get_result();
+
+    $correctAnswers = [];
+    while ($row = $result->fetch_assoc()) {
+        $correctAnswers[$row['question_id']] = $row['correct_option'];
+    }
+
+    // Close the statement
+    $stmt->close();
+
+    // Calculate the score
+    foreach ($userAnswers as $qid => $selected_option) {
+        if (isset($correctAnswers[$qid]) && strtoupper($selected_option) === strtoupper($correctAnswers[$qid])) {
+            $score++;
+        }
+    }
+
+        // Optional: Record the quiz submission
+        // Assuming you have a logged-in student and their ID is stored in session
+        /*
+    if (isset($_SESSION['student_id'])) {
+        $student_id = $_SESSION['student_id'];
+        $time_taken = /* Calculate time taken */;
+    // Insert into quiz_submission table
+    $stmt = $conn->prepare("INSERT INTO quiz_submission (student_id, time_taken) VALUES (?, ?)");
+    $stmt->bind_param("ii", $student_id, $time_taken);
+    $stmt->execute();
+    $stmt->close();
+}
+
+$conn->close();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
