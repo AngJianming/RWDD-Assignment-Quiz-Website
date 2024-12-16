@@ -11,7 +11,7 @@
 
     <!-- External CSS and Swiper.js stylesheets -->
     <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="../Student/student-css/play.css">
+    <link rel="stylesheet" href="../Student/student-css/Play.css">
 
     <!-- Include styles from Bg-Animation.php -->
     <?php include '../Constants/Combine-student.php'; ?>
@@ -91,12 +91,12 @@
                 </svg>
             </h3>
             <!-- Original Play Button -->
-            <div style="display:flex; gap:1rem; justify-content:center; align-items:center;">
-                <a href="../Student/game functions/game.php">
+            <div>
+                <a href="viewAll-Level.php">
                     <button class="btn" style="font-family: 'Courier New', monospace;"><strong>Play</strong></button>
                 </a>
                 <!-- New Buttons added at the side of the Play button -->
-                <a href="../Student/All-Level.php">
+                <a href="viewAll-Level.php">
                     <button class="btn" style="font-family: 'Courier New', monospace;"><strong>View All Levels</strong></button>
                 </a>
             </div>

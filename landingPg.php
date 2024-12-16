@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta name="description" content="Battle your friends in knowledge tests with Code Combat—a Python-powered quiz showdown." />
-    <link rel="tab browser icon" type="png" href="/img/Code-Combat (square) logo.png">
+    <link rel="tab browser icon" type="png" href="/img/Code-Combat (trans) logo.png">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22></svg>" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -587,36 +587,16 @@
         <!-- ABOUT US SECTION -->
         <div class="team" id="aboutus">
             <div class="container">
-                <h3 class="title-w3-agileits title-black-wthree">Meet Our Team</h3>
+                <h3 class="title-w3-agileits title-black-wthree">Meet our Team - Group 10</h3>
                 <div id="horizontalTab">
-                    <ul class="resp-tabs-list">
-                        <li>
-                            <img src="images/yAng.png" alt="Member1" class="img-responsive" href="TM1"/>
-                        </li>
-                        <li>
-                            <img src="images/yBeh.png" alt="Member2" class="img-responsive" href="TM2"/>
-                        </li>
-                        <li>
-                            <img src="images/yHJ.png" alt="Member3" class="img-responsive" href="TM3"/>
-                        </li>
-                        <li>
-                            <img src="images/yCho.png" alt="Member4" class="img-responsive" href="TM4"/>
-                        </li>
-                        <li>
-                            <img src="images/yCho.png" alt="Member5" class="img-responsive" href="TM5"/>
-                        </li>
-                        <li>
-                            <img src="images/yCho.png" alt="Member6" class="img-responsive" href="TM6"/>
-                        </li>
-                    </ul>
                     <div class="resp-tabs-container">
                         <div class="tab1" id="TM1">
                             <div class="col-md-6 team-img-w3-agile">
                             </div>
                             <div class="col-md-6 team-Info-agileits">
                                 <h4>Ang Jianming</h4>
-                                <span>Full-stack Developer</span>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis.Lorem ipsum dolor .</p>
+                                <span>Group Member - TP076671</span>
+                                <p>Most proficient with as a full stack dev. Main contributor to preparing the quizzes.</p>
                                 <div class="social-bnr-agileits footer-icons-agileinfo">
                                     <ul class="social-icons3">
                                         <li><a href="#" class="fa fa-facebook icon-border facebook"> </a></li>
@@ -632,9 +612,9 @@
                             <div class="col-md-6 team-img-w3-agile">
                             </div>
                             <div class="col-md-6 team-Info-agileits">
-                                <h4>Elvan Sea Meng Ji</h4>
-                                <span>Leader / Product manager</span>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis.Lorem ipsum dolor .</p>
+                                <h4>Elvan Sea Meng Jin</h4>
+                                <span>Group Leader - TP075849</span>
+                                <p>Oversee all operations. Main contributor to the database, login & signup, integration of system</p>
                                 <div class="social-bnr-agileits footer-icons-agileinfo">
                                     <ul class="social-icons3">
                                         <li><a href="#" class="fa fa-facebook icon-border facebook"> </a></li>
@@ -651,8 +631,8 @@
                             </div>
                             <div class="col-md-6 team-Info-agileits">
                                 <h4>Jayden Foo Lok Hin</h4>
-                                <span>Backend Developer</span>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis.Lorem ipsum dolor .</p>
+                                <span>Group Member - TP073590</span>
+                                <p>Contributed to the educator part of the system. Designed most of the website's frontend.</p>
                                 <div class="social-bnr-agileits footer-icons-agileinfo">
                                     <ul class="social-icons3">
                                         <li><a href="#" class="fa fa-facebook icon-border facebook"> </a></li>
@@ -669,8 +649,8 @@
                             </div>
                             <div class="col-md-6 team-Info-agileits">
                                 <h4>Kee Genni</h4>
-                                <span>Frontend Developer</span>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis.Lorem ipsum dolor .</p>
+                                <span>Group Member - TP075968</span>
+                                <p>Managed most of the admin section. Contributed most to the flex screen for the website.</p>
                                 <div class="social-bnr-agileits footer-icons-agileinfo">
                                     <ul class="social-icons3">
                                         <li><a href="#" class="fa fa-facebook icon-border facebook"> </a></li>
@@ -687,8 +667,8 @@
                             </div>
                             <div class="col-md-6 team-Info-agileits">
                                 <h4>Lai Xiao Chun (Aurora)</h4>
-                                <span>UIUX Designer</span>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis.Lorem ipsum dolor .</p>
+                                <span>Group Member - TP076509</span>
+                                <p>Contributed to the admin section. Particularly contributed to the manage user details.</p>
                                 <div class="social-bnr-agileits footer-icons-agileinfo">
                                     <ul class="social-icons3">
                                         <li><a href="#" class="fa fa-facebook icon-border facebook"> </a></li>
@@ -705,8 +685,8 @@
                             </div>
                             <div class="col-md-6 team-Info-agileits">
                                 <h4>Yip Zhi Heng</h4>
-                                <span>Backend Developer</span>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis.Lorem ipsum dolor .</p>
+                                <span>Group Member - TP073605</span>
+                                <p>Contributed to the overall website. Performed most of the database management.</p>
                                 <div class="social-bnr-agileits footer-icons-agileinfo">
                                     <ul class="social-icons3">
                                         <li><a href="#" class="fa fa-facebook icon-border facebook"> </a></li>

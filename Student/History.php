@@ -153,7 +153,7 @@
                 ?>
             </tbody>
         </table>
-        <a class="btn" href="/">Home</a>
+        <a class="btn" href="userDashboard.php">Home</a>
         <p class="note">Your history will be updated each time you save your result at the end of a game.</p>
     </div>
 </body>

@@ -9,42 +9,44 @@
 // **Explanation:** These files help with common features like database connections.
 include '../Constants/Combine-student.php';
 
-// // Initialize variables
-// $quiz_code = ""; // This will store the quiz code entered by the user.
-// $error = "";     // This will store any error messages.
+// Initialize variables
+$quiz_code = ""; // This will store the quiz code entered by the user.
+$error = "";     // This will store any error messages.
 
-// // Handle form submission
-// if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-//     // Step 1: Get the quiz code from the form and remove extra spaces
-//     $quiz_code_input = trim($_POST['quiz_code'] ?? '');
+// Handle form submission
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Step 1: Get the quiz code from the form and remove extra spaces
+    $quiz_code_input = trim($_POST['quiz_code'] ?? '');
 
-//     // Step 2: Validate the quiz code
-//     if (empty($quiz_code_input)) {
-//         $error = "Please enter a 4-digit quiz code."; // Error: No code entered.
-//     } elseif (!preg_match('/^\d{4}$/', $quiz_code_input)) {
-//         $error = "Quiz code must be exactly 4 digits."; // Error: Code is not 4 digits.
-//     } else {
-//         // Step 3: Check the database for the quiz code
+    // Step 2: Validate the quiz code
+    if (empty($quiz_code_input)) {
+        $error = "Please enter a 4-digit quiz code."; // Error: No code entered.
+    } elseif (!preg_match('/^\d{4}$/', $quiz_code_input)) {
+        $error = "Quiz code must be exactly 4 digits."; // Error: Code is not 4 digits.
+    } else {
+        // Step 3: Check the database for the quiz code
 
-//         // **Explanation:** Prevent hacking by using a safe query.
-//         $stmt = $conn->prepare("SELECT quiz_id, quiz_name FROM custom_quiz WHERE quiz_code = ?");
-//         $stmt->bind_param("i", $quiz_code_input); // Bind the quiz code as a number.
-//         $stmt->execute();
-//         $stmt->bind_result($quiz_id, $quiz_name); // Get quiz ID and name if found.
+        // **Explanation:** Prevent hacking by using a safe query.
+        $stmt = $conn->prepare("SELECT quiz_id, quiz_name FROM custom_quiz WHERE quiz_code = ?");
+        $stmt->bind_param("i", $quiz_code_input); // Bind the quiz code as a number.
+        $stmt->execute();
+        $stmt->bind_result($quiz_id, $quiz_name); // Get quiz ID and name if found.
 
-//         if ($stmt->fetch()) {
-//             // **Explanation:** Code is correct! Send them to the quiz page.
-//             header("Location: takeQuiz.php?quiz_id=" . urlencode($quiz_id));
-//             exit(); // Stop further code from running.
-//         } else {
-//             $error = "Invalid quiz code. Please try again."; // Error: Code not found.
-//         }
+        if ($stmt->fetch()) {
+            // **Explanation:** Code is correct! Send them to the quiz page.
+            header("Location: takeQuiz.php?quiz_id=" . urlencode($quiz_id));
+            exit(); // Stop further code from running.
+        } else {
+            $error = "Invalid quiz code. Please try again."; // Error: Code not found.
+        }
 
-//         $stmt->close(); // Clean up the query.
-//     }
+        $stmt->close(); // Clean up the query.
+    }
 
-//     $conn->close(); // Close the database connection.
-// }
+    // now I would like you to make a playCustomQuiz.php, where users can start playing their custom quiz by simply putting down the `quiz_id` from the table `questions` when educator have added their levels and questions.
+
+    $conn->close(); // Close the database connection.
+}
 ?>
 
 <!DOCTYPE html>

@@ -1,35 +1,5 @@
 <?php
-// Sample
-session_start();
-include("../Database/connection.php");
-
-// $_SESSION['educator_username'] = "testeduuser";
-// $_SESSION['educator_email'] = "testeduuser@example.com";
-// $_SESSION['educator_doj'] = "27 November 2024"
-
-$email = $_SESSION['user_id'];
-$username = $_SESSION['username'];
-
-if (isset($_SESSION['username'])) {
-    // Access session data (username and user_id should already be set)
-    $username = $_SESSION['username'];
-    $user_id = $_SESSION['user_id'];
-
-    // Database connection (ensure $conn is defined properly)
-    // include('connection.php'); // Include the database connection
-
-    // Prepare the SQL statement to fetch the admin's email based on the username
-    $stmt = $conn->prepare("SELECT educator_email, educator_doj FROM educator WHERE educator_username = ?");
-    $stmt->bind_param("s", $username); // Bind the username parameter
-    $stmt->execute();
-    $stmt->bind_result($email, $doj);
-    $stmt->fetch();
-
-    // Close the statement
-    $stmt->close();
-}
-
-// // Profile-Educator.php
+// // Profile-Admin.php
 
 // // Start the session and include necessary authentication checks
 // session_start();
@@ -37,15 +7,15 @@ if (isset($_SESSION['username'])) {
 // // Include the database connection
 // require '../Database/connection.php';
 
-// // Check if the educator is logged in
-// if (!isset($_SESSION['educator_id'])) {
+// // Check if the admin is logged in
+// if (!isset($_SESSION['admin_id'])) {
 //     // If not logged in, redirect to the login page
 //     header("Location: ../Login/login.php");
 //     exit();
 // }
 
-// // Fetch the educator's data from the database
-// $educator_id = $_SESSION['educator_id'];
+// // Fetch the admin's data from the database
+// $admin_id = $_SESSION['admin_id'];
 // $username = $email = $doj = $profilePic = "";
 
 // // Initialize error messages
@@ -58,9 +28,9 @@ if (isset($_SESSION['username'])) {
 //     'profile_pic' => ''
 // ];
 
-// // Fetch educator details
-// $stmt = $conn->prepare("SELECT educator_username, educator_email, educator_DOJ, educator_password FROM educator WHERE educator_id = ?");
-// $stmt->bind_param("i", $educator_id);
+// // Fetch admin details
+// $stmt = $conn->prepare("SELECT admin_username, admin_email, admin_DOJ, admin_password FROM admin WHERE admin_id = ?");
+// $stmt->bind_param("i", $admin_id);
 // $stmt->execute();
 // $stmt->bind_result($db_username, $db_email, $db_doj, $db_password);
 // if ($stmt->fetch()) {
@@ -68,7 +38,7 @@ if (isset($_SESSION['username'])) {
 //     $email = htmlspecialchars($db_email);
 //     $doj = htmlspecialchars($db_doj);
 // } else {
-//     // If educator not found, destroy session and redirect to login
+//     // If admin not found, destroy session and redirect to login
 //     session_destroy();
 //     header("Location: login.php");
 //     exit();
@@ -102,7 +72,7 @@ if (isset($_SESSION['username'])) {
 
 //         // Check for existing email (unique)
 //         if ($new_email !== $email) {
-//             $stmt = $conn->prepare("SELECT educator_id FROM educator WHERE educator_email = ?");
+//             $stmt = $conn->prepare("SELECT admin_id FROM admin WHERE admin_email = ?");
 //             $stmt->bind_param("s", $new_email);
 //             $stmt->execute();
 //             $stmt->store_result();
@@ -114,8 +84,8 @@ if (isset($_SESSION['username'])) {
 
 //         // If no errors, update the profile
 //         if (empty(array_filter($errors))) {
-//             $stmt = $conn->prepare("UPDATE educator SET educator_username = ?, educator_email = ? WHERE educator_id = ?");
-//             $stmt->bind_param("ssi", $new_username, $new_email, $educator_id);
+//             $stmt = $conn->prepare("UPDATE admin SET admin_username = ?, admin_email = ? WHERE admin_id = ?");
+//             $stmt->bind_param("ssi", $new_username, $new_email, $admin_id);
 //             if ($stmt->execute()) {
 //                 $username = htmlspecialchars($new_username);
 //                 $email = htmlspecialchars($new_email);
@@ -155,8 +125,8 @@ if (isset($_SESSION['username'])) {
 //                 $hashed_new_password = password_hash($new_password, PASSWORD_BCRYPT);
 
 //                 // Update the password in the database
-//                 $stmt = $conn->prepare("UPDATE educator SET educator_password = ? WHERE educator_id = ?");
-//                 $stmt->bind_param("si", $hashed_new_password, $educator_id);
+//                 $stmt = $conn->prepare("UPDATE admin SET admin_password = ? WHERE admin_id = ?");
+//                 $stmt->bind_param("si", $hashed_new_password, $admin_id);
 //                 if ($stmt->execute()) {
 //                     echo "<script>alert('Password changed successfully.');</script>";
 //                 } else {
@@ -199,7 +169,7 @@ if (isset($_SESSION['username'])) {
 
 //                 // Generate a unique file name to prevent overwriting
 //                 $fileExtension = pathinfo($fileName, PATHINFO_EXTENSION);
-//                 $newFileName = 'educator_' . $educator_id . '_' . time() . '.' . $fileExtension;
+//                 $newFileName = 'admin_' . $admin_id . '_' . time() . '.' . $fileExtension;
 //                 $destPath = $uploadDir . $newFileName;
 
 //                 if (move_uploaded_file($fileTmpPath, $destPath)) {
@@ -210,8 +180,8 @@ if (isset($_SESSION['username'])) {
 //                     }
 
 //                     // Update the profile picture path in the database
-//                     $stmt = $conn->prepare("UPDATE educator SET educator_profile_pic = ? WHERE educator_id = ?");
-//                     $stmt->bind_param("si", $destPath, $educator_id);
+//                     $stmt = $conn->prepare("UPDATE admin SET admin_profile_pic = ? WHERE admin_id = ?");
+//                     $stmt->bind_param("si", $destPath, $admin_id);
 //                     if ($stmt->execute()) {
 //                         $profilePic = htmlspecialchars($destPath);
 //                         echo "<script>alert('Profile picture updated successfully.');</script>";
@@ -230,8 +200,8 @@ if (isset($_SESSION['username'])) {
 // }
 
 // // Fetch the updated profile picture
-// $stmt = $conn->prepare("SELECT educator_profile_pic FROM educator WHERE educator_id = ?");
-// $stmt->bind_param("i", $educator_id);
+// $stmt = $conn->prepare("SELECT admin_profile_pic FROM admin WHERE admin_id = ?");
+// $stmt->bind_param("i", $admin_id);
 // $stmt->execute();
 // $stmt->bind_result($db_profile_pic);
 // if ($stmt->fetch()) {
@@ -253,10 +223,10 @@ if (isset($_SESSION['username'])) {
 
 <head>
     <meta charset="UTF-8">
-    <title>educator Profile Settings</title>
+    <title>Student Profile Settings</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="Profile-Educator.css">
-    <?php include '../Constants/Combine-educator.php' ?>
+    <link rel="stylesheet" href="../Admin/Profile-Admin.css">
+    <?php include '../Constants/Combine-student.php' ?>
 </head>
 
 <body class="profile-body" data-theme="dark">
@@ -264,7 +234,7 @@ if (isset($_SESSION['username'])) {
         <div class="profile-container">
             <!-- Header with Title and Theme Toggle -->
             <div class="profile-header">
-                <h2>Educator Profile</h2>
+                <h2>Student Profile</h2>
                 <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Theme">🌙</button>
             </div>
 
@@ -279,7 +249,7 @@ if (isset($_SESSION['username'])) {
             </div>
 
             <!-- Profile Form -->
-            <form class="profile-form" action="Profile-educator.php" method="POST" enctype="multipart/form-data">
+            <form class="profile-form" action="Profile-Admin.php" method="POST" enctype="multipart/form-data">
                 <!-- Username -->
                 <div class="form-group">
                     <label for="username">Username</label>
@@ -287,11 +257,6 @@ if (isset($_SESSION['username'])) {
                     <?php if (!empty($errors['username'])): ?>
                         <span class="error" id="username-error"><?php echo $errors['username']; ?></span>
                     <?php endif; ?>
-
-                    <!-- <input type="username" id="username" name="username" value="<?php echo $_SESSION['educator_username']; ?>" required>
-                    <?php if (!empty($errors['username'])): ?>
-                        <span class="error" id="username-error"><?php echo $errors['username']; ?></span>
-                    <?php endif; ?> -->
                 </div>
 
                 <!-- Email -->
@@ -301,23 +266,16 @@ if (isset($_SESSION['username'])) {
                     <?php if (!empty($errors['email'])): ?>
                         <span class="error" id="email-error"><?php echo $errors['email']; ?></span>
                     <?php endif; ?>
-
-                    <!-- <input type="email" id="email" name="email" value="<?php echo $_SESSION['educator_email']; ?>" required>
-                    <?php if (!empty($errors['email'])): ?>
-                        <span class="error" id="email-error"><?php echo $errors['email']; ?></span>
-                    <?php endif; ?> -->
                 </div>
 
                 <!-- Date of Joining -->
                 <div class="form-group">
                     <label for="doj">Date of Joining</label>
                     <input type="text" id="doj" name="doj" value="<?php echo $doj; ?>" readonly>
-
-                    <!-- <input type="text" id="doj" name="doj" value="<?php echo $_SESSION['educator_doj']; ?>" required> -->
                 </div>
 
                 <!-- Password Change Section -->
-                <!-- <div class="form-group">
+                <div class="form-group">
                     <label for="current-password">Current Password</label>
                     <input type="password" id="current-password" name="current_password" placeholder="Enter current password">
                     <?php if (!empty($errors['current_password'])): ?>
@@ -341,11 +299,11 @@ if (isset($_SESSION['username'])) {
                     <?php endif; ?>
                 </div>
 
-                Action Buttons
+                <!-- Action Buttons -->
                 <div style="display: flex; justify-content: space-between; align-items: center;">
                     <button type="submit" name="update_profile" class="btn">Save Changes</button>
                     <button type="submit" name="logout" class="btn logout-btn">Logout</button>
-                </div> -->
+                </div>
             </form>
 
             <!-- Footer -->
@@ -358,7 +316,7 @@ if (isset($_SESSION['username'])) {
     <!-- JavaScript for Interactivity -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-
+            
             // Theme Toggle
             const themeToggle = document.getElementById('theme-toggle');
             const body = document.body;
