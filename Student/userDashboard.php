@@ -1,13 +1,13 @@
 <?php  
-// session_start();
+session_start();
 
-// if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'Student') {
-//     header("Location: ../Login/login.php");
-//     exit();
-// }
+if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'Student') {
+    header("Location: ../Login/login.php");
+    exit();
+}
 
-// $student_id = $_SESSION['user_id'];
-// $username = $_SESSION['username'];
+$student_id = $_SESSION['user_id'];
+$username = $_SESSION['username'];
 ?>
 
 <!DOCTYPE html>
@@ -40,7 +40,7 @@
                     <div class="quiz-card">
                         <h3>Python Basics</h3>
                         <p>Master the fundamentals of Python.</p>
-                        <button>Start Quiz</button>
+                        <a href="Play.php"><button>Start Quiz</button></a>
                     </div>
                 </div>
                 <div class="block statistics">
@@ -62,13 +62,13 @@
                         <h3>Level 4 Advanced Supahigh</h3>
                         <p>Challenge yourself with Python advanced data stuctures.</p>
                         <img class="rankimg" src="https://4kwallpapers.com/images/wallpapers/python-logo-purple-2560x1440-16084.jpg" alt="Image of Level 4 Ranked Quiz">
-                        <button class="rankbtn">Start Quiz</button>
+                        <a href="viewAll-Level.php"><button class="rankbtn">Start Quiz</button></a>
                     </div>
                     <div class="quiz-item">
                         <h3>Level 5 Demi-god Python</h3>
                         <p>Learn Python AI Algorithms.</p>
                         <img class="rankimg" src="https://4kwallpapers.com/images/walls/thumbs_2t/16015.jpg" alt="Image of Level 5 Ranked Quiz">
-                        <button class="rankbtn">Start Quiz</button>
+                        <a href="viewAll-Level.php"><button class="rankbtn">Start Quiz</button></a>
                     </div>
                 </div>
                 <div class="quiz-list">

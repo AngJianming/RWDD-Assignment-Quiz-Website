@@ -1,6 +1,6 @@
 <?php
 session_start();
-include("/xampp/htdocs/RWDD-Assignment-Quiz-Website/Constants/Combine-student.php");
+include("../Constants/Combine-student.php");
 
 // Sample data (replace with real data from your database)
 $players = [

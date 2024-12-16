@@ -1,5 +1,33 @@
 <?php
 // // Profile-Admin.php
+session_start();
+include("../Database/connection.php");
+
+// $_SESSION['student_username'] = "testustuuser";
+// $_SESSION['student_email'] = "teststuuser@example.com";
+// $_SESSION['student_doj'] = "27 November 2024"
+
+$email = $_SESSION['user_id'];
+$username = $_SESSION['username'];
+
+if (isset($_SESSION['username'])) {
+    // Access session data (username and user_id should already be set)
+    $username = $_SESSION['username'];
+    $user_id = $_SESSION['user_id'];
+
+    // Database connection (ensure $conn is defined properly)
+    // include('connection.php'); // Include the database connection
+
+    // Prepare the SQL statement to fetch the admin's email based on the username
+    $stmt = $conn->prepare("SELECT student_email, student_doj FROM student WHERE student_username = ?");
+    $stmt->bind_param("s", $username); // Bind the username parameter
+    $stmt->execute();
+    $stmt->bind_result($email, $doj);
+    $stmt->fetch();
+
+    // Close the statement
+    $stmt->close();
+}
 
 // // Start the session and include necessary authentication checks
 // session_start();
@@ -216,6 +244,7 @@
 
 // // Close the database connection
 // $conn->close();
+
 ?>
 
 <!DOCTYPE html>
@@ -272,10 +301,12 @@
                 <div class="form-group">
                     <label for="doj">Date of Joining</label>
                     <input type="text" id="doj" name="doj" value="<?php echo $doj; ?>" readonly>
+
+                    <!-- <input type="text" id="doj" name="doj" value="<?php echo $_SESSION['student_doj']; ?>" required> -->
                 </div>
 
                 <!-- Password Change Section -->
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label for="current-password">Current Password</label>
                     <input type="password" id="current-password" name="current_password" placeholder="Enter current password">
                     <?php if (!empty($errors['current_password'])): ?>
@@ -297,13 +328,13 @@
                     <?php if (!empty($errors['confirm_password'])): ?>
                         <span class="error" id="confirm-password-error"><?php echo $errors['confirm_password']; ?></span>
                     <?php endif; ?>
-                </div>
+                </div> -->
 
                 <!-- Action Buttons -->
-                <div style="display: flex; justify-content: space-between; align-items: center;">
+                <!-- <div style="display: flex; justify-content: space-between; align-items: center;">
                     <button type="submit" name="update_profile" class="btn">Save Changes</button>
                     <button type="submit" name="logout" class="btn logout-btn">Logout</button>
-                </div>
+                </div> -->
             </form>
 
             <!-- Footer -->
@@ -316,7 +347,7 @@
     <!-- JavaScript for Interactivity -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            
+
             // Theme Toggle
             const themeToggle = document.getElementById('theme-toggle');
             const body = document.body;

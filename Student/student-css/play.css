@@ -523,7 +523,7 @@ svg {
     filter: drop-shadow(0px 8px 24px rgba(18, 28, 53, 0.1));
     pointer-events: all;
     /* Enable clicks on arrows */
-    z-index: 10;
+    z-index: 20;
     /* Ensure arrows are above the slider content */
 }
 
@@ -559,7 +559,6 @@ svg {
     align-items: center;
     justify-content: center;
     /* Center the pagination dots */
-    pointer-events: all;
     /* Enable clicks on pagination dots */
 }
 
