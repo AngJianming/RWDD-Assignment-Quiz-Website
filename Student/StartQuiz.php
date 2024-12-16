@@ -9,10 +9,10 @@ session_start();
 require '../Database/connection.php';
 
 // Ensure the student is logged in
-if (!isset($_SESSION['student_id'])) {
-    header("Location: student_login.php"); // Redirect to the login page
-    exit();
-}
+// if (!isset($_SESSION['student_id'])) {
+//     header("Location: student_login.php"); // Redirect to the login page
+//     exit();
+// }
 
 // Initialize variables
 $error = '';
@@ -211,62 +211,7 @@ $conn->close();
     <meta charset="UTF-8">
     <title>Start Quiz - <?php echo htmlspecialchars($quiz_level['ranked_quiz_level'] . " - " . $quiz_level['ranked_quiz_name']); ?></title>
     <link rel="stylesheet" href="StartQuiz.css"> <!-- Ensure this CSS file exists and is properly linked -->
-    <style>
-        /* Basic styling for demonstration purposes */
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f2f2f2;
-            padding: 20px;
-        }
-        .container {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 5px;
-        }
-        .alert {
-            padding: 15px;
-            margin-bottom: 20px;
-            border-radius: 4px;
-        }
-        .alert.error {
-            background-color: #f8d7da;
-            color: #721c24;
-        }
-        .alert.success {
-            background-color: #d4edda;
-            color: #155724;
-        }
-        .timer {
-            font-size: 18px;
-            margin-bottom: 20px;
-            color: #333;
-        }
-        .question-block {
-            margin-bottom: 20px;
-        }
-        .question {
-            font-weight: bold;
-        }
-        .answers label {
-            display: block;
-            margin-bottom: 5px;
-        }
-        .btn {
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            text-decoration: none;
-        }
-        .btn.submit-btn {
-            background-color: #28a745;
-        }
-        .btn:hover {
-            opacity: 0.9;
-        }
-    </style>
+    
     <script>
         // Countdown Timer (only for GET requests and if no submission has been made)
         <?php if ($_SERVER['REQUEST_METHOD'] !== 'POST' && empty($success) && empty($error)): ?>

@@ -1,13 +1,13 @@
 <?php  
 session_start();
 
-if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'Student') {
-    header("Location: ../Login/login.php");
-    exit();
-}
+// if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'Student') {
+//     header("Location: ../Login/login.php");
+//     exit();
+// }
 
-$student_id = $_SESSION['user_id'];
-$username = $_SESSION['username'];
+// $student_id = $_SESSION['user_id'];
+// $username = $_SESSION['username'];
 ?>
 
 <!DOCTYPE html>
