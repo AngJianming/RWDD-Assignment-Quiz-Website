@@ -651,20 +651,20 @@
                 </a>
                 <span class="tooltip">Dashboard</span>
             </li>
-            <li>
+            <!-- <li>
                 <a href="../Educator/Progress.php">
                     <i class="fa fa-tasks"></i>
                     <span class="links_name">Progress</span>
                 </a>
                 <span class="tooltip">Progress</span>
-            </li>
-            <li>
+            </li> -->
+            <!-- <li>
                 <a href="../Educator/Mylibrary.php">
                     <i class="fa fa-books"></i>
                     <span class="links_name">My Library</span>
                 </a>
                 <span class="tooltip">My Library</span>
-            </li>
+            </li> -->
             <!-- <li>
                 <a href="../Educator/FilesPg.php">
                     <i class="ms-Icon ms-Icon--FabricFolder"></i>

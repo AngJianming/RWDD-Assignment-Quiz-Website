@@ -663,13 +663,13 @@
                 </a>
                 <span class="tooltip">Performance</span>
             </li>
-            <li>
+            <!-- <li>
                 <a href="../Admin/FilesPg.php">
                     <i class="ms-Icon ms-Icon--FabricFolder"></i>
                     <span class="links_name">Files</span>
                 </a>
                 <span class="tooltip">Files</span>
-            </li>
+            </li> -->
             <li>
                 <a href="../Admin/rankedquiz.php">
                     <i class="fa-solid fa-circle-plus"></i>
