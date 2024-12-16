@@ -1,17 +1,27 @@
-function togglePasswordVisibility(passwordFieldId, iconId) {
-    const passwordInput = document.getElementById(passwordFieldId);
-    const toggleIcon = document.getElementById(iconId);
+// register.js
 
-    toggleIcon.addEventListener('click', function () {
-        // Toggle the input type between password and text
-        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-        passwordInput.setAttribute('type', type);
+document.addEventListener('DOMContentLoaded', () => {
+    const togglePassword1 = document.querySelector('#togglePassword1');
+    const passwordInput1 = document.querySelector('#password1');
 
-        // Toggle the icon between eye and eye-off
-        toggleIcon.setAttribute('name', type === 'password' ? 'eye-off-outline' : 'eye-outline');
+    togglePassword1.addEventListener('click', () => {
+        // Toggle the type attribute
+        const type = passwordInput1.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordInput1.setAttribute('type', type);
+
+        // Toggle the eye icon
+        togglePassword1.setAttribute('name', type === 'password' ? 'eye-off-outline' : 'eye-outline');
     });
-}
 
-// Initialize toggle functionality for both password fields
-togglePasswordVisibility('password1', 'togglePassword1');
-togglePasswordVisibility('password2', 'togglePassword2');
+    const togglePassword2 = document.querySelector('#togglePassword2');
+    const passwordInput2 = document.querySelector('#password2');
+
+    togglePassword2.addEventListener('click', () => {
+        // Toggle the type attribute
+        const type = passwordInput2.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordInput2.setAttribute('type', type);
+
+        // Toggle the eye icon
+        togglePassword2.setAttribute('name', type === 'password' ? 'eye-off-outline' : 'eye-outline');
+    });
+});

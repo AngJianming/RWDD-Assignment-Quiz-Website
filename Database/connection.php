@@ -14,6 +14,8 @@ if ($conn->connect_error) {
     die("Database connection error ".$conn->connect_error);
 }
 
-echo "Connected successfully";
+echo '<script language="javascript">';
+echo '  alert("Connected successfully")';
+echo '</script>';
 
 ?>

@@ -89,7 +89,26 @@ $mysqli->close();
 
 
 
+<?php 
+// Set a secure, HTTP-only cookie valid for 30 days
+setcookie("remember_me", $remember_token, time() + (30 * 24 * 60 * 60), "/", "", true, true);
 
+// for login and register to generate a ramdom 32 bytes token and using it for remember me option
+// At the beginning of register.php and login.php
+if (empty($_SESSION['csrf_token'])) {
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+}
+
+// must input this form inside the login and register form
+// <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ">
+
+
+// After form submission
+if (!hash_equals($_SESSION['csrf_token'], $_POST['csrf_token'])) {
+    $errors[] = "Invalid CSRF token.";
+}
+
+?>
 
 
 
