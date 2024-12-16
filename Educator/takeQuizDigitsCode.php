@@ -1,10 +1,5 @@
 <?php
-/**
- * Generates a unique 4-digit quiz code.
- *
- * @param mysqli $conn The MySQLi connection object.
- * @return int A unique 4-digit quiz code.
- */
+
 function generateUniqueQuizCode($conn) {
     do {
         $code = rand(1000, 9999); // Generates a random 4-digit code

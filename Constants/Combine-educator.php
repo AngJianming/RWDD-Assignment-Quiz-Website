@@ -665,13 +665,13 @@
                 </a>
                 <span class="tooltip">My Library</span>
             </li>
-            <li>
+            <!-- <li>
                 <a href="../Educator/FilesPg.php">
                     <i class="ms-Icon ms-Icon--FabricFolder"></i>
                     <span class="links_name">Files</span>
                 </a>
                 <span class="tooltip">Files</span>
-            </li>
+            </li> -->
             <li>
                 <a href="../Educator/Add-CustomQuiz.php">
                     <i class="fa-solid fa-circle-plus"></i>
