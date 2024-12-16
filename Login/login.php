@@ -1,6 +1,10 @@
 <?php
-// login.php
+// REMOVE LATER: Clear existing session
+session_start();
+session_unset();
+session_destroy();
 
+// Start a new session
 session_start();
 
 // Include database connection
@@ -8,10 +12,10 @@ require_once '../Database/connection.php';
 
 // Initialize variables
 $errors = [];
-$errMsg = '';
+$success = '';
 
 // Handle form submission
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Retrieve and sanitize input
     $loginEmail = isset($_POST['LoginEmail']) ? trim($_POST['LoginEmail']) : '';
     $loginPassword = isset($_POST['LoginPassword']) ? $_POST['LoginPassword'] : '';
@@ -19,11 +23,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Validate inputs
     if (empty($loginEmail) || empty($loginPassword) || empty($role)) {
-        echo '<script language="javascript">';
-        echo '  alert("$Please enter you email, password, and select a role.")';
-        echo '</script>';
+        $errors[] = "Please enter your email, password, and select a role.";
     } else {
-        // Determine the table based on role
+        // Determine the table and fields based on the role
         switch ($role) {
             case 'Student':
                 $table = 'student';
@@ -31,7 +33,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $username_field = 'student_username';
                 $email_field = 'student_email';
                 $password_field = 'student_password';
-                $dashboard = '../Student/userDashboard.php';
                 break;
             case 'Educator':
                 $table = 'educator';
@@ -39,7 +40,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $username_field = 'educator_username';
                 $email_field = 'educator_email';
                 $password_field = 'educator_password';
-                $dashboard = '../Educator/dashboard.php';
                 break;
             case 'Admin':
                 $table = 'admin';
@@ -47,13 +47,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $username_field = 'admin_username';
                 $email_field = 'admin_email';
                 $password_field = 'admin_password';
-                $dashboard = '../Admin/dashboard.php';
                 break;
             default:
-                $errMsg = "Invalid role selected.";
+                $errors[] = "Invalid role selected.";
         }
 
-        if (empty($errMsg)) {
+        if (empty($errors)) {
             // Prepare the SQL statement to prevent SQL injection
             $stmt = $conn->prepare("SELECT `$id_field`, `$password_field`, `$username_field` FROM `$table` WHERE `$email_field` = ?");
             if ($stmt) {
@@ -62,43 +61,44 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $stmt->store_result();
 
                 if ($stmt->num_rows === 1) {
-                    $stmt->bind_result($user_id, $hashed_password, $username);
+                    $stmt->bind_result($user_id, $stored_password, $username);
                     $stmt->fetch();
 
-                    // Verify the password
-                    if (password_verify($loginPassword, $hashed_password)) {
+                    // Directly compare the passwords (no hashing)
+                    if ($loginPassword === $stored_password) {
                         // Password is correct
-                        // Regenerate session ID to prevent session fixation
                         session_regenerate_id(true);
                         $_SESSION['user_id'] = $user_id;
                         $_SESSION['username'] = $username;
                         $_SESSION['role'] = $role;
 
-                        // Redirect to the respective dashboard
-                        header("Location: $dashboard");
-                        exit();
+                        // Redirect to respective dashboard
+                        switch ($role) {
+                            case 'Student':
+                                header("Location: ../Student/userDashboard.php");
+                                exit();
+                            case 'Educator':
+                                header("Location: ../Educator/dashboard.php");
+                                exit();
+                            case 'Admin':
+                                header("Location: ../Admin/dashboard.php");
+                                exit();
+                        }
                     } else {
                         // Invalid password
-                        $errMsg = "Invalid email or password.";
+                        $errors[] = 'Invalid password.';
                     }
                 } else {
                     // No user found with that email
-                    $errMsg = "Invalid email or password.";
+                    $errors[] = 'Invalid email.';
                 }
 
                 $stmt->close();
             } else {
-                // SQL statement preparation failed
-                error_log("Prepare failed: (" . $conn->errno . ") " . $conn->error);
-                $errMsg = "Sorry, we're experiencing technical difficulties. Please try again later.";
+                $errors[] = "Database error: Unable to prepare statement.";
             }
         }
     }
-
-    // Store the error message in session and redirect back to login form
-    $_SESSION['errMsg'] = $errMsg;
-    header("Location: login.php");
-    exit();
 }
 ?>
 
@@ -116,14 +116,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 
 <body>
-
     <section>
         <form action="login.php" method="POST">
-            <!-- Display Error Message -->
+            <!-- Display Error Messages -->
             <?php
-            if (isset($_SESSION['errMsg'])) {
-                echo '<div class="error-message">' . htmlspecialchars($_SESSION['errMsg']) . '</div>';
-                unset($_SESSION['errMsg']);
+            if (!empty($errors)) {
+                echo '<div class="error-message">';
+                foreach ($errors as $error) {
+                    echo htmlspecialchars($error) . "<br>";
+                }
+                echo '</div>';
             }
             ?>
 
@@ -150,17 +152,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <!-- Password Input -->
             <div class="inputbox">
-                <ion-icon name="eye-off-outline" id="togglePassword" style="cursor: pointer;"></ion-icon>
+                <ion-icon name="eye-off-outline" id="togglePassword"></ion-icon>
                 <input type="password" id="LoginPassword" name="LoginPassword" required placeholder=" ">
                 <label for="LoginPassword">Password</label>
-            </div>
-
-            <!-- Remember Me and Forgot Password -->
-            <div class="forget">
-                <label for="remember-me">
-                    <input type="checkbox" id="remember-me" name="remember_me">Remember Me
-                </label>
-                <a href="forgot_password.php">Forgot Password?</a>
             </div>
 
             <!-- Submit Button -->
@@ -170,7 +164,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="register">
                 <p>Don't have an account? <a href="register.php">Register</a></p>
             </div>
-
         </form>
     </section>
 
@@ -190,7 +183,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             });
         });
     </script>
-
 </body>
 
 </html>

@@ -5,7 +5,7 @@
 session_start();
 
 // **2. Include Database Connection Script**
-require_once 'conn.php';
+include ('../Database/connection.php');
 
 // **3. Initialize an Errors Array and Success Message**
 $errors = [];
@@ -20,7 +20,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = isset($_POST['username']) ? trim($_POST['username']) : '';
     $password = isset($_POST['password']) ? $_POST['password'] : '';
     $confirm_password = isset($_POST['confirm_password']) ? $_POST['confirm_password'] : '';
-    $remember_me = isset($_POST['remember_me']) ? 1 : 0;
 
     // **6. Validate Inputs**
 
@@ -81,7 +80,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         // Prepare a SELECT statement to check existing email or username
-        $stmt = $conn->prepare("SELECT `$id_field` FROM `$table` WHERE `$email_field` = ? OR `$username_field` = ?");
+        $stmt = $conn->prepare("SELECT $id_field FROM $table WHERE $email_field = ? OR $username_field = ?");
         if ($stmt) {
             $stmt->bind_param("ss", $email, $username);
             $stmt->execute();
@@ -99,25 +98,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // **8. If No Errors, Proceed to Insert the New User**
     if (empty($errors)) {
-        // Hash the password
-        $password_hash = password_hash($password, PASSWORD_DEFAULT);
-
-        // Generate a unique remember me token if "Remember Me" is checked
-        $remember_token = null;
-        if ($remember_me) {
-            $remember_token = bin2hex(random_bytes(16)); // Generates a 32-character token
-        }
 
         // Prepare an INSERT statement based on role
         switch ($role) {
             case 'Student':
-                $insert_stmt = $conn->prepare("INSERT INTO `student` (`student_username`, `student_password`, `student_email`, `student_contacts`, `student_DOJ`, `remember_token`) VALUES (?, ?, ?, ?, ?, ?)");
+                $insert_stmt = $conn->prepare("INSERT INTO student (student_username, student_password, student_email, student_contacts, student_DOJ) VALUES (?, ?, ?, ?, ?)");
                 break;
             case 'Educator':
-                $insert_stmt = $conn->prepare("INSERT INTO `educator` (`educator_username`, `educator_password`, `educator_email`, `educator_institution`, `educator_contacts`, `educator_DOJ`, `remember_token`) VALUES (?, ?, ?, ?, ?, ?, ?)");
+                $insert_stmt = $conn->prepare("INSERT INTO educator (educator_username, educator_password, educator_email, educator_institution, educator_contacts, educator_DOJ) VALUES (?, ?, ?, ?, ?, ?)");
                 break;
             case 'Admin':
-                $insert_stmt = $conn->prepare("INSERT INTO `admin` (`admin_username`, `admin_password`, `admin_email`, `admin_DOJ`, `remember_token`) VALUES (?, ?, ?, ?, ?)");
+                $insert_stmt = $conn->prepare("INSERT INTO admin (admin_username, admin_password, admin_email, admin_DOJ) VALUES (?, ?, ?, ?)");
                 break;
         }
 
@@ -128,30 +119,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     // Assuming student_contacts and student_DOJ are optional
                     $contacts = isset($_POST['contacts']) ? trim($_POST['contacts']) : null;
                     $doj = isset($_POST['doj']) ? $_POST['doj'] : null;
-                    $insert_stmt->bind_param("ssssss", $username, $password_hash, $email, $contacts, $doj, $remember_token);
+                    $insert_stmt->bind_param("sssss", $username, $password, $email, $contacts, $doj);
                     break;
                 case 'Educator':
                     // Assuming educator_institution, educator_contacts, and educator_DOJ are provided
                     $institution = isset($_POST['institution']) ? trim($_POST['institution']) : '';
                     $contacts = isset($_POST['contacts']) ? trim($_POST['contacts']) : null;
                     $doj = isset($_POST['doj']) ? $_POST['doj'] : null;
-                    $insert_stmt->bind_param("sssssss", $username, $password_hash, $email, $institution, $contacts, $doj, $remember_token);
+                    $insert_stmt->bind_param("sssss", $username, $password, $email, $institution, $contacts, $doj);
                     break;
                 case 'Admin':
                     // Assuming admin_DOJ is provided
                     $doj = isset($_POST['doj']) ? $_POST['doj'] : null;
-                    $insert_stmt->bind_param("sssss", $username, $password_hash, $email, $doj, $remember_token);
+                    $insert_stmt->bind_param("ssss", $username, $password, $email, $doj);
                     break;
             }
 
             if ($insert_stmt->execute()) {
                 // Registration successful
-
-                // If "Remember Me" is checked, set a cookie
-                if ($remember_me && $remember_token) {
-                    // Set a cookie valid for 30 days
-                    setcookie("remember_me", $remember_token, time() + (30 * 24 * 60 * 60), "/", "", true, true);
-                }
 
                 // Optionally, log the user in immediately after registration
                 // Here, we'll redirect them to the login page with a success message
@@ -255,13 +240,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>
             </div>
 
-            <!-- Remember Me -->
-            <div class="forget">
-                <label for="remember-me">
-                    <input type="checkbox" id="remember-me" name="remember_me">Remember Me
-                </label>
-            </div>
-
             <!-- Submit Button -->
             <button type="submit" class="btn">Sign up</button>
 
@@ -315,85 +293,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             });
         });
     </script>
-
-</body>
-
-</html>
-
-
-    <?php
-
-    // session_start();
-    // require_once 'vendor/autoload.php';
-
-    // // Google OAuth configuration
-    // $clientID = 'YOUR_GOOGLE_CLIENT_ID';
-    // $clientSecret = 'YOUR_GOOGLE_CLIENT_SECRET';
-    // $redirectUri = 'http://yourdomain.com/registration.php';
-
-    // // Database connection
-    // $host = 'localhost';
-    // $db = 'your_database_name';
-    // $user = 'your_database_user';
-    // $pass = 'your_database_password';
-
-    // try {
-    //     $pdo = new PDO("mysql:host=$host;dbname=$db", $user, $pass);
-    //     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    // } catch (PDOException $e) {
-    //     die("Database connection failed: " . $e->getMessage());
-    // }
-
-    // // Create Google Client
-    // $client = new Google_Client();
-    // $client->setClientId($clientID);
-    // $client->setClientSecret($clientSecret);
-    // $client->setRedirectUri($redirectUri);
-    // $client->addScope('email');
-    // $client->addScope('profile');
-
-    // if (!isset($_GET['code'])) {
-    //     // If not authenticated yet, show Google login link
-    //     $authUrl = $client->createAuthUrl();
-    //     echo "<a href='$authUrl'>Register with Google</a>";
-    // } else {
-    //     // Exchange authorization code for access token
-    //     $token = $client->fetchAccessTokenWithAuthCode($_GET['code']);
-    //     $client->setAccessToken($token);
-
-    //     // Get user profile information
-    //     $google_oauth = new Google_Service_Oauth2($client);
-    //     $google_account_info = $google_oauth->userinfo->get();
-    //     $google_id = $google_account_info->id;
-    //     $email = $google_account_info->email;
-    //     $name = $google_account_info->name;
-
-    //     // Check if user already exists in the database
-    //     $stmt = $pdo->prepare("SELECT * FROM users WHERE google_id = :google_id OR email = :email");
-    //     $stmt->execute(['google_id' => $google_id, 'email' => $email]);
-    //     $user = $stmt->fetch();
-
-    //     if ($user) {
-    //         // User already exists, so log them in
-    //         $_SESSION['id'] = $user['id'];
-    //         $_SESSION['email'] = $user['email'];
-    //         $_SESSION['name'] = $user['name'];
-    //         header('Location: dashboard.php');
-    //         exit();
-    //     } else {
-    //         // User doesn't exist, so register them
-    //         $stmt = $pdo->prepare("INSERT INTO users (google_id, email, name) VALUES (:google_id, :email, :name)");
-    //         $stmt->execute(['google_id' => $google_id, 'email' => $email, 'name' => $name]);
-
-    //         // Log the user in after registration
-    //         $_SESSION['id'] = $pdo->lastInsertId();
-    //         $_SESSION['email'] = $email;
-    //         $_SESSION['name'] = $name;
-    //         header('Location: dashboard.php');
-    //         exit();
-    //     }
-    // }
-    ?>
 
 </body>
 
