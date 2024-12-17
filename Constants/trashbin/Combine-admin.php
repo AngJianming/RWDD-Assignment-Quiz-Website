@@ -35,16 +35,20 @@
             min-height: 100vh;
             width: 100%;
             overflow: hidden;
-            background: #444;
+            /* background: #444; */
+            /* background-color: #5c3d9a; */
         }
 
         header {
+            position: relative;
+            top:0;
+            left:0;
+            width: 100%;
             background-color: #020104;
             color: white;
-            position: relative;
             width: 100%;
             top: 0;
-            z-index: 100;
+
         }
 
         .header-container {
@@ -107,7 +111,7 @@
             background-color: #6e30a8;
             color: white;
         }
-
+        
         .sign-in:hover {
             background-color: #ffffff;
             color: #333;
@@ -401,17 +405,6 @@
             cursor: pointer;
         }
 
-        /* Home Content */
-        .home_content {
-            position: absolute;
-            height: 100%;
-            width: calc(100% - 80px);
-            /* Adjusted width */
-            left: 80px;
-            /* Adjusted left position */
-            transition: margin-left 0.5s ease;
-        }
-
         /* When Sidebar is Active */
         .sidebar.active~.home_content {
             width: calc(100% - 320px);
@@ -424,7 +417,7 @@
         footer {
             background-color: #020104;
             color: white;
-            padding: 2em 0;
+            padding: 32px 0;
             position: absolute;
             bottom: 0;
             width: 100%;
@@ -463,7 +456,7 @@
         .social-icons a:hover {
             color: #ff005c;
         }
-
+        
         .copyright {
             color: #f5f5f5;
             text-align: center;
@@ -477,12 +470,10 @@
             color: #f5f5f5;
         }
 
-        .adminSignOut:hover,
-        #log_out:hover {
+        .adminSignOut:hover, #log_out:hover {
             color: #020104;
             background: #ccc;
         }
-
 
         /* Responsive Adjustments */
         @media (max-width: 932px) {
@@ -619,7 +610,7 @@
         /* for footer */
         @media (max-width: 932px) {
             /* Collapse move lower by width */
-
+            
         }
     </style>
 </head>
@@ -628,14 +619,14 @@
     <header>
         <div class="navbar">
             <div class="logo">
-                <img src="/img/Code-Combat (trans) logo.png" alt="Logo" />
+                <img src="../img/Code-Combat (trans) logo.png" alt="Logo" />
             </div>
             <!-- <div class="search-signup">
                 <button class="sign-in">Sign in</button>
                 <button class="sign-up">Sign up</button>
             </div> -->
         </div>
-    </header>
+    </header>   
 
     <div class="sidebar">
         <div class="logo_content">
@@ -645,35 +636,42 @@
         </div>
         <ul class="nav_list">
             <li>
-                <a href="../Educator/dashboard.php">
+                <a href="../Admin/dashboard.php">
                     <i class="ms-Icon ms-Icon--WaffleOffice365"></i>
                     <span class="links_name">Dashboard</span>
                 </a>
                 <span class="tooltip">Dashboard</span>
             </li>
             <li>
-                <a href="../Educator/Progress.php">
-                    <i class="fa fa-tasks"></i>
-                    <span class="links_name">Progress</span>
+                <a href="../Admin/useraccount.php">
+                    <i class="ms-Icon ms-Icon--Contact"></i>
+                    <span class="links_name">Manage User</span>
                 </a>
-                <span class="tooltip">Progress</span>
+                <span class="tooltip">Manage User</span>
             </li>
             <li>
-                <a href="../Educator/Mylibrary.php">
-                    <i class="fa fa-books"></i>
-                    <span class="links_name">My Library</span>
+                <a href="../Admin/eduaccount.php">
+                    <i class="ms-Icon ms-Icon--Chat"></i>
+                    <span class="links_name">Manage Educator</span>
                 </a>
-                <span class="tooltip">My Library</span>
+                <span class="tooltip">Manage Educator</span>
             </li>
             <li>
-                <a href="../Educator/FilesPg.php">
+                <a href="../Admin/userperformance.php">
+                    <i class="ms-Icon ms-Icon--PieDouble"></i>
+                    <span class="links_name">Performance</span>
+                </a>
+                <span class="tooltip">Performance</span>
+            </li>
+            <!-- <li>
+                <a href="../Admin/FilesPg.php">
                     <i class="ms-Icon ms-Icon--FabricFolder"></i>
                     <span class="links_name">Files</span>
                 </a>
                 <span class="tooltip">Files</span>
-            </li>
+            </li> -->
             <li>
-                <a href="../Educator/Add-CustomQuiz.php">
+                <a href="../Admin/rankedquiz.php">
                     <i class="fa-solid fa-circle-plus"></i>
                     <span class="links_name">Add Quiz</span>
                 </a>
@@ -690,12 +688,12 @@
         <div class="profile_content">
             <div class="profile">
                 <div class="profile_details">
-                    <a href="/Educator/Profile-Educator.php">
+                    <a href="/Admin/Profile-Admin.php">
                         <img class="profileAdmin" src="../img/Profile Pic.png" alt="Profile Picture">
                     </a>
                     <div class="name_job">
                         <div class="name">USER</div>
-                        <div class="job">Educator</div>
+                        <div class="job">Admin</div>
                     </div>
                 </div>
                 <a href="/landingPg.php" class="adminSignOut">

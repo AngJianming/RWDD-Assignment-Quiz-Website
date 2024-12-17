@@ -8,6 +8,7 @@
 // Include required files
 // **Explanation:** These files help with common features like database connections.
 include '../Constants/Combine-student.php';
+include '../Database/connection.php';
 
 // Initialize variables
 $quiz_code = ""; // This will store the quiz code entered by the user.

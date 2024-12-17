@@ -276,7 +276,9 @@ $conn->close();
                         </div>
                     </div>
                 <?php endforeach; ?>
-                <button type="submit" class="btn submit-btn">Submit Quiz</button>
+                <a href="History.php">
+                    <button type="submit" class="btn submit-btn">Submit Quiz</button>
+                </a>
                 <a href="viewAll-Level.php" class="btn">Back to Quiz Levels</a>
             </form>
         <?php endif; ?>
